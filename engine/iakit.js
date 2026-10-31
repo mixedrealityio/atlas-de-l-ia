@@ -96,9 +96,7 @@ function pipeline({ g, S, x0, label, ext }) {
     label('t1', s.n, () => V(pos[i].x, pos[i].y + 0.66, 0.3)); if (s.s) label('t2', s.s, () => V(pos[i].x, pos[i].y - 0.62, 0.3)); return m; });
   for (let i = 0; i < st.length - 1; i++) { const r = rod(g, { r: 0.04, pal: 'ink', name: 'Flux' }); let a = pos[i], b = pos[i + 1];
     if (Math.abs(a.x - b.x) < 0.01) { const sx = (Math.floor(i / per) % 2 === 0 ? 1 : -1) * (bw / 2 - 0.12); a = V(a.x + sx, a.y - 0.4, 0); b = V(b.x + sx, b.y + 0.4, 0); } rodTo(r, a, b); }
-  if (S.loop) { const a = pos[st.length - 1], b = pos[0];
-    const r1 = rod(g, { r: 0.03, pal: 'red', name: 'Retour' }), r2 = rod(g, { r: 0.03, pal: 'red', name: 'Reprise' }); const o = bw * 0.36; rodTo(r1, V(a.x + o, a.y + 0.4, 0), V(a.x + o, a.y + 1.0, 0)); rodTo(r2, V(b.x - o, b.y + 1.0, 0), V(b.x - o, b.y + 0.4, 0));
-    label('vec red', '↺ ' + S.loop, () => V(a.x + o, a.y + 1.35, 0)); label('vec red', 'reprise', () => V(b.x - o, b.y + 1.35, 0)); ext.h += 0.9; ext.cy += 0.5; }
+  if (S.loop) { const top = Math.max(...pos.map(p => p.y)) + 1.2; label('vec red', '↺ ' + S.loop, () => V(x0, top, 0)); ext.h += 0.8; ext.cy += 0.4; }
   const pk = ball(g, 'red', 'Donnée', 0.16); let cur = 0;
   return { update: t => { const u = (t * 0.55) % st.length, i = Math.floor(u), f = u - i; cur = i;
     const a = pos[i], b = pos[(i + 1) % st.length]; pk.position.set(a.x + (b.x - a.x) * f, a.y + (b.y - a.y) * f + 0.5, 0.35);
@@ -163,6 +161,8 @@ const CURVES = {
     ['99 % par étape', 'blue', x => Math.pow(0.99, x)], ['95 % par étape', 'red', x => Math.pow(0.95, x)], ['90 % par étape', 'dark', x => Math.pow(0.9, x)]] },
   roofline: { x: [0, 400], y: [0, 1100], xl: 'intensité arithmétique (opérations par octet lu)', yl: 'performance atteignable (TFLOPs)', ser: [
     ['H100 : 3,35 To/s, 989 TFLOPs', 'blue', x => Math.min(3.35 * x, 989)], ['A100 : 2,0 To/s, 312 TFLOPs', 'dark', x => Math.min(2.0 * x, 312)]] },
+  breakeven: { x: [0, 36], y: [0, 380], xl: 'mois d’utilisation', yl: 'coût cumulé (k€, exemple illustratif)', ser: [
+    ['cloud : 10 k€ par mois', 'red', x => 10 * x], ['sur site : 180 k€ + 4 k€ par mois', 'blue', x => 180 + 4 * x]] },
   passk: { x: [1, 16], y: [0, 1.05], xl: 'nombre d’essais k', yl: 'taux de réussite (pass@k)', ser: [
     ['p = 0,15 par essai', 'blue', x => 1 - Math.pow(0.85, x)], ['p = 0,05 par essai', 'dark', x => 1 - Math.pow(0.95, x)], ['p = 0,4 par essai', 'red', x => 1 - Math.pow(0.6, x)]] },
 };
@@ -185,10 +185,10 @@ function mem({ g, S, x0, label, ext }) {
   ext.w = n * (bw + gap) + 3.5; ext.h = (S.limit || 80) * sc + 2.2; ext.cy = ((S.limit || 80) * sc + 0.8) / 2;
   const parts = [];
   C.forEach((c, i) => { let y = base; const tot = c.segs.reduce((a, s) => a + s[1], 0);
-    let cum = 0; c.segs.forEach(s => { const m = sizedBox(g, { pal: s[2] || 'blue', tone: 'hi', name: `${s[0]} : ${s[1]} Go` }); parts.push([m, i, cum, s]); cum += s[1]; y += s[1] * sc; });
-    label('t1', c.n, () => V(ox + i * (bw + gap), base - 0.36, 0.3)); label('mark', `${fr(tot, tot < 10 ? 1 : 0)} Go`, () => V(ox + i * (bw + gap), y + 0.28, 0.3)); });
+    let cum = 0; c.segs.forEach(s => { const m = sizedBox(g, { pal: s[2] || 'blue', tone: 'hi', name: `${s[0]} : ${s[1]} ${S.unit || 'Go'}` }); parts.push([m, i, cum, s]); cum += s[1]; y += s[1] * sc; });
+    label('t1', c.n, () => V(ox + i * (bw + gap), base - 0.36, 0.3)); label('mark', `${fr(tot, tot < 10 ? 1 : 0)} ${S.unit || 'Go'}`, () => V(ox + i * (bw + gap), y + 0.28, 0.3)); });
   const lim = base + (S.limit || 80) * sc; lines(g, [x0 - (n * (bw + gap)) / 2, lim, 0.1, x0 + (n * (bw + gap)) / 2, lim, 0.1], '#e5484d');
-  label('vec red', S.limitLabel || 'GPU 80 Go', () => V(x0, lim + 0.4, 0));
+  label('vec red', S.limitLabel || 'GPU 80 Go', () => V(x0 + (n * (bw + gap)) / 2 - 1.4, lim + 0.45, 0));
   return { update: t => { const r = Math.min(1, (t % 12) / 1); parts.forEach(([m, i, cum, s]) => { const x = ox + i * (bw + gap), y = base + cum * sc * r; setBox(m, x - bw / 2, x + bw / 2, y, y + Math.max(0.001, s[1] * sc * r), -0.35, 0.35); }); },
     info: () => S.info || '' };
 }
@@ -361,7 +361,7 @@ function cloud({ g, S, x0, label, ext }) {
 function logbars({ g, S, x0, label, ext }) {
   const it = S.items, n = it.length, bw = 1.15, ox = x0 - (n * bw) / 2 + bw / 2, base = 0.6, H = 3.9, lo = Math.log10(S.min ?? Math.min(...it.map(i => i.v)) / 3), hi = Math.log10(Math.max(...it.map(i => i.v)) * 1.25);
   ext.w = n * bw + 2.6; ext.h = H + 2.6; ext.cy = base + H / 2;
-  const bs = it.map((e, i) => { const m = sizedBox(g, { pal: e.pal || 'blue', tone: 'hi', name: `${e.n} : ${e.v} ${S.unit}` }); label('t1', e.n, () => V(ox + i * bw, base - 0.38, 0.2)); label('mark', `${fr(e.v, e.v < 10 ? 1 : 0)} ${S.unit}`, () => V(ox + i * bw, base + 0.3 + H * (Math.log10(e.v) - lo) / (hi - lo), 0.2)); return m; });
+  const bs = it.map((e, i) => { const m = sizedBox(g, { pal: e.pal || 'blue', tone: 'hi', name: `${e.n} : ${e.v} ${S.unit}` }); label('t1', e.n, () => V(ox + i * bw, base - 0.38, 0.2)); label('mark', `${e.v >= 1000 ? e.v.toLocaleString('fr-FR') : fr(e.v, e.v < 10 ? 1 : 0)} ${S.unit}`, () => V(ox + i * bw, base + 0.3 + H * (Math.log10(e.v) - lo) / (hi - lo), 0.2)); return m; });
   label('mark', S.axis || 'échelle logarithmique', () => V(x0, base + H + 0.9, 0));
   return { update: t => { const r = Math.min(1, (t % 14) / 1.4); bs.forEach((m, i) => { const h = Math.max(0.04, H * (Math.log10(it[i].v) - lo) / (hi - lo) * r); setBox(m, ox + i * bw - bw * 0.36, ox + i * bw + bw * 0.36, base, base + h, -0.25, 0.25); }); }, info: () => S.info || '' };
 }
@@ -393,4 +393,31 @@ function cluster({ g, S, x0, label, ext }) {
     pk.position.set(a + (b - a) * f, 2.9 + 1.6 * Math.sin(Math.PI * f), 0.4); }, info: () => `somme des gradients : le nœud ${cur + 1} envoie au suivant` };
 }
 
-const KINDS = { net, fmaps, tensor, landscape, cloud, logbars, chip, cluster, tokens, scatter, attn, pipeline, cycle, bars, curve, mem, conv, patches, detect, grid, arm, kv };
+
+// ------------------------------------------------------------------ réseau de microélectrodes avec cellules en culture (biocalcul)
+function mea({ g, S, x0, label, ext }) {
+  ext.w = 10; ext.h = 6.4; ext.cy = 2.4; const cols = 8, rows = 6, cs = 0.62, ox = x0 - ((cols - 1) * cs) / 2, oy = 1.2;
+  part(g, box(cols * cs + 0.8, rows * cs + 0.8, 0.22, 0.06), { pal: 'dark', tone: 'mid', name: 'Puce à électrodes', pos: [x0, oy + ((rows - 1) * cs) / 2, -0.15] });
+  const el = []; for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) { const m = part(g, cyl(0.1, 0.12, 14), { pal: 'paper', tone: 'hi', name: `Électrode ${r * cols + c + 1}`, pos: [ox + c * cs, oy + r * cs, 0.05], rot: [Math.PI / 2, 0, 0] }); m.userData.pal = 'paper'; el.push([m, r, c]); }
+  const cells = []; for (let i = 0; i < 46; i++) { const m = ball(g, i % 4 === 0 ? 'red' : 'blue', 'Neurone cultivé', 0.07 + 0.04 * rnd(i)); m.position.set(ox + rnd(i * 1.3) * (cols - 1) * cs, oy + rnd(i * 2.9 + 3) * (rows - 1) * cs, 0.16); cells.push(m); }
+  label('t1', 'cellules vivantes (≈ 10⁴ à 10⁶)', () => V(x0, oy + rows * cs + 0.5, 0)); label('vec red', 'stimuler →', () => V(ox - 1.7, oy + 2.4, 0)); label('vec blue', '← lire', () => V(ox + (cols - 1) * cs + 1.6, oy + 2.4, 0));
+  let n = 0;
+  return { update: t => { const w = (t * 3) % (cols + 4); n = 0; el.forEach(([m, r, c]) => { const on = Math.abs(c - w) < 1.1 && rnd(r * 11 + c * 7 + Math.floor(t * 3)) > 0.35; if (on) n++; setPal(m, on ? (c < 2 ? 'red' : 'blue') : 'paper'); }); cells.forEach((m, i) => m.scale.setScalar(1 + 0.25 * Math.sin(t * 3 + i))); },
+    info: () => `électrodes actives : ${n}/${cols * rows}\nlecture et stimulation de cellules vivantes` };
+}
+
+// ------------------------------------------------------------------ robot quadrupède : démarche et capteurs
+function quad({ g, S, x0, label, ext }) {
+  ext.w = 11; ext.h = 6; ext.cy = 2.2; const L1 = 0.75, L2 = 0.75, by = 2.0, hx = [0.9, -0.9], hz = [0.38, -0.38];
+  part(g, box(2.6, 0.55, 1.0, 0.1), { pal: 'blue', tone: 'hi', name: 'Corps', pos: [x0, by, 0] });
+  const head = part(g, box(0.7, 0.5, 0.7, 0.08), { pal: 'dark', tone: 'hi', name: 'Tête (caméras, LiDAR)', pos: [x0 + 1.55, by + 0.1, 0] });
+  const legs = []; [[0, 0], [0, 1], [1, 0], [1, 1]].forEach(([a, b], i) => { legs.push({ u: rod(g, { r: 0.08, pal: 'ink', name: 'Cuisse' }), l: rod(g, { r: 0.065, pal: 'ink', name: 'Jambe' }), foot: ball(g, 'red', 'Pied (capteur de force)', 0.1), hip: V(x0 + hx[a], by - 0.2, hz[b]), ph: (a ^ b) ? Math.PI : 0 }); });
+  const tiles = []; for (let i = 0; i < 14; i++) { const m = part(g, box(0.9, 0.08, 1.6, 0.02), { pal: i % 2 ? 'paper' : 'base', tone: 'lo', name: 'Sol', pos: [x0, 0.04, 0] }); tiles.push(m); }
+  label('t1', 'LiDAR et caméras', () => V(x0 + 2.0, by + 1.0, 0)); label('t1', 'centrale inertielle (IMU)', () => V(x0 - 0.9, by + 0.85, 0)); label('t1', 'capteurs de force des pieds', () => V(x0, 0.7, 0.9));
+  return { update: t => { const w = 3.2 * t; legs.forEach(L => { const p = w + L.ph, fx = 0.38 * Math.sin(p), fy = -1.1 + 0.28 * Math.max(0, Math.cos(p)); const tx = L.hip.x + fx, ty = by - 0.2 + fy, dx = tx - L.hip.x, dy = ty - L.hip.y, d = Math.min(Math.hypot(dx, dy), L1 + L2 - 0.02), c2 = (d * d - L1 * L1 - L2 * L2) / (2 * L1 * L2), a2 = Math.acos(Math.max(-1, Math.min(1, c2))), a1 = Math.atan2(dy, dx) + Math.atan2(L2 * Math.sin(a2), L1 + L2 * Math.cos(a2));
+      const k = V(L.hip.x + L1 * Math.cos(a1), L.hip.y + L1 * Math.sin(a1), L.hip.z), f = V(tx, ty, L.hip.z); rodTo(L.u, L.hip, k); rodTo(L.l, k, f); L.foot.position.copy(f); });
+    tiles.forEach((m, i) => { const x = (((i * 0.9 - t * 1.4) % 12.6) + 12.6) % 12.6 - 6.3; m.position.x = x0 + x; }); head.position.y = by + 0.1 + 0.03 * Math.sin(w * 2); },
+    info: () => 'marche en trot : pattes en diagonale\nperception, équilibre, planification' };
+}
+
+const KINDS = { mea, quad, net, fmaps, tensor, landscape, cloud, logbars, chip, cluster, tokens, scatter, attn, pipeline, cycle, bars, curve, mem, conv, patches, detect, grid, arm, kv };
