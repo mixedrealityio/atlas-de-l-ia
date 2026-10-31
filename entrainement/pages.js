@@ -4,7 +4,7 @@ export const PAGES = [
   "kicker": "Chapitre 6 · débutant à avancé",
   "title": "Entraîner son modèle",
   "sub": "la boucle, de A à Z",
-  "body": "\n    <p class=\"lede\">Entraîner un modèle, c’est répéter une petite boucle des millions de fois : <b>prédire, mesurer l’erreur, corriger</b>.</p>\n    <p>La mesure d’erreur est l’<b>entropie croisée</b> : −log <i>p</i>, où <i>p</i> est la probabilité que le modèle donnait au vrai jeton suivant. La <b>rétropropagation</b> calcule, pour chacun des milliards de poids, de combien l’erreur changerait s’il bougeait un peu : c’est le <b>gradient</b>. L’optimiseur déplace alors chaque poids dans le sens qui réduit l’erreur.</p>\n    <p>Ce chapitre décrit les réglages de cette boucle, ce qu’elle coûte en mémoire, et comment affiner un modèle ouvert chez soi.</p>",
+  "body": "\n    <p class=\"lede\">Entraîner un modèle, c’est répéter une petite boucle des millions de fois : <b>prédire, mesurer l’erreur, corriger</b>.</p>\n    <p>La mesure d’erreur est l’<b>entropie croisée</b> : −log <i>p</i>, où <i>p</i> est la probabilité que le modèle donnait au vrai jeton suivant. La <b>rétropropagation</b> calcule, pour chacun des milliards de poids, de combien l’erreur changerait s’il bougeait un peu : c’est le <b>gradient</b>. L’optimiseur déplace alors chaque poids dans le sens qui réduit l’erreur.</p>\n    ",
   "cam": {
    "target": [
     0,
@@ -108,8 +108,8 @@ export const PAGES = [
  {
   "kicker": "6.5",
   "title": "Affiner un modèle ouvert",
-  "sub": "SFT, LoRA, QLoRA : les réglages qui comptent",
-  "body": "\n    <p class=\"lede\">Réentraîner entièrement un modèle de 7 milliards de paramètres demande 112 Go. <b>LoRA</b> évite cela en n’entraînant que de petites matrices ajoutées aux grandes.</p>\n    <table class=\"data\">\n      <tr><th>réglage</th><th>ordre de grandeur</th><th>effet</th></tr>\n      <tr><td>rang <i>r</i></td><td>8 à 64</td><td>capacité de l’adaptateur</td></tr>\n      <tr><td>α (alpha)</td><td>≈ <i>r</i> à 2<i>r</i></td><td>échelle de la correction (α/<i>r</i>)</td></tr>\n      <tr><td>taux d’apprentissage</td><td>10⁻⁴ à 2 × 10⁻⁴</td><td>trop fort : oublie, trop faible : rien ne change</td></tr>\n      <tr><td>époques</td><td>1 à 3</td><td>plus : surapprentissage</td></tr>\n      <tr><td>lot effectif</td><td>16 à 128 (accumulation)</td><td>stabilité</td></tr>\n      <tr><td>modules ciblés</td><td>attention, puis MLP</td><td>plus de modules : plus de capacité et de mémoire</td></tr>\n    </table>\n    <p><b>QLoRA</b> garde les poids gelés en 4 bits. Quelques milliers d’exemples <b>de bonne qualité</b> valent mieux que des centaines de milliers d’exemples médiocres.</p>",
+  "sub": "LoRA et QLoRA",
+  "body": "\n    <p class=\"lede\">Réentraîner entièrement un modèle de 7 milliards de paramètres demande 112 Go. <b>LoRA</b> évite cela en n’entraînant que de petites matrices ajoutées aux grandes.</p>\n    <p>Au lieu de modifier la matrice <i>W</i>, on apprend deux petites matrices <i>B</i> et <i>A</i> dont le produit est la correction. Au départ <i>B</i> vaut zéro : le modèle n’a pas bougé.</p>\n    <p><b>QLoRA</b> garde en plus les poids gelés en 4 bits, ce qui permet d’affiner un modèle de 7 à 14 milliards sur une carte de 16 à 24 Go. Quelques milliers d’exemples <b>de bonne qualité</b> valent mieux que des centaines de milliers d’exemples médiocres.</p>",
   "cam": {
    "target": [
     160,
@@ -128,6 +128,27 @@ export const PAGES = [
  },
  {
   "kicker": "6.6",
+  "title": "Les réglages de LoRA",
+  "sub": "ordres de grandeur",
+  "body": "\n    <table class=\"data\">\n      <tr><th>réglage</th><th>ordre de grandeur</th><th>effet</th></tr>\n      <tr><td>rang <i>r</i></td><td>8 à 64</td><td>capacité de l’adaptateur</td></tr>\n      <tr><td>α (alpha)</td><td>≈ <i>r</i> à 2<i>r</i></td><td>échelle de la correction (α/<i>r</i>)</td></tr>\n      <tr><td>taux</td><td>10⁻⁴ à 2 × 10⁻⁴</td><td>trop fort : oubli ; trop faible : rien ne change</td></tr>\n      <tr><td>époques</td><td>1 à 3</td><td>plus : surapprentissage</td></tr>\n      <tr><td>lot effectif</td><td>16 à 128</td><td>stabilité (accumulation de gradients)</td></tr>\n    </table>",
+  "cam": {
+   "target": [
+    160,
+    1.8,
+    0
+   ],
+   "az": 8,
+   "el": 7,
+   "dist": 26,
+   "auto": true
+  },
+  "lit": "lora",
+  "look": {},
+  "scene": "lora",
+  "fig": ""
+ },
+ {
+  "kicker": "6.7",
   "title": "Ce qui peut mal tourner",
   "sub": "surapprentissage, oubli, évaluation",
   "body": "\n    <p class=\"lede\">Un affinage réussi sur les exemples vus peut dégrader tout le reste.</p>\n    <ul class=\"rules\">\n      <li><b>Surapprentissage</b> : la perte d’entraînement baisse, celle de validation remonte (figure). Gardez un jeu de validation, jamais utilisé pour entraîner.</li>\n      <li><b>Oubli catastrophique</b> : affiner sur un domaine étroit abîme les autres compétences. Mélangez des données générales, baissez le taux, ou limitez le rang.</li>\n      <li><b>Format de conversation</b> : un modèle affiné avec un gabarit de dialogue différent de celui prévu répond mal. Respectez le gabarit exact du modèle.</li>\n      <li><b>Évaluation</b> : comparez avant et après sur des cas que vous n’avez pas utilisés pour entraîner, et relisez des sorties.</li>\n    </ul>",

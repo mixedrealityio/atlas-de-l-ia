@@ -73,7 +73,7 @@ export const SPECS = [
   "bw": 2.3,
   "gap": 0.8,
   "y": 1.4,
-  "loop": "reprendre avec un contexte propre",
+  "loop": "contexte propre",
   "stages": [
    {
     "n": "Travailler",

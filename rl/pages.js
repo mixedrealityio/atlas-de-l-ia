@@ -67,7 +67,7 @@ export const PAGES = [
   "kicker": "7.3",
   "title": "Le RL pour les modèles de langage",
   "sub": "RLHF, DPO, GRPO, RLVR",
-  "body": "\n    <p class=\"lede\">Un modèle de langage peut être vu comme un agent : l’action est un jeton, la récompense tombe à la fin de la réponse.</p>\n    <ul class=\"rules\">\n      <li><b>RLHF</b> : on entraîne un <b>modèle de récompense</b> sur des comparaisons humaines, puis on optimise le modèle avec PPO, avec un terme qui l’empêche de trop s’éloigner du modèle de départ.</li>\n      <li><b>DPO</b> : on évite le RL ; une perte sur des paires « préférée / rejetée » règle directement la politique.</li>\n      <li><b>GRPO</b> : on tire un groupe de réponses par invite et on compare chaque note à celle du groupe ; plus besoin de réseau de valeur.</li>\n      <li><b>RLVR</b> : la récompense est <b>vérifiable</b> (réponse mathématique juste, tests de code réussis). C’est la voie des modèles de raisonnement.</li>\n    </ul>",
+  "body": "\n    <p class=\"lede\">Pour un modèle de langage, l’action est un jeton ; la récompense tombe à la fin de la réponse.</p>\n    <ul class=\"rules\">\n      <li><b>RLHF</b> : un <b>modèle de récompense</b> appris sur des comparaisons humaines, puis PPO avec un terme qui garde le modèle près de son point de départ.</li>\n      <li><b>DPO</b> : sans RL ; une perte sur des paires « préférée / rejetée » règle la politique.</li>\n      <li><b>GRPO</b> : on compare la note de chaque réponse à celle de son groupe ; pas de réseau de valeur.</li>\n      <li><b>RLVR</b> : récompense <b>vérifiable</b> (réponse juste, tests réussis), voie des modèles de raisonnement.</li>\n    </ul>",
   "cam": {
    "target": [
     80,
@@ -88,7 +88,7 @@ export const PAGES = [
   "kicker": "7.4",
   "title": "Les pièges",
   "sub": "détournement, récompenses rares, instabilité",
-  "body": "\n    <p class=\"lede\">Le RL optimise <b>exactement ce qu’on mesure</b>, y compris ses défauts.</p>\n    <ul class=\"rules\">\n      <li><b>Détournement de récompense</b> : la politique exploite une faille du juge (réponses longues, flatteuses, qui trompent le modèle de récompense).</li>\n      <li><b>Récompenses rares</b> : si la réussite est exceptionnelle, il n’y a presque rien à apprendre ; on commence par des tâches plus faciles.</li>\n      <li><b>Effondrement de l’entropie</b> : la politique devient trop déterministe et cesse d’explorer.</li>\n      <li><b>Instabilité et coût</b> : beaucoup de réponses à générer, des réglages fragiles.</li>\n    </ul>\n    <p>Protections courantes : un garde-fou KL, des juges variés, des évaluations tenues à l’écart, un arrêt anticipé.</p>",
+  "body": "\n    <p class=\"lede\">Le RL optimise <b>exactement ce qu’on mesure</b>, y compris ses défauts.</p>\n    <ul class=\"rules\">\n      <li><b>Détournement de récompense</b> : la politique exploite une faille du juge (réponses longues, flatteuses, qui trompent le modèle de récompense).</li>\n      <li><b>Récompenses rares</b> : si la réussite est exceptionnelle, il n’y a presque rien à apprendre ; on commence par des tâches plus faciles.</li>\n      <li><b>Effondrement de l’entropie</b> : la politique devient trop déterministe et cesse d’explorer.</li>\n      <li><b>Instabilité et coût</b> : beaucoup de réponses à générer, des réglages fragiles.</li>\n    </ul>\n    <p>Protections : garde-fou KL, juges variés, évaluations à l’écart, arrêt anticipé.</p>",
   "cam": {
    "target": [
     120,

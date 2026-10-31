@@ -12,7 +12,7 @@ export const PRACTICE = {
    "why": "<p>Il prédit comment l’état du monde évolue quand on agit.</p>"
   }
  ],
- "2": [
+ "3": [
   {
    "q": "Dans JEPA, que prédit le modèle ?",
    "choices": [
@@ -25,7 +25,7 @@ export const PRACTICE = {
    "why": "<p>Il prédit dans l’espace des représentations, ce qui évite de deviner des détails imprévisibles.</p>"
   }
  ],
- "4": [
+ "5": [
   {
    "q": "Pourquoi les prédictions d’un modèle du monde se dégradent-elles sur un long horizon ?",
    "choices": [

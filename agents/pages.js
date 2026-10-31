@@ -88,7 +88,7 @@ export const PAGES = [
   "kicker": "10.4",
   "title": "Pourquoi les agents échouent",
   "sub": "la loi de la chaîne",
-  "body": "\n    <p class=\"lede\">Si chaque étape réussit avec la probabilité <i>p</i>, une chaîne de <i>n</i> étapes réussit avec <i>p</i><sup><i>n</i></sup>.</p>\n    <div class=\"eq\">20 étapes à 95 % : 0,95<sup>20</sup> ≈ 0,36</div>\n    <p>L’erreur d’une étape contamine les suivantes : le contexte garde la mauvaise information. Les remèdes : des étapes plus courtes, une <b>vérification après chaque étape</b>, la possibilité de <b>revenir en arrière</b>, et l’aveu d’incertitude plutôt que le bluff.</p>\n    <p>Autres échecs fréquents : boucler sans progrès, outils mal utilisés, objectif mal compris, dérive de l’objectif après beaucoup de tours.</p>",
+  "body": "\n    <p class=\"lede\">Si chaque étape réussit avec la probabilité <i>p</i>, une chaîne de <i>n</i> étapes réussit avec <i>p</i><sup><i>n</i></sup>.</p>\n    <div class=\"eq\">20 étapes à 95 % : 0,95<sup>20</sup> ≈ 0,36</div>\n    <p>L’erreur d’une étape contamine les suivantes. Remèdes : des étapes plus courtes, une <b>vérification après chaque étape</b>, la possibilité de <b>revenir en arrière</b>, l’aveu d’incertitude plutôt que le bluff.</p>",
   "cam": {
    "target": [
     120,

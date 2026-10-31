@@ -12,7 +12,7 @@ export const PRACTICE = {
    "why": "<p>Le gradient indique comment l’erreur varie avec chaque poids ; l’optimiseur s’en sert pour corriger.</p>"
   }
  ],
- "2": [
+ "3": [
   {
    "q": "Combien de mémoire, environ, pour entraîner complètement un modèle de 3 milliards de paramètres (16 octets par paramètre, hors activations) ?",
    "choices": [
@@ -25,7 +25,7 @@ export const PRACTICE = {
    "why": "<p>3 × 10⁹ × 16 octets = 48 Go.</p>"
   }
  ],
- "4": [
+ "6": [
   {
    "q": "Dans LoRA avec une matrice W de 4 096 × 4 096 et un rang r = 16, combien de paramètres sont entraînés pour cette matrice ?",
    "choices": [
@@ -38,7 +38,7 @@ export const PRACTICE = {
    "why": "<p>2 · d · r = 2 × 4 096 × 16 = 131 072, contre 16,8 millions pour la matrice entière.</p>"
   }
  ],
- "5": [
+ "7": [
   {
    "q": "La perte de validation remonte alors que celle d’entraînement baisse encore. Il s’agit…",
    "choices": [

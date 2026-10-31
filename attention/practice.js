@@ -1,5 +1,5 @@
 export const PRACTICE = {
- "0": [
+ "2": [
   {
    "q": "Dans la matrice d’attention d’un modèle de langage causal, un jeton peut regarder…",
    "choices": [
@@ -25,7 +25,7 @@ export const PRACTICE = {
    "why": "<p>Les scores Q·K/√d passent par un softmax : des poids positifs de somme 1, qui pondèrent les valeurs.</p>"
   }
  ],
- "4": [
+ "5": [
   {
    "q": "Combien de paramètres, environ, pour N = 32 blocs et d = 4 096 (hors plongements) ?",
    "choices": [

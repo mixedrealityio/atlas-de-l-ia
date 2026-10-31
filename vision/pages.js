@@ -67,7 +67,7 @@ export const PAGES = [
   "kicker": "8.3",
   "title": "Les transformeurs de vision",
   "sub": "une image est une suite de jetons",
-  "body": "\n    <p class=\"lede\">Plutôt que des filtres, le <b>ViT</b> traite l’image comme un texte : il la <b>découpe en patchs</b>.</p>\n    <p>Chaque patch (par exemple 16 × 16 pixels) est aplati et transformé en un vecteur ; on y ajoute sa position ; la suite de vecteurs entre dans un transformeur identique à celui du chapitre 2. Une image de 224 × 224 donne 196 jetons.</p>\n    <p>Avec assez de données, ce modèle égale ou dépasse les CNN, et il s’intègre naturellement aux modèles de langage : les patchs deviennent des jetons parmi d’autres.</p>",
+  "body": "\n    <p class=\"lede\">Plutôt que des filtres, le <b>ViT</b> traite l’image comme un texte : il la <b>découpe en patchs</b>.</p>\n    <p>Chaque patch (par exemple 16 × 16 pixels) est aplati et transformé en vecteur ; on y ajoute sa position ; la suite entre dans un transformeur identique à celui du chapitre 2. Une image de 224 × 224 donne 196 jetons.</p>\n    <p>Avec assez de données, il égale ou dépasse les CNN, et s’intègre aux modèles de langage : les patchs deviennent des jetons parmi d’autres.</p>",
   "cam": {
    "target": [
     80,

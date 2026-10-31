@@ -1,5 +1,5 @@
 export const PRACTICE = {
- "0": [
+ "1": [
   {
    "q": "Une température de 0 revient à…",
    "choices": [
@@ -10,9 +10,7 @@ export const PRACTICE = {
    ],
    "answer": 1,
    "why": "<p>À T → 0, la distribution se concentre sur le mot dont le score est maximal : c’est le décodage glouton.</p>"
-  }
- ],
- "1": [
+  },
   {
    "q": "Quel réglage aplatit la distribution de probabilités ?",
    "choices": [
@@ -38,7 +36,7 @@ export const PRACTICE = {
    "why": "<p>Le mot le plus probable seul atteint 95 % ≥ 90 % : l’ensemble minimal n’a qu’un mot. Top-p s’adapte, contrairement à top-k.</p>"
   }
  ],
- "4": [
+ "5": [
   {
    "q": "Pourquoi une pénalité de répétition trop forte pose-t-elle problème ?",
    "choices": [

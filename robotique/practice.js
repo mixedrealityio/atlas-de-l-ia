@@ -1,5 +1,5 @@
 export const PRACTICE = {
- "0": [
+ "3": [
   {
    "q": "Pourquoi randomise-t-on la simulation (masses, frottements, couleurs) ?",
    "choices": [
@@ -25,7 +25,7 @@ export const PRACTICE = {
    "why": "<p>Une petite erreur l’amène dans un état jamais vu, où il n’a pas appris quoi faire : les erreurs s’accumulent.</p>"
   }
  ],
- "3": [
+ "4": [
   {
    "q": "Un modèle vision-langage-action produit…",
    "choices": [

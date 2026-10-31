@@ -25,7 +25,7 @@ export const PRACTICE = {
    "why": "<p>224 / 16 = 14 patchs par côté ; 14 × 14 = 196.</p>"
   }
  ],
- "5": [
+ "6": [
   {
    "q": "Dans un modèle de diffusion, pour générer une image on…",
    "choices": [

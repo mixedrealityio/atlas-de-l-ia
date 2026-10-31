@@ -12,7 +12,7 @@ export const PRACTICE = {
    "why": "<p>Un agent est un modèle dans une boucle d’action et d’observation, avec des outils et un objectif.</p>"
   }
  ],
- "3": [
+ "4": [
   {
    "q": "Une étape réussit dans 90 % des cas. Environ quelle probabilité de réussir 10 étapes à la suite ?",
    "choices": [
@@ -25,7 +25,7 @@ export const PRACTICE = {
    "why": "<p>0,9¹⁰ ≈ 0,35.</p>"
   }
  ],
- "4": [
+ "5": [
   {
    "q": "Pourquoi lance-t-on un agent plusieurs fois pour l’évaluer ?",
    "choices": [

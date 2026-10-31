@@ -96,9 +96,9 @@ function pipeline({ g, S, x0, label, ext }) {
     label('t1', s.n, () => V(pos[i].x, pos[i].y + 0.66, 0.3)); if (s.s) label('t2', s.s, () => V(pos[i].x, pos[i].y - 0.62, 0.3)); return m; });
   for (let i = 0; i < st.length - 1; i++) { const r = rod(g, { r: 0.04, pal: 'ink', name: 'Flux' }); let a = pos[i], b = pos[i + 1];
     if (Math.abs(a.x - b.x) < 0.01) { const sx = (Math.floor(i / per) % 2 === 0 ? 1 : -1) * (bw / 2 - 0.12); a = V(a.x + sx, a.y - 0.4, 0); b = V(b.x + sx, b.y + 0.4, 0); } rodTo(r, a, b); }
-  if (S.loop) { const a = pos[st.length - 1], b = pos[0], top = Math.max(a.y, b.y) + 1.25, off = bw / 2 + 0.28, tA = V(a.x + off, top, 0), tB = V(b.x - off, top, 0);
-    [[V(a.x + off, a.y + 0.4, 0), tA], [tA, tB], [tB, V(b.x - off, b.y + 0.4, 0)]].forEach(([u, v]) => { const r = rod(g, { r: 0.03, pal: 'red', name: 'Retour' }); rodTo(r, u, v); });
-    label('vec red', S.loop, () => V((a.x + b.x) / 2, top + 0.4, 0)); ext.h += 0.9; ext.cy += 0.5; }
+  if (S.loop) { const a = pos[st.length - 1], b = pos[0];
+    const r1 = rod(g, { r: 0.03, pal: 'red', name: 'Retour' }), r2 = rod(g, { r: 0.03, pal: 'red', name: 'Reprise' }); const o = bw * 0.36; rodTo(r1, V(a.x + o, a.y + 0.4, 0), V(a.x + o, a.y + 1.0, 0)); rodTo(r2, V(b.x - o, b.y + 1.0, 0), V(b.x - o, b.y + 0.4, 0));
+    label('vec red', '↺ ' + S.loop, () => V(a.x + o, a.y + 1.35, 0)); label('vec red', 'reprise', () => V(b.x - o, b.y + 1.35, 0)); ext.h += 0.9; ext.cy += 0.5; }
   const pk = ball(g, 'red', 'Donnée', 0.16); let cur = 0;
   return { update: t => { const u = (t * 0.55) % st.length, i = Math.floor(u), f = u - i; cur = i;
     const a = pos[i], b = pos[(i + 1) % st.length]; pk.position.set(a.x + (b.x - a.x) * f, a.y + (b.y - a.y) * f + 0.5, 0.35);
@@ -161,6 +161,8 @@ const CURVES = {
     ['récompense du juge (proxy)', 'red', x => 1 / (1 + Math.exp(-(x - 3.5) * 0.9)) * 0.98], ['qualité réelle', 'blue', x => 0.92 / (1 + Math.exp(-(x - 3.5) * 0.9)) - 0.1 * Math.pow(Math.max(0, x - 5), 1.35)]] },
   chain: { x: [0, 30], y: [0, 1.05], xl: 'nombre d’étapes enchaînées', yl: 'probabilité de tout réussir', ser: [
     ['99 % par étape', 'blue', x => Math.pow(0.99, x)], ['95 % par étape', 'red', x => Math.pow(0.95, x)], ['90 % par étape', 'dark', x => Math.pow(0.9, x)]] },
+  roofline: { x: [0, 400], y: [0, 1100], xl: 'intensité arithmétique (opérations par octet lu)', yl: 'performance atteignable (TFLOPs)', ser: [
+    ['H100 : 3,35 To/s, 989 TFLOPs', 'blue', x => Math.min(3.35 * x, 989)], ['A100 : 2,0 To/s, 312 TFLOPs', 'dark', x => Math.min(2.0 * x, 312)]] },
   passk: { x: [1, 16], y: [0, 1.05], xl: 'nombre d’essais k', yl: 'taux de réussite (pass@k)', ser: [
     ['p = 0,15 par essai', 'blue', x => 1 - Math.pow(0.85, x)], ['p = 0,05 par essai', 'dark', x => 1 - Math.pow(0.95, x)], ['p = 0,4 par essai', 'red', x => 1 - Math.pow(0.6, x)]] },
 };
@@ -290,4 +292,105 @@ function kv({ g, S, x0, label, ext }) {
     info: () => { const c = Math.min(st, n - 1); return `génération du jeton ${c + 1}/${n}\nrecalculé : 1 jeton · relu en cache : ${c}`; } };
 }
 
-const KINDS = { tokens, scatter, attn, pipeline, cycle, bars, curve, mem, conv, patches, detect, grid, arm, kv };
+
+// ------------------------------------------------------------------ réseau de neurones : couches de nœuds reliés
+function net({ g, S, x0, label, ext }) {
+  const L = S.layers, dx = 2.3, dy = 0.78, mx = Math.max(...L), cy = 2.2; ext.w = (L.length - 1) * dx + 4; ext.h = mx * dy + 2.6; ext.cy = cy;
+  const P = L.map((n, i) => Array.from({ length: n }, (_, j) => V(x0 + (i - (L.length - 1) / 2) * dx, cy + (j - (n - 1) / 2) * dy, 0)));
+  const C = []; for (let i = 0; i < L.length - 1; i++) for (const a of P[i]) for (const b of P[i + 1]) C.push(a.x, a.y, 0, b.x, b.y, 0); lines(g, C, '#b4b4b8');
+  const nodes = P.map((col, i) => col.map((p, j) => { const m = ball(g, 'paper', `Neurone ${i + 1}.${j + 1}`, 0.17); m.position.copy(p); m.userData.pal = 'paper'; return m; }));
+  (S.names || []).forEach((n, i) => label('t1', n, () => V(P[i][0].x, cy - (mx * dy) / 2 - 0.5, 0)));
+  let cur = 0;
+  return { update: t => { cur = Math.floor(t * 1.1) % L.length; nodes.forEach((col, i) => col.forEach((m, j) => setPal(m, i === cur ? (rnd(i * 7 + j + Math.floor(t * 1.1) * 3) > 0.4 ? 'red' : 'blue') : 'paper'))); },
+    info: () => `couche ${cur + 1}/${L.length} : ${L[cur]} neurones actifs\n${S.params || ''}` };
+}
+
+// ------------------------------------------------------------------ cartes de caractéristiques d'un réseau convolutif (à la TensorSpace)
+function fmaps({ g, S, x0, label, ext }) {
+  const Ls = S.layers, sc = 0.085, gapx = 1.25; const widths = Ls.map(l => 0.2 + (l.depth || 1) * 0.16); const wsum = widths.reduce((a, b) => a + b, 0) + gapx * (Ls.length - 1);
+  ext.w = wsum + 3; ext.h = 6.2; ext.cy = 2.5; let x = x0 - wsum / 2; const L = [];
+  Ls.forEach((l, i) => {
+    const plates = [], d = l.depth || 1, h = l.vec ? Math.min(4.2, 0.2 + l.vec * 0.025) : l.size * sc, w = l.vec ? 0.35 : l.size * sc, xx = x;
+    for (let k = 0; k < d; k++) { const m = part(g, box(w, h, 0.05, 0.01), { pal: 'paper', tone: 'mid', name: `${l.n} : carte ${k + 1}`, pos: [xx + k * 0.16 + 0.1, 1.6 + h / 2 - 0.4, 0] }); m.userData.pal = 'paper'; plates.push(m); }
+    label('t1', l.n, () => V(xx + widths[i] / 2, 0.45, 0)); label('t2', l.dim, () => V(xx + widths[i] / 2, 0.1, 0)); L.push(plates); x += widths[i] + gapx; });
+  let cur = 0;
+  return { update: t => { cur = Math.floor(t * 0.9) % Ls.length; L.forEach((pl, i) => pl.forEach(m => setPal(m, i === cur ? 'blue' : i < cur ? 'dark' : 'paper'))); }, info: () => `${Ls[cur].n} : ${Ls[cur].dim}` };
+}
+
+// ------------------------------------------------------------------ bloc de nombres : jetons × dimensions × couches
+function tensor({ g, S, x0, label, ext }) {
+  const nT = S.tokens || 6, nD = S.dims || 6, nL = S.depth || 5, cs = 0.5; ext.w = nT * cs + 5; ext.h = nD * cs + 3; ext.cy = 0.7 + nD * cs / 2;
+  const cells = []; const ox = x0 - (nT * cs) / 2, oy = 0.7, oz = -(nL * cs) / 2;
+  for (let l = 0; l < nL; l++) for (let d = 0; d < nD; d++) for (let t = 0; t < nT; t++) { const m = part(g, box(cs * 0.82, cs * 0.82, cs * 0.82, 0.03), { pal: 'paper', tone: 'faint', name: `Valeur (jeton ${t + 1}, dimension ${d + 1}, couche ${l + 1})`, pos: [ox + t * cs, oy + d * cs, oz + l * cs] }); m.userData.pal = 'paper'; cells.push([m, l, d, t]); }
+  label('mark', 'jetons →', () => V(x0 + nT * cs / 2 + 0.2, oy - 0.7, oz + nL * cs + 0.2)); label('mark', 'dimensions ↑', () => V(ox - 1.7, oy + nD * cs / 2, oz)); label('mark', 'couches ↗', () => V(ox + nT * cs + 0.9, oy - 0.1, 0));
+  let cur = 0;
+  return { update: t => { cur = Math.floor(t * 0.8) % nL; for (const [m, l, d, tk] of cells) setPal(m, l === cur ? (rnd(l * 97 + d * 13 + tk) > 0.5 ? 'blue' : 'red') : 'paper'); }, info: () => `couche ${cur + 1}/${nL} : ${nT} × ${nD} nombres` };
+}
+
+// ------------------------------------------------------------------ paysage de la perte : la descente de gradient en 3D
+function landscape({ g, S, x0, label, ext }) {
+  ext.w = 11; ext.h = 8; ext.cy = 2.2; const R = 4;
+  const f = (x, z) => 0.12 * (x * x + 2.2 * z * z) + 0.13 * Math.sin(2.2 * x) * Math.cos(2 * z);
+  const geo = new THREE.PlaneGeometry(2 * R, 2 * R, 48, 48); geo.rotateX(-Math.PI / 2); const pa = geo.attributes.position;
+  for (let i = 0; i < pa.count; i++) pa.setY(i, f(pa.getX(i), pa.getZ(i))); geo.computeVertexNormals();
+  const surf = part(g, geo, { pal: 'base', tone: 'lo', name: 'Paysage de la perte', pos: [x0, 0, 0] }); surf.userData.noEdge = true;
+  const grad = (x, z) => [(f(x + 1e-3, z) - f(x - 1e-3, z)) / 2e-3, (f(x, z + 1e-3) - f(x, z - 1e-3)) / 2e-3];
+  const runs = [['taux trop faible', 'dark', 0.02], ['taux adapté', 'blue', 0.22], ['taux trop fort', 'red', 0.78]].map(([n, pal, lr]) => { let p = [3.3, 2.4]; const tr = [p.slice()]; for (let k = 0; k < 80; k++) { const gr = grad(p[0], p[1]); p = [Math.max(-R, Math.min(R, p[0] - lr * gr[0])), Math.max(-R, Math.min(R, p[1] - lr * gr[1]))]; tr.push(p.slice()); } return { n, pal, lr, tr, b: ball(g, pal, n, 0.17) }; });
+  runs.forEach((r, i) => label('lgl ' + (r.pal === 'blue' ? 'blue' : r.pal === 'red' ? 'red' : 'grey'), `${r.n} (${fr(r.lr, 2)})`, () => V(x0 - 5.4, 5.2 - i * 0.55, 0)));
+  let k = 0;
+  return { update: t => { k = Math.floor((t * 5) % 90); runs.forEach(r => { const q = r.tr[Math.min(k, r.tr.length - 1)]; r.b.position.set(x0 + q[0], f(q[0], q[1]) + 0.2, q[1]); }); },
+    info: () => { const e = runs.map(r => { const q = r.tr[Math.min(k, 80)]; return `${r.n} : perte ${fr(f(q[0], q[1]), 2)}`; }); return `étape ${k}\n${e.join('\n')}`; } };
+}
+
+// ------------------------------------------------------------------ nuage de gaussiennes qui converge vers une forme (3DGS)
+function cloud({ g, S, x0, label, ext }) {
+  ext.w = 8; ext.h = 6; ext.cy = 2.4; const N = S.n || 320, grp = new THREE.Group(); g.add(grp); grp.position.set(x0, 2.4, 0);
+  const tgt = [], ini = [];
+  for (let i = 0; i < N; i++) { const u = rnd(i * 3.1) * 2 * Math.PI, v = rnd(i * 5.7 + 1) * 2 * Math.PI, R = 1.8, r = 0.75;
+    tgt.push([(R + r * Math.cos(v)) * Math.cos(u), r * Math.sin(v) * 1.2, (R + r * Math.cos(v)) * Math.sin(u)]); ini.push([(rnd(i * 1.7 + 4) - 0.5) * 7, (rnd(i * 2.3 + 9) - 0.5) * 5, (rnd(i * 4.1 + 2) - 0.5) * 7]); }
+  const mk = pal => { const m = new THREE.InstancedMesh(new THREE.SphereGeometry(0.11, 10, 8), shadeMat(pal), N); m.userData.noEdge = true; m.frustumCulled = false; grp.add(m); return m; };
+  const A = mk('blue'), B = mk('red'); const D = new THREE.Object3D(); let u = 0;
+  label('mark', 'chaque point est une gaussienne 3D (position, taille, couleur)', () => V(x0, -0.6, 0));
+  return { update: t => { const c = (t % 12) / 12; u = c < 0.55 ? 1 - Math.pow(1 - c / 0.55, 3) : 1; grp.rotation.y = t * 0.35;
+    for (let i = 0; i < N; i++) { const a = ini[i], b = tgt[i]; D.position.set(a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u, a[2] + (b[2] - a[2]) * u); const sc = 0.7 + 0.5 * u; D.scale.set(sc, sc, sc); D.updateMatrix(); (i % 5 === 0 ? B : A).setMatrixAt(i, D.matrix); }
+    A.instanceMatrix.needsUpdate = true; B.instanceMatrix.needsUpdate = true; },
+    info: () => `optimisation : ${fr(100 * u, 0)} %\nles points s’ajustent pour reproduire les photos` };
+}
+
+// ------------------------------------------------------------------ barres à échelle logarithmique (débits, puissances)
+function logbars({ g, S, x0, label, ext }) {
+  const it = S.items, n = it.length, bw = 1.15, ox = x0 - (n * bw) / 2 + bw / 2, base = 0.6, H = 3.9, lo = Math.log10(S.min ?? Math.min(...it.map(i => i.v)) / 3), hi = Math.log10(Math.max(...it.map(i => i.v)) * 1.25);
+  ext.w = n * bw + 2.6; ext.h = H + 2.6; ext.cy = base + H / 2;
+  const bs = it.map((e, i) => { const m = sizedBox(g, { pal: e.pal || 'blue', tone: 'hi', name: `${e.n} : ${e.v} ${S.unit}` }); label('t1', e.n, () => V(ox + i * bw, base - 0.38, 0.2)); label('mark', `${fr(e.v, e.v < 10 ? 1 : 0)} ${S.unit}`, () => V(ox + i * bw, base + 0.3 + H * (Math.log10(e.v) - lo) / (hi - lo), 0.2)); return m; });
+  label('mark', S.axis || 'échelle logarithmique', () => V(x0, base + H + 0.9, 0));
+  return { update: t => { const r = Math.min(1, (t % 14) / 1.4); bs.forEach((m, i) => { const h = Math.max(0.04, H * (Math.log10(it[i].v) - lo) / (hi - lo) * r); setBox(m, ox + i * bw - bw * 0.36, ox + i * bw + bw * 0.36, base, base + h, -0.25, 0.25); }); }, info: () => S.info || '' };
+}
+
+// ------------------------------------------------------------------ puce GPU : unités de calcul et mémoire haute bande passante
+function chip({ g, S, x0, label, ext }) {
+  ext.w = 11; ext.h = 6; ext.cy = 2.4;
+  part(g, box(6.4, 4.4, 0.3, 0.08), { pal: 'dark', tone: 'mid', name: 'Puce (silicium)', pos: [x0, 2.4, -0.1] });
+  const sms = []; const cols = 8, rows = 5;
+  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) { const m = part(g, box(0.58, 0.58, 0.18, 0.03), { pal: 'paper', tone: 'hi', name: `Multiprocesseur de flux (SM) ${r * cols + c + 1}`, pos: [x0 - 2.6 + c * 0.74, 3.95 - r * 0.78, 0.15] }); m.userData.pal = 'paper'; sms.push([m, r, c]); }
+  const hbm = []; [[-4.2, 3.4], [-4.2, 1.4], [4.2, 3.4], [4.2, 1.4]].forEach(([dx, y], i) => hbm.push(part(g, box(1.05, 1.7, 0.6, 0.05), { pal: 'red', tone: 'hi', name: `Pile de mémoire HBM ${i + 1}`, pos: [x0 + dx, y, 0] })));
+  label('t1', 'unités de calcul (SM)', () => V(x0, 5.1, 0.3)); label('t1', 'HBM', () => V(x0 - 4.2, 4.5, 0.3)); label('t1', 'HBM', () => V(x0 + 4.2, 4.5, 0.3)); label('mark', 'mémoire : 3 350 Go/s (H100)', () => V(x0, 0.0, 0)); label('mark', 'cœurs tenseur dans chaque SM', () => V(x0, 0.5, 0));
+  let act = 0;
+  return { update: t => { const w = (t * 2.2) % (cols + rows + 4); act = 0; sms.forEach(([m, r, c]) => { const on = Math.abs((r + c) - w) < 1.6; if (on) act++; setPal(m, on ? 'blue' : 'paper'); }); hbm.forEach((m, i) => setPal(m, Math.floor(t * 1.5) % 4 === i ? 'blue' : 'red')); },
+    info: () => `SM actifs : ${act}/${cols * rows}\nles données arrivent par la HBM` };
+}
+
+// ------------------------------------------------------------------ cluster : nœuds de 8 GPU reliés par un réseau
+function cluster({ g, S, x0, label, ext }) {
+  const N = S.nodes || 4, gp = S.gpus || 8, nw = 2.9, gap = 0.7, ox = x0 - ((N - 1) * (nw + gap)) / 2; ext.w = N * (nw + gap) + 2; ext.h = 7; ext.cy = 2.6;
+  part(g, box(5.2, 0.8, 0.5, 0.06), { pal: 'red', tone: 'hi', name: 'Commutateur réseau', pos: [x0, 5.1, 0] }); label('t1', S.switchName || 'Réseau InfiniBand', () => V(x0, 5.75, 0.3));
+  const nodes = [];
+  for (let n = 0; n < N; n++) { const cx = ox + n * (nw + gap); part(g, box(nw, 2.0, 0.5, 0.06), { pal: 'base', tone: 'mid', name: `Serveur ${n + 1}`, pos: [cx, 1.5, 0] }); label('t1', `Nœud ${n + 1}`, () => V(cx, 0.15, 0.3));
+    const gs = []; for (let k = 0; k < gp; k++) { const m = part(g, box(0.5, 0.58, 0.36, 0.03), { pal: 'paper', tone: 'hi', name: `GPU ${k + 1} du nœud ${n + 1}`, pos: [cx - 1.05 + (k % 4) * 0.7, 1.85 - Math.floor(k / 4) * 0.8, 0.3] }); m.userData.pal = 'paper'; gs.push(m); }
+    const r = rod(g, { r: 0.04, pal: 'ink', name: 'Lien InfiniBand' }); rodTo(r, V(cx, 2.5, 0), V(cx * 0.4 + x0 * 0.6, 4.7, 0)); nodes.push(gs); }
+  label('mark', 'NVLink : les 8 GPU d’un nœud', () => V(ox, 3.0, 0)); label('mark', 'InfiniBand : entre les nœuds', () => V(x0 + 3.4, 4.1, 0));
+  const pk = ball(g, 'red', 'Gradients en transit', 0.17); let cur = 0;
+  return { update: t => { const u = (t * 0.6) % N; cur = Math.floor(u); nodes.forEach((gs, i) => gs.forEach(m => setPal(m, i === cur ? 'blue' : 'paper'))); const a = ox + cur * (nw + gap), b = ox + ((cur + 1) % N) * (nw + gap), f = u - cur;
+    pk.position.set(a + (b - a) * f, 2.9 + 1.6 * Math.sin(Math.PI * f), 0.4); }, info: () => `somme des gradients : le nœud ${cur + 1} envoie au suivant` };
+}
+
+const KINDS = { net, fmaps, tensor, landscape, cloud, logbars, chip, cluster, tokens, scatter, attn, pipeline, cycle, bars, curve, mem, conv, patches, detect, grid, arm, kv };
