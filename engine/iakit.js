@@ -175,6 +175,10 @@ const CURVES = {
     ['modèle de raisonnement', 'blue', x => 0.28 + 0.62 * (1 - Math.exp(-0.28 * x))], ['réponse directe', 'dark', x => 0.3 + 0.0 * x]] },
   saturation: { x: [0, 10], y: [0, 1.05], xl: 'années (exemple illustratif)', yl: 'score sur le banc d’essai', ser: [
     ['banc d’essai ancien', 'dark', x => 0.97 / (1 + Math.exp(-(x - 2.2) * 1.4))], ['banc d’essai récent', 'blue', x => 0.97 / (1 + Math.exp(-(x - 5.2) * 1.1))], ['banc d’essai très difficile', 'red', x => 0.08 + 0.8 / (1 + Math.exp(-(x - 8.5) * 0.9))]] },
+  elasticite: { x: [0, 80], y: [0, 170], xl: 'baisse du prix (en %, petites variations)', yl: 'hausse de la quantité demandée (en %)', ser: [
+    ['inélastique : ε = 0,5', 'dark', x => 0.5 * x], ['unitaire : ε = 1', 'blue', x => x], ['élastique : ε = 2', 'red', x => 2 * x]] },
+  atrophie: { x: [0, 10], y: [0, 1.05], xl: 'mois d’usage (exemple illustratif)', yl: 'niveau (relatif)', ser: [
+    ['performance avec l’IA', 'blue', x => 0.45 + 0.5 * (1 - Math.exp(-0.5 * x))], ['sans l’IA : usage passif', 'red', x => 0.2 + 0.4 * Math.exp(-0.3 * x)], ['sans l’IA : usage actif', 'dark', x => 0.6 + 0.2 * (1 - Math.exp(-0.25 * x))]] },
   passk: { x: [1, 16], y: [0, 1.05], xl: 'nombre d’essais k', yl: 'taux de réussite (pass@k)', ser: [
     ['p = 0,15 par essai', 'blue', x => 1 - Math.pow(0.85, x)], ['p = 0,05 par essai', 'dark', x => 1 - Math.pow(0.95, x)], ['p = 0,4 par essai', 'red', x => 1 - Math.pow(0.6, x)]] },
 };

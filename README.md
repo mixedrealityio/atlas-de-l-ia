@@ -1,6 +1,6 @@
 # Atlas de l’IA
 
-Un manuel interactif en 3D pour comprendre en détail comment fonctionne une IA : 34 chapitres et 213 pages, en français. Chaque page a une figure animée que l’on peut tourner et décomposer, et la plupart ont un exercice.
+Un manuel interactif en 3D pour comprendre en détail comment fonctionne une IA : 37 chapitres et 232 pages, en français. Chaque page a une figure animée que l’on peut tourner et décomposer, et la plupart ont un exercice.
 
 | N° | Chapitre | Contenu |
 |---|---|---|
@@ -38,6 +38,9 @@ Un manuel interactif en 3D pour comprendre en détail comment fonctionne une IA 
 | 32 | Biais, équité et désinformation | mesurer l’injustice, reconnaître le faux |
 | 33 | Droit et gouvernance | AI Act, données personnelles, droit d’auteur, responsabilité |
 | 34 | AGI, alignement et sûreté | ce qui est établi, ce qui est débattu |
+| 35 | Demande, élasticité et emploi | si l’IA baisse le coût d’une tâche, que devient la demande ? |
+| 36 | L’atrophie des compétences | quand l’IA fait à notre place, que reste-t-il ? |
+| 37 | Le fossé de l’ingénieur logiciel | ce que l’IA banalise et ce qui reste rare |
 
 Le moteur de rendu (three.js, pages qui se tournent, figures décomposables) vient d’[Atlas of Physics](https://github.com/nathanliow/atlas-of-physics) de Nathan Liow, sous licence MIT, conservée dans `LICENSE`. Les figures de l’atlas de l’IA sont construites par `engine/iakit.js` à partir de petits dictionnaires de données.
 
@@ -60,3 +63,5 @@ Pour les chapitres 20 à 24 :
 - Biocalcul et IA hybride : [organoïdes et FinalSpark (New Atlas)](https://newatlas.com/computers/finalspark-bio-computers-brain-organoids), [MetaBOC, cerveau sur puce (Yicai)](https://yicaiglobal.com/news/chinese-scientists-develop-worlds-first-open-source-brain-on-chip-interface-system), [MetaBOC (WAM)](https://www.wam.ae/en/article/b4243o2-chinese-researchers-develop-brain-on-a-chip-system) ; Genie 3 : [annonce de DeepMind](https://deepmind.google/discover/blog/genie-3-a-new-frontier-for-world-models/), [analyse (TechTalks)](https://bdtechtalks.com/2025/08/07/deepmind-genie-3/).
 
 Pour les chapitres 25 à 34 : le plan s’inspire de deux propositions de sommaire pour un « atlas de l’IA » ([Z.ai](https://chat.z.ai/s/100ba5d1-1f55-46b1-aaa1-3dd0dbeaa04d), [DeepSeek](https://chat.deepseek.com/share/lgqrx1if2wb04ctkhi)). Seuls les thèmes ont été repris ; les chiffres et textes réglementaires non vérifiables ont été écartés, et les contenus sont rédigés à neuf à partir de faits établis (Dartmouth 1956, AlexNet 2012, transformeur 2017, lois d’échelle de Kaplan 2020 et Chinchilla 2022, double descente de Belkin 2019, règlement (UE) 2024/1689, norme C2PA, etc.). Pour le droit, le calendrier et les textes sont à vérifier à la source : ces pages ne constituent pas un avis juridique.
+
+Pour les chapitres 35 à 37 (travail et compétences) : cadre économique classique (élasticité-prix, paradoxe de Jevons de 1865, analyse du travail par tâches), et études citées avec leurs limites : [Brynjolfsson, Li et Raymond sur le support client (NBER, 2023)](https://www.nber.org/papers/w31161), [METR sur les développeurs expérimentés (2025)](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/), [Bastani et collègues, « Generative AI without guardrails can harm learning » (2025)](https://www.pnas.org/doi/10.1073/pnas.2422633122), [Lee et collègues, Microsoft et Carnegie Mellon, sur la pensée critique (CHI 2025)](https://www.microsoft.com/en-us/research/publication/the-impact-of-generative-ai-on-critical-thinking-self-reported-reductions-in-cognitive-effort-and-confidence-effects-from-a-survey-of-knowledge-workers/), [Brynjolfsson, Chandar et Chen, « Canaries in the Coal Mine » (2025)](https://digitaleconomy.stanford.edu/publications/canaries-in-the-coal-mine/). Les liens sont donnés de mémoire : à vérifier à la source. Les pages sont des analyses, pas des prédictions.
