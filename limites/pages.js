@@ -167,6 +167,27 @@ export const PAGES = [
   "look": {},
   "scene": "chien",
   "fig": ""
+ },
+ {
+  "kicker": "24.8",
+  "title": "Symbolique, causal, neuro-symbolique",
+  "sub": "associer apprentissage et vérification",
+  "body": "\n    <p class=\"lede\">Les réseaux apprennent des corrélations ; ils peinent à garantir un raisonnement exact ou à distinguer cause et corrélation.</p>\n    <ul class=\"rules\">\n      <li><b>Symbolique</b> : règles, logique, solveurs : exacts mais rigides.</li>\n      <li><b>Causal</b> : distinguer « A cause B » de « A accompagne B », pour décider et intervenir.</li>\n      <li><b>Neuro-symbolique</b> : un modèle <b>propose</b>, un outil exact <b>vérifie</b> (exécuter le code, prouver le théorème, résoudre la contrainte).</li>\n    </ul>\n    <p>C’est la logique des <b>agents qui testent leur code</b> (chapitres 9 à 11) : partout où une vérification exacte existe, mieux vaut l’utiliser.</p>",
+  "cam": {
+   "target": [
+    280,
+    1.8,
+    0
+   ],
+   "az": 8,
+   "el": 7,
+   "dist": 26,
+   "auto": true
+  },
+  "lit": "neurosym",
+  "look": {},
+  "scene": "neurosym",
+  "fig": ""
  }
 ];
 export const PLATES = {
@@ -176,5 +197,6 @@ export const PLATES = {
   energie: { text: "Un cerveau humain, environ 86 milliards de neurones, consomme de l’ordre de 20 W. Un GPU de centre de données en consomme 700, un serveur de huit GPU une dizaine de milliers, un cluster de dix mille GPU plusieurs mégawatts. La comparaison est approximative (les tâches diffèrent) mais l’écart est énorme.", facts: () => [["cerveau", "≈ 20 W"], ["GPU H100", "≈ 700 W"], ["cluster de 10 000 GPU", "≈ 10 MW ou plus"]] },
   culture: { text: "Des neurones cultivés sont posés sur un réseau d’électrodes. On stimule certaines électrodes (entrée) et on lit l’activité des autres (sortie). Des équipes ont montré qu’ils pouvaient s’adapter : environ 800 000 cellules ont appris à jouer à Pong en quelques minutes dans l’expérience DishBrain.", facts: () => [["DishBrain (2022)", "≈ 800 000 cellules, Pong"], ["organoïdes FinalSpark", "≈ 10 000 neurones chacun ; durée de vie ≈ 100 jours"], ["énergie annoncée", "très inférieure : estimations, non démontrée"]] },
   hybride: { text: "Dans un système hybride, des cellules cultivées sont reliées par électrodes à une puce, qui convertit leurs signaux en commandes pour un robot, et les signaux des capteurs en stimulations. En 2024, une équipe chinoise (système MetaBOC) a présenté un organoïde cérébral sur puce pilotant un robot pour éviter des obstacles et saisir un objet.", facts: () => [["MetaBOC", "Tianjin Univ. et SUSTech, 2024"], ["limites", "maturité, nutriments, durée de vie"], ["échelle", "loin d’un GPU"]] },
-  chien: { text: "Un robot quadrupède marche en alternant ses pattes en diagonale. Il combine caméras et LiDAR (voir), centrale inertielle (sentir l’équilibre), capteurs de force dans les pieds (sentir le sol) et des politiques de marche apprises en simulation puis ajustées sur le robot.", facts: () => [["marche", "trot : pattes en diagonale"], ["capteurs", "caméras, LiDAR, IMU, force"], ["autonomie", "quelques heures de batterie"]] }
+  chien: { text: "Un robot quadrupède marche en alternant ses pattes en diagonale. Il combine caméras et LiDAR (voir), centrale inertielle (sentir l’équilibre), capteurs de force dans les pieds (sentir le sol) et des politiques de marche apprises en simulation puis ajustées sur le robot.", facts: () => [["marche", "trot : pattes en diagonale"], ["capteurs", "caméras, LiDAR, IMU, force"], ["autonomie", "quelques heures de batterie"]] },
+  neurosym: { text: "Le modèle propose ; un outil symbolique (solveur, prouveur, interpréteur de code) vérifie. L’intuition vient du réseau, la garantie de la vérification exacte. Exemple : des systèmes de preuve mathématique couplés à l’assistant de preuve Lean.", facts: () => [["idée", "proposer puis vérifier"], ["outils", "code, solveur, prouveur"], ["limite", "il faut un vérificateur"]] }
 };

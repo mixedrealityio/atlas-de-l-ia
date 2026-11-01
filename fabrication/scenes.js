@@ -130,5 +130,47 @@ export const SPECS = [
    }
   ],
   "x0": 120
+ },
+ {
+  "key": "ouvert",
+  "title": "Ouvert ou fermé ?",
+  "sub": "ce que contient un modèle publié",
+  "kind": "pipeline",
+  "per": 3,
+  "bw": 2.3,
+  "gap": 0.8,
+  "y": 1.4,
+  "stages": [
+   {
+    "n": "Poids",
+    "s": "les paramètres appris",
+    "pal": "blue"
+   },
+   {
+    "n": "Code",
+    "s": "architecture, inférence",
+    "pal": "blue"
+   },
+   {
+    "n": "Données",
+    "s": "souvent non publiées",
+    "pal": "red"
+   },
+   {
+    "n": "Recette",
+    "s": "hyperparamètres, étapes",
+    "pal": "red"
+   },
+   {
+    "n": "Licence",
+    "s": "usage permis ou limité",
+    "pal": "blue"
+   },
+   {
+    "n": "Ouvert au sens fort",
+    "s": "tout est public"
+   }
+  ],
+  "x0": 160
  }
 ];

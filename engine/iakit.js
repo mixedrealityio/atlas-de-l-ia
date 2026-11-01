@@ -163,6 +163,18 @@ const CURVES = {
     ['H100 : 3,35 To/s, 989 TFLOPs', 'blue', x => Math.min(3.35 * x, 989)], ['A100 : 2,0 To/s, 312 TFLOPs', 'dark', x => Math.min(2.0 * x, 312)]] },
   breakeven: { x: [0, 36], y: [0, 380], xl: 'mois d’utilisation', yl: 'coût cumulé (k€, exemple illustratif)', ser: [
     ['cloud : 10 k€ par mois', 'red', x => 10 * x], ['sur site : 180 k€ + 4 k€ par mois', 'blue', x => 180 + 4 * x]] },
+  biasvar: { x: [0, 10], y: [0, 4.2], xl: 'complexité du modèle', yl: 'erreur sur des données neuves', ser: [
+    ['biais² (trop simple)', 'dark', x => 3.4 * Math.exp(-0.42 * x) + 0.1], ['variance (trop souple)', 'red', x => 0.05 + 0.028 * x * x * 0.55], ['erreur totale', 'blue', x => 3.4 * Math.exp(-0.42 * x) + 0.15 + 0.0154 * x * x + 0.5]] },
+  doubledescent: { x: [0, 10], y: [0, 4], xl: 'nombre de paramètres (relativement aux données)', yl: 'erreur sur des données neuves', ser: [
+    ['erreur de test', 'blue', x => x < 4.5 ? 3.2 - 0.38 * x + 0.1 * x * x * 0.0 + 2.2 * Math.pow(Math.max(0, x - 3) / 1.5, 4) : 0.9 + 3.1 * Math.exp(-1.25 * (x - 4.5))], ['seuil d’interpolation', 'dark', x => (Math.abs(x - 4.5) < 0.07 ? 3.9 : 0)]] },
+  complexite: { x: [0, 10], y: [0, 105], xl: 'longueur de la séquence (relative)', yl: 'coût de calcul (relatif)', ser: [
+    ['attention : ∝ n²', 'red', x => x * x], ['modèle à état : ∝ n', 'blue', x => 10 * x]] },
+  emergence: { x: [0, 10], y: [0, 1.05], xl: 'taille du modèle (échelle logarithmique)', yl: 'score sur la tâche', ser: [
+    ['mesure tout-ou-rien', 'red', x => 1 / (1 + Math.exp(-(x - 6.5) * 2.4))], ['mesure continue', 'blue', x => 0.08 + 0.85 / (1 + Math.exp(-(x - 5) * 0.55))]] },
+  testtime: { x: [0, 10], y: [0, 1.05], xl: 'calcul à l’inférence (échelle logarithmique)', yl: 'taux de réussite', ser: [
+    ['modèle de raisonnement', 'blue', x => 0.28 + 0.62 * (1 - Math.exp(-0.28 * x))], ['réponse directe', 'dark', x => 0.3 + 0.0 * x]] },
+  saturation: { x: [0, 10], y: [0, 1.05], xl: 'années (exemple illustratif)', yl: 'score sur le banc d’essai', ser: [
+    ['banc d’essai ancien', 'dark', x => 0.97 / (1 + Math.exp(-(x - 2.2) * 1.4))], ['banc d’essai récent', 'blue', x => 0.97 / (1 + Math.exp(-(x - 5.2) * 1.1))], ['banc d’essai très difficile', 'red', x => 0.08 + 0.8 / (1 + Math.exp(-(x - 8.5) * 0.9))]] },
   passk: { x: [1, 16], y: [0, 1.05], xl: 'nombre d’essais k', yl: 'taux de réussite (pass@k)', ser: [
     ['p = 0,15 par essai', 'blue', x => 1 - Math.pow(0.85, x)], ['p = 0,05 par essai', 'dark', x => 1 - Math.pow(0.95, x)], ['p = 0,4 par essai', 'red', x => 1 - Math.pow(0.6, x)]] },
 };
@@ -420,4 +432,18 @@ function quad({ g, S, x0, label, ext }) {
     info: () => 'marche en trot : pattes en diagonale\nperception, équilibre, planification' };
 }
 
-const KINDS = { mea, quad, net, fmaps, tensor, landscape, cloud, logbars, chip, cluster, tokens, scatter, attn, pipeline, cycle, bars, curve, mem, conv, patches, detect, grid, arm, kv };
+
+// ------------------------------------------------------------------ frise chronologique : événements et périodes (hivers)
+function timeline({ g, S, x0, label, ext }) {
+  const W = 15, a = S.from, b = S.to, X = y => x0 - W / 2 + (y - a) / (b - a) * W, ay = 2.0; ext.w = W + 4; ext.h = 7; ext.cy = ay + 0.9;
+  const ax = rod(g, { r: 0.05, pal: 'ink', name: 'Axe du temps' }); rodTo(ax, V(X(a), ay, 0), V(X(b), ay, 0));
+  for (let y = Math.ceil(a / 10) * 10; y <= b; y += 10) { label('t2', String(y), () => V(X(y), ay - 0.38, 0)); }
+  (S.spans || []).forEach(sp => { const m = part(g, box(X(sp.b) - X(sp.a), 0.32, 0.3, 0.04), { pal: 'red', tone: 'mid', name: sp.n, pos: [(X(sp.a) + X(sp.b)) / 2, ay - 0.9, 0] }); label('vec red', sp.n, () => V((X(sp.a) + X(sp.b)) / 2, ay - 1.45, 0)); });
+  const lv = [0.6, 1.2, 1.8, 2.4, 3.0, 3.6]; const ev = S.events.map((e, i) => { const m = ball(g, e.pal || 'paper', `${e.y} : ${e.n}`, 0.13); m.position.set(X(e.y), ay, 0.1); m.userData.pal = e.pal || 'paper';
+    const up = lv[i % 6]; const r = rod(g, { r: 0.012, pal: 'dark', name: 'Repère' }); rodTo(r, V(X(e.y), ay + 0.13, 0), V(X(e.y), ay + up - 0.18, 0)); label('t1', `${e.y} · ${e.n}`, () => V(X(e.y), ay + up, 0.1)); return m; });
+  const cur = ball(g, 'red', 'Curseur', 0.2); let yc = a, idx = 0;
+  return { update: t => { yc = a + (b - a) * ((t % 26) / 26); cur.position.set(X(yc), ay, 0.2); idx = -1; S.events.forEach((e, i) => { if (e.y <= yc) idx = i; }); ev.forEach((m, i) => setPal(m, i === idx ? 'red' : (S.events[i].pal || 'paper'))); },
+    info: () => `${Math.round(yc)}\n${idx >= 0 ? S.events[idx].y + ' : ' + S.events[idx].n : ''}` };
+}
+
+const KINDS = { timeline, mea, quad, net, fmaps, tensor, landscape, cloud, logbars, chip, cluster, tokens, scatter, attn, pipeline, cycle, bars, curve, mem, conv, patches, detect, grid, arm, kv };

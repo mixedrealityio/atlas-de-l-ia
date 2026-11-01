@@ -37,5 +37,18 @@ export const PRACTICE = {
    "answer": 0,
    "why": "<p>Les systèmes actuels sont minuscules, de courte durée de vie, et les chiffres annoncés sont des estimations.</p>"
   }
+ ],
+ "8": [
+  {
+   "q": "Quel est le principe d’une approche neuro-symbolique ?",
+   "choices": [
+    "le réseau propose, un outil exact vérifie",
+    "le réseau remplace toute logique",
+    "l’outil symbolique propose sans vérifier",
+    "on supprime les données"
+   ],
+   "answer": 0,
+   "why": "<p>L’association donne l’intuition du réseau et la garantie de la vérification.</p>"
+  }
  ]
 };

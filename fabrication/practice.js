@@ -37,5 +37,18 @@ export const PRACTICE = {
    "answer": 2,
    "why": "<p>Le SFT présente des paires consigne-réponse : le modèle apprend à répondre plutôt qu’à continuer le texte.</p>"
   }
+ ],
+ "5": [
+  {
+   "q": "Un modèle « à poids ouverts » est-il forcément transparent ?",
+   "choices": [
+    "oui, tout est public",
+    "non, données, recette ou licence peuvent rester fermées",
+    "oui, mais sans licence",
+    "non, car il n’a pas de poids"
+   ],
+   "answer": 1,
+   "why": "<p>Les poids permettent l’exécution locale, mais ne disent pas tout de la fabrication.</p>"
+  }
  ]
 };

@@ -37,5 +37,18 @@ export const PRACTICE = {
    "answer": 1,
    "why": "<p>Poids, états de l’optimiseur et position dans les données.</p>"
   }
+ ],
+ "5": [
+  {
+   "q": "Quel facteur domine souvent l’énergie totale d’un modèle très utilisé ?",
+   "choices": [
+    "l’inférence cumulée",
+    "le nom du modèle",
+    "la couleur de l’interface",
+    "le nombre de dossiers"
+   ],
+   "answer": 0,
+   "why": "<p>L’entraînement se fait une fois ; l’inférence se répète à chaque requête.</p>"
+  }
  ]
 };

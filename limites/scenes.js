@@ -207,5 +207,46 @@ export const SPECS = [
   "sub": "perception, équilibre, marche",
   "kind": "quad",
   "x0": 240
+ },
+ {
+  "key": "neurosym",
+  "title": "Neuro-symbolique",
+  "sub": "intuition + vérification",
+  "kind": "pipeline",
+  "per": 3,
+  "bw": 2.3,
+  "gap": 0.8,
+  "y": 1.4,
+  "stages": [
+   {
+    "n": "Modèle neuronal",
+    "s": "propose",
+    "pal": "blue"
+   },
+   {
+    "n": "Outil symbolique",
+    "s": "solveur, prouveur, code",
+    "pal": "red"
+   },
+   {
+    "n": "Vérification",
+    "s": "exacte et déterministe",
+    "pal": "red"
+   },
+   {
+    "n": "Retour",
+    "s": "erreur → nouvelle tentative",
+    "pal": "blue"
+   },
+   {
+    "n": "Résultat",
+    "s": "fiable parce que vérifié"
+   },
+   {
+    "n": "Exemple",
+    "s": "AlphaProof + Lean"
+   }
+  ],
+  "x0": 280
  }
 ];

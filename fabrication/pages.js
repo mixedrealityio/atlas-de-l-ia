@@ -104,11 +104,33 @@ export const PAGES = [
   "look": {},
   "scene": "chaine",
   "fig": ""
+ },
+ {
+  "kicker": "5.5",
+  "title": "Ouvert ou fermé ?",
+  "sub": "ce qu’on peut vraiment faire d’un modèle",
+  "body": "\n    <p class=\"lede\">Un modèle peut être accessible par une <b>API</b> (fermé) ou publié avec ses <b>poids</b> (ouvert).</p>\n    <ul class=\"rules\">\n      <li><b>Fermé</b> : simple à utiliser, souvent le plus performant, mais vos données partent chez le fournisseur et le modèle peut changer ou disparaître.</li>\n      <li><b>Poids ouverts</b> : exécution locale (chapitres 19, 21, 23), affinage, maîtrise des données ; mais licence à lire (limites d’usage, de taille d’entreprise) et exigences de matériel.</li>\n      <li><b>Open source au sens strict</b> : poids, code, données et recette publiés : rare.</li>\n    </ul>\n    <p>Un choix pragmatique : fermé pour les tâches les plus dures, ouvert pour les données sensibles et les usages à fort volume ; on garde la possibilité de changer.</p>",
+  "cam": {
+   "target": [
+    160,
+    1.8,
+    0
+   ],
+   "az": 8,
+   "el": 7,
+   "dist": 26,
+   "auto": true
+  },
+  "lit": "ouvert",
+  "look": {},
+  "scene": "ouvert",
+  "fig": ""
  }
 ];
 export const PLATES = {
   chaine: { text: "Un modèle d’assistant naît en neuf étapes. Les trois premières préparent le texte ; le pré-entraînement donne la connaissance (c’est de loin l’étape la plus coûteuse) ; l’affinage et les préférences en font un assistant ; l’évaluation et le déploiement le rendent utilisable.", facts: () => [["pré-entraînement", "≈ 95 % du calcul"], ["affinage", "quelques milliers d’exemples à quelques millions"], ["sortie", "des poids (un fichier)"]] },
   donnees: { text: "Les données brutes sont très bruitées. On extrait le texte, on filtre (langue, qualité, contenus indésirables), on retire les doublons exacts et quasi exacts, puis on règle le mélange des sources : code, mathématiques, textes encyclopédiques, conversations.", facts: () => [["corpus d’un modèle récent", "10 à 30 trillions de jetons"], ["déduplication", "évite la mémorisation"], ["qualité", "pèse plus que la quantité"]] },
   echelle: { text: "Quand on multiplie le calcul, la perte baisse selon une loi de puissance régulière, vers un plancher que l’on ne peut pas franchir avec ces données. Cette régularité permet de prévoir, sur de petits essais, ce que donnera un très gros entraînement.", facts: () => [["calcul total", "≈ 6 × paramètres × jetons"], ["échelle", "logarithmique en abscisse"]] },
-  post: { text: "Le modèle de base ne sait que continuer un texte. L’affinage supervisé lui apprend le format d’une conversation ; l’optimisation des préférences l’oriente vers les réponses jugées meilleures ; l’apprentissage par renforcement sur des problèmes vérifiables développe le raisonnement.", facts: () => [["modèle de base", "pas de format de dialogue"], ["modèle « instruct »", "après SFT et préférences"]] }
+  post: { text: "Le modèle de base ne sait que continuer un texte. L’affinage supervisé lui apprend le format d’une conversation ; l’optimisation des préférences l’oriente vers les réponses jugées meilleures ; l’apprentissage par renforcement sur des problèmes vérifiables développe le raisonnement.", facts: () => [["modèle de base", "pas de format de dialogue"], ["modèle « instruct »", "après SFT et préférences"]] },
+  ouvert: { text: "Un modèle « à poids ouverts » publie ses paramètres, ce qui permet de l’exécuter chez soi et de l’affiner. Mais données, recette et parfois licence restent fermées : « ouvert » ne veut pas dire entièrement transparent ni libre de tout usage.", facts: () => [["poids ouverts", "exécutables localement"], ["rare", "données et recette publiques"], ["à lire", "la licence"]] }
 };

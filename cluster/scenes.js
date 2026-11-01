@@ -108,5 +108,46 @@ export const SPECS = [
    }
   ],
   "x0": 120
+ },
+ {
+  "key": "energie",
+  "title": "Où va l’énergie",
+  "sub": "du réseau électrique au calcul",
+  "kind": "pipeline",
+  "per": 3,
+  "bw": 2.3,
+  "gap": 0.8,
+  "y": 1.4,
+  "stages": [
+   {
+    "n": "Réseau électrique",
+    "s": "contrat, mégawatts"
+   },
+   {
+    "n": "Alimentation",
+    "s": "conversion, pertes",
+    "pal": "blue"
+   },
+   {
+    "n": "Puces",
+    "s": "calcul",
+    "pal": "red"
+   },
+   {
+    "n": "Chaleur",
+    "s": "presque tout",
+    "pal": "red"
+   },
+   {
+    "n": "Refroidissement",
+    "s": "air ou liquide",
+    "pal": "blue"
+   },
+   {
+    "n": "Indicateur",
+    "s": "PUE, kWh par requête"
+   }
+  ],
+  "x0": 160
  }
 ];

@@ -104,11 +104,33 @@ export const PAGES = [
   "look": {},
   "scene": "watts",
   "fig": ""
+ },
+ {
+  "kicker": "18.5",
+  "title": "Énergie et sobriété",
+  "sub": "ce que consomme l’IA",
+  "body": "\n    <p class=\"lede\">L’IA consomme de l’électricité à deux moments : l’<b>entraînement</b> (une fois, très intense) et l’<b>inférence</b> (chaque requête, pendant des années).</p>\n    <ul class=\"rules\">\n      <li>GPT-3 : de l’ordre de <b>1 à 2 GWh</b> d’entraînement selon les estimations publiées (estimation, pas mesure).</li>\n      <li>Sur la vie d’un modèle très utilisé, l’<b>inférence</b> dépasse souvent l’entraînement.</li>\n    </ul>\n    <p><b>Sobriété</b> : le plus petit modèle qui suffit, quantification, cache, routage des requêtes faciles vers de petits modèles, mesure des kWh.</p>",
+  "cam": {
+   "target": [
+    160,
+    1.8,
+    0
+   ],
+   "az": 8,
+   "el": 7,
+   "dist": 26,
+   "auto": true
+  },
+  "lit": "energie",
+  "look": {},
+  "scene": "energie",
+  "fig": ""
  }
 ];
 export const PLATES = {
   grappe: { text: "Un nœud réunit huit GPU reliés entre eux par NVLink, très rapide. Les nœuds sont reliés par un réseau (InfiniBand ou Ethernet) environ dix à vingt fois plus lent. Pour entraîner, les GPU échangent sans cesse leurs gradients ; la topologie décide de ce qui est possible.", facts: () => [["NVLink (H100)", "900 Go/s par GPU"], ["InfiniBand NDR", "400 Gbit/s ≈ 50 Go/s par port"], ["rapport", "≈ 18 ×"]] },
   para: { text: "Le découpage des matrices (parallélisme de tenseurs) échange beaucoup de données à chaque couche : on le garde dans un nœud, sur NVLink. Le pipeline échange peu, entre étages ; les copies de données n’échangent qu’à la fin d’une étape : elles peuvent s’étendre sur tout le réseau.", facts: () => [["règle", "le plus bavard au plus près"], ["tenseurs", "NVLink"], ["données", "réseau entre nœuds"]] },
   watts: { text: "Un GPU de centre de données consomme environ 700 W, un serveur de huit GPU une dizaine de kilowatts, une armoire de 72 GPU à refroidissement liquide plus de 100 kW, et un cluster de dix mille GPU de l’ordre de dix mégawatts avec refroidissement et réseau.", facts: () => [["GPU", "≈ 0,7 kW"], ["serveur 8 GPU", "≈ 10 kW"], ["cluster de 10 000", "≈ 10 MW ou plus"]] },
-  pannes: { text: "Avec des dizaines de milliers de composants, une panne arrive en heures, parfois en minutes. On sauvegarde régulièrement l’état complet (points de contrôle) et on repart du dernier après avoir isolé le matériel défaillant.", facts: () => [["fréquence", "une panne toutes les quelques heures à grande échelle"], ["remède", "points de contrôle fréquents"]] }
+  pannes: { text: "Avec des dizaines de milliers de composants, une panne arrive en heures, parfois en minutes. On sauvegarde régulièrement l’état complet (points de contrôle) et on repart du dernier après avoir isolé le matériel défaillant.", facts: () => [["fréquence", "une panne toutes les quelques heures à grande échelle"], ["remède", "points de contrôle fréquents"]] },
+  energie: { text: "Presque toute l’électricité devient de la chaleur qu’il faut évacuer. L’indicateur PUE (énergie totale / énergie des machines) vaut environ 1,1 à 1,5 selon les sites. Ordres de grandeur seulement : les chiffres varient selon le matériel et la charge.", facts: () => [["PUE", "≈ 1,1 à 1,5"], ["entraînement GPT-3", "ordre de 1 à 2 GWh"], ["inférence", "souvent plus que l’entraînement sur la vie du modèle"]] }
 };

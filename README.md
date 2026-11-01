@@ -1,6 +1,6 @@
 # Atlas de l’IA
 
-Un manuel interactif en 3D pour comprendre en détail comment fonctionne une IA : 24 chapitres et 148 pages, en français. Chaque page a une figure animée que l’on peut tourner et décomposer, et la plupart ont un exercice.
+Un manuel interactif en 3D pour comprendre en détail comment fonctionne une IA : 34 chapitres et 213 pages, en français. Chaque page a une figure animée que l’on peut tourner et décomposer, et la plupart ont un exercice.
 
 | N° | Chapitre | Contenu |
 |---|---|---|
@@ -28,6 +28,16 @@ Un manuel interactif en 3D pour comprendre en détail comment fonctionne une IA 
 | 22 | Jailbreaks et défenses | pourquoi un modèle se laisse détourner, comment s’en protéger |
 | 23 | Un agent conversationnel pour un robot | entendre, voir, se souvenir, raisonner, s’exprimer |
 | 24 | Les limites de l’IA et l’IA hybride | monde physique, calcul, cellules vivantes, robots quadrupèdes |
+| 25 | Soixante-dix ans d’IA | précurseurs, hivers, renaissance, ère du langage |
+| 26 | Généraliser | biais, variance, surapprentissage, double descente |
+| 27 | Au-delà du transformeur | réseaux récurrents, experts, modèles à état, graphes |
+| 28 | Générer | autoencodeurs, GAN, diffusion, autorégression, audio et vidéo |
+| 29 | Échelle, émergence et raisonnement | lois d’échelle, chaîne de pensée, calcul à l’inférence |
+| 30 | Ouvrir la boîte noire | explications, circuits, caractéristiques |
+| 31 | Évaluer et fiabiliser | benchmarks, contamination, arène, hallucinations |
+| 32 | Biais, équité et désinformation | mesurer l’injustice, reconnaître le faux |
+| 33 | Droit et gouvernance | AI Act, données personnelles, droit d’auteur, responsabilité |
+| 34 | AGI, alignement et sûreté | ce qui est établi, ce qui est débattu |
 
 Le moteur de rendu (three.js, pages qui se tournent, figures décomposables) vient d’[Atlas of Physics](https://github.com/nathanliow/atlas-of-physics) de Nathan Liow, sous licence MIT, conservée dans `LICENSE`. Les figures de l’atlas de l’IA sont construites par `engine/iakit.js` à partir de petits dictionnaires de données.
 
@@ -48,3 +58,5 @@ Pour les chapitres 20 à 24 :
 - Infrastructure sur site : [Private LLM Deployment (PremAI)](https://blog.premai.io/private-llm-deployment-a-practical-guide-for-enterprise-teams-2026), [Private LLM Serving (kube-dojo)](https://kube-dojo.github.io/on-premises/ai-ml-infrastructure/module-9.3-private-llm-serving/).
 - Garde-fous : [robustesse des garde-fous de LLM (arXiv)](https://arxiv.org/html/2511.22047v1), [NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails).
 - Biocalcul et IA hybride : [organoïdes et FinalSpark (New Atlas)](https://newatlas.com/computers/finalspark-bio-computers-brain-organoids), [MetaBOC, cerveau sur puce (Yicai)](https://yicaiglobal.com/news/chinese-scientists-develop-worlds-first-open-source-brain-on-chip-interface-system), [MetaBOC (WAM)](https://www.wam.ae/en/article/b4243o2-chinese-researchers-develop-brain-on-a-chip-system) ; Genie 3 : [annonce de DeepMind](https://deepmind.google/discover/blog/genie-3-a-new-frontier-for-world-models/), [analyse (TechTalks)](https://bdtechtalks.com/2025/08/07/deepmind-genie-3/).
+
+Pour les chapitres 25 à 34 : le plan s’inspire de deux propositions de sommaire pour un « atlas de l’IA » ([Z.ai](https://chat.z.ai/s/100ba5d1-1f55-46b1-aaa1-3dd0dbeaa04d), [DeepSeek](https://chat.deepseek.com/share/lgqrx1if2wb04ctkhi)). Seuls les thèmes ont été repris ; les chiffres et textes réglementaires non vérifiables ont été écartés, et les contenus sont rédigés à neuf à partir de faits établis (Dartmouth 1956, AlexNet 2012, transformeur 2017, lois d’échelle de Kaplan 2020 et Chinchilla 2022, double descente de Belkin 2019, règlement (UE) 2024/1689, norme C2PA, etc.). Pour le droit, le calendrier et les textes sont à vérifier à la source : ces pages ne constituent pas un avis juridique.
