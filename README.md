@@ -1,6 +1,6 @@
 # Atlas de l’IA
 
-Un manuel interactif en 3D pour comprendre en détail comment fonctionne une IA : 59 chapitres et 364 pages, en français. Chaque page a une figure animée que l’on peut tourner et décomposer, et la plupart ont un exercice.
+Un manuel interactif en 3D pour comprendre en détail comment fonctionne une IA : 60 chapitres et 380 pages, en français. Chaque page a une figure animée que l’on peut tourner et décomposer, et la plupart ont un exercice.
 
 | N° | Chapitre | Contenu |
 |---|---|---|
@@ -42,7 +42,7 @@ Un manuel interactif en 3D pour comprendre en détail comment fonctionne une IA 
 | 36 | L’atrophie des compétences | quand l’IA fait à notre place, que reste-t-il ? |
 | 37 | Le fossé de l’ingénieur logiciel | ce que l’IA banalise et ce qui reste rare |
 | 38 | Simulateur de LLM local | un modèle en 3D : requête, inférence, mémoire, débit |
-| 39 | Une machine peut-elle être consciente ? | intelligence, conscience, sentience : ce que disent les théories |
+| 39 | Une machine peut-elle être consciente ? | ce que disent les théories, et ce qui manquerait à l’IA |
 | 40 | L’apprentissage automatique classique | régression, arbres, forêts, boosting, SVM |
 | 41 | Les données | collecte, nettoyage, annotation, licences, versions, synthétiques |
 | 42 | Les familles de modèles de langage | BERT, GPT, T5, LLaMA |
@@ -62,7 +62,8 @@ Un manuel interactif en 3D pour comprendre en détail comment fonctionne une IA 
 | 56 | Futurs proches et questions ouvertes | agents, incarnation, murs, inconnues |
 | 57 | Ce que contient un fichier de modèle | poids, quantification, et pourquoi tout internet n’y est pas |
 | 58 | Pourquoi personne ne sait ce qui se passe dans un modèle | tout est visible, presque rien n’est compris |
-| 59 | Annexes | glossaire, chronologie, jeux de données, acteurs, parcours de lecture, ressources |
+| 59 | L’intelligence mécanique | comprendre comment les choses fonctionnent, et ce que l’IA en fait |
+| 60 | Annexes | glossaire, chronologie, jeux de données, acteurs, parcours de lecture, ressources |
 
 Le moteur de rendu (three.js, pages qui se tournent, figures décomposables) vient d’[Atlas of Physics](https://github.com/nathanliow/atlas-of-physics) de Nathan Liow, sous licence MIT, conservée dans `LICENSE`. Les figures de l’atlas de l’IA sont construites par `engine/iakit.js` à partir de petits dictionnaires de données.
 
@@ -91,5 +92,6 @@ Pour les chapitres 35 à 37 (travail et compétences) : cadre économique classi
 Pour les chapitres 38 à 59 :
 - Le **simulateur de LLM local** (chapitre 38) est un modèle simple de type « roofline » : débit de génération ≈ bande passante × efficacité ÷ octets lus par jeton, préremplissage limité par le calcul, cache KV = 2 × couches × têtes KV × dimension × bits. Les fiches matérielles sont des valeurs arrondies de documents publics : les résultats sont des ordres de grandeur (± 30 %).
 - Le plan des chapitres 40 à 56 et des annexes complète celui d'une proposition de sommaire en 50 chapitres fournie par l'utilisateur ; les contenus sont rédigés à neuf et prudents.
-- Le chapitre 39 (conscience) est inspiré du thème de la vidéo « Voici ce qui manque à l'IA pour être consciente » (chaîne Vision IA), dont le contenu n'a pas pu être consulté depuis le serveur (YouTube a refusé l'accès automatisé) ; il s'appuie sur la littérature : [Butlin, Long et collègues, « Consciousness in Artificial Intelligence: Insights from the Science of Consciousness » (arXiv 2308.08708)](https://arxiv.org/abs/2308.08708), [Techno-Science, « L'IA consciente : le point de vue d'un philosophe »](https://www.techno-science.net/actualite/ia-consciente-point-vue-philosophe-N28024.html), [Next, « Le CNRS se demande ce qu'est la conscience et si l'IA peut y accéder »](https://next.ink/brief-article/le-cnrs-se-demande-ce-quest-la-conscience-et-si-lia-peut-y-acceder/).
+- Le chapitre 39 (conscience) suit la vidéo « Voici ce qui manque à l'IA pour être consciente » (chaîne Vision IA), dont l'utilisateur a fourni la transcription (YouTube refuse l'accès automatisé depuis le serveur). Les faits propres à la vidéo (règles d'usage, citations de dirigeants, dates) y sont signalés « à recouper » et le passage promotionnel de fin n'est pas repris. Il s'appuie aussi sur : [Butlin, Long et collègues, « Consciousness in Artificial Intelligence » (arXiv 2308.08708)](https://arxiv.org/abs/2308.08708), [Techno-Science](https://www.techno-science.net/actualite/ia-consciente-point-vue-philosophe-N28024.html), [Next, sur le CNRS](https://next.ink/brief-article/le-cnrs-se-demande-ce-quest-la-conscience-et-si-lia-peut-y-acceder/). L'article de Milinkovic et Aru (computationalisme biologique) et l'étude de neurones corticaux comme réseaux profonds (2021) sont cités d'après la vidéo : titres exacts à vérifier.
+- Le chapitre 59 (intelligence mécanique) suit la vidéo « La Psychologie des Gens Débrouillards » (chaîne PsychoLogique), dont l'utilisateur a fourni la transcription ; les noms des chercheurs (Craik, Duncker, Rasmussen, Polanyi, McCaffrey, Uttal et collègues…) sont rétablis de mémoire et à vérifier.
 - Études citées sans lien vérifié (à retrouver par titre) : Allen-Zhu et Li sur la capacité en bits par paramètre (2024), Delétang et collègues « Language Modeling Is Compression » (2023), Turpin et collègues sur la fidélité des chaînes de pensée (2023), Power et collègues sur le grokking (2022), Lightman et collègues « Let's Verify Step by Step » (2023), Shumailov et collègues sur l'effondrement de modèle (2024), Grinsztajn et collègues sur les données tabulaires (2022), METR (2025). Les dates, chiffres et noms sont donnés de mémoire et à vérifier à la source.

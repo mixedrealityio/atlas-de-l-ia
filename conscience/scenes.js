@@ -41,9 +41,9 @@ export const SPECS = [
   "x0": 0
  },
  {
-  "key": "gwt",
-  "title": "L’espace de travail global",
-  "sub": "une théorie fonctionnelle",
+  "key": "chalmers",
+  "title": "L’expérience de pensée des neurones remplacés",
+  "sub": "le support compte-t-il ?",
   "kind": "pipeline",
   "per": 3,
   "bw": 2.3,
@@ -51,36 +51,209 @@ export const SPECS = [
   "y": 1.4,
   "stages": [
    {
-    "n": "Modules spécialisés",
-    "s": "vision, langage, mémoire",
+    "n": "Un neurone",
+    "s": "remplacé par une puce équivalente",
     "pal": "blue"
    },
    {
-    "n": "Compétition",
-    "s": "peu d’informations passent",
-    "pal": "red"
-   },
-   {
-    "n": "Diffusion globale",
-    "s": "à tous les modules",
-    "pal": "red"
-   },
-   {
-    "n": "Accès conscient",
-    "s": "rapportable, utilisable",
-    "pal": "red"
-   },
-   {
-    "n": "Retour",
-    "s": "les modules se mettent à jour",
+    "n": "Puis un deuxième",
+    "s": "et ainsi de suite",
     "pal": "blue"
    },
    {
-    "n": "Prédiction",
-    "s": "goulot d’étranglement attentionnel"
+    "n": "Cerveau en silicium",
+    "s": "même fonctionnement",
+    "pal": "red"
+   },
+   {
+    "n": "Êtes-vous toujours là ?",
+    "s": "la question",
+    "pal": "dark"
+   },
+   {
+    "n": "Oui : fonctionnalisme",
+    "s": "seul le traitement compte",
+    "pal": "blue"
+   },
+   {
+    "n": "Non : camp du vivant",
+    "s": "simuler n’est pas reproduire",
+    "pal": "red"
    }
   ],
   "x0": 40
+ },
+ {
+  "key": "troisieme",
+  "title": "Une troisième voie",
+  "sub": "le « computationalisme biologique »",
+  "kind": "pipeline",
+  "per": 3,
+  "bw": 2.3,
+  "gap": 0.8,
+  "y": 1.4,
+  "stages": [
+   {
+    "n": "Camp du vivant",
+    "s": "dit que le vivant compte, sans dire pourquoi",
+    "pal": "red"
+   },
+   {
+    "n": "Camp de la tech",
+    "s": "suppose un logiciel séparé du matériel",
+    "pal": "red"
+   },
+   {
+    "n": "Troisième voie",
+    "s": "le cerveau calcule, mais avec la matière",
+    "pal": "blue"
+   },
+   {
+    "n": "Pas de séparation",
+    "s": "calcul = matière qui fonctionne",
+    "pal": "blue"
+   },
+   {
+    "n": "Trois indices",
+    "s": "hybride, échelles liées, énergie",
+    "pal": "blue"
+   },
+   {
+    "n": "Conclusion",
+    "s": "les IA actuelles n’ont pas cela",
+    "pal": "red"
+   }
+  ],
+  "x0": 80
+ },
+ {
+  "key": "neurone",
+  "title": "Premier indice : un neurone n’est pas un interrupteur",
+  "sub": "un calcul à la fois numérique et analogique",
+  "kind": "pipeline",
+  "per": 3,
+  "bw": 2.3,
+  "gap": 0.8,
+  "y": 1.4,
+  "stages": [
+   {
+    "n": "Impulsion",
+    "s": "tout ou rien : numérique",
+    "pal": "blue"
+   },
+   {
+    "n": "Bain chimique et électrique",
+    "s": "continu : analogique",
+    "pal": "red"
+   },
+   {
+    "n": "Récepteurs NMDA",
+    "s": "s’ouvrent au bon moment, à la bonne tension",
+    "pal": "red"
+   },
+   {
+    "n": "Échelles de temps",
+    "s": "millisecondes à minutes, imbriquées",
+    "pal": "red"
+   },
+   {
+    "n": "Mesure (2021)",
+    "s": "un neurone ≈ réseau profond de 5 à 8 couches",
+    "pal": "blue"
+   },
+   {
+    "n": "Sans NMDA",
+    "s": "une seule couche suffit",
+    "pal": "blue"
+   }
+  ],
+  "x0": 120
+ },
+ {
+  "key": "echelles",
+  "title": "Deuxième indice : on ne peut pas séparer les échelles",
+  "sub": "tout agit sur tout",
+  "kind": "pipeline",
+  "per": 3,
+  "bw": 2.3,
+  "gap": 0.8,
+  "y": 1.4,
+  "stages": [
+   {
+    "n": "Anesthésie",
+    "s": "les neurones fonctionnent encore",
+    "pal": "blue"
+   },
+   {
+    "n": "Ce qui s’éteint",
+    "s": "la coordination entre grandes régions",
+    "pal": "red"
+   },
+   {
+    "n": "Molécules ↔ neurones ↔ régions",
+    "s": "influences dans les deux sens",
+    "pal": "red"
+   },
+   {
+    "n": "Ordinateur",
+    "s": "niveaux cloisonnés",
+    "pal": "blue"
+   },
+   {
+    "n": "Excel ne sait pas quel processeur",
+    "s": "séparation logiciel-matériel",
+    "pal": "blue"
+   },
+   {
+    "n": "Modèle d’IA",
+    "s": "un fichier de nombres que la puce exécute",
+    "pal": "red"
+   }
+  ],
+  "x0": 160
+ },
+ {
+  "key": "energie",
+  "title": "Troisième indice : un calcul né de la pénurie",
+  "sub": "le métabolisme dans le calcul",
+  "kind": "pipeline",
+  "per": 3,
+  "bw": 2.3,
+  "gap": 0.8,
+  "y": 1.4,
+  "stages": [
+   {
+    "n": "Cerveau",
+    "s": "≈ 20 W",
+    "pal": "blue"
+   },
+   {
+    "n": "Grand centre de données",
+    "s": "≈ 1 GW",
+    "pal": "red"
+   },
+   {
+    "n": "Rapport",
+    "s": "≈ 50 millions de fois",
+    "pal": "red"
+   },
+   {
+    "n": "Pression de survie",
+    "s": "consommer peu a façonné le calcul",
+    "pal": "blue"
+   },
+   {
+    "n": "IA : pénurie traitée",
+    "s": "en construisant des centrales",
+    "pal": "red"
+   },
+   {
+    "n": "Hypothèse",
+    "s": "la conscience tient à ce calcul contraint",
+    "pal": "dark"
+   }
+  ],
+  "x0": 200
  },
  {
   "key": "theories",
@@ -119,15 +292,15 @@ export const SPECS = [
    },
    {
     "n": "Vivant et incarné",
-    "s": "corps, homéostasie, enjeu",
+    "s": "corps, métabolisme, enjeu",
     "pal": "red"
    }
   ],
-  "x0": 80
+  "x0": 240
  },
  {
   "key": "manque",
-  "title": "Ce qui « manquerait » aujourd’hui",
+  "title": "Ce qui manquerait aujourd’hui",
   "sub": "selon les théories",
   "kind": "pipeline",
   "per": 3,
@@ -137,27 +310,27 @@ export const SPECS = [
   "stages": [
    {
     "n": "Boucles récurrentes",
-    "s": "un transformeur est surtout à sens unique par jeton",
+    "s": "un transformeur calcule jeton par jeton",
     "pal": "red"
    },
    {
-    "n": "Espace global",
-    "s": "pas de goulot ni de diffusion explicites",
+    "n": "Espace global explicite",
+    "s": "pas de diffusion centrale",
     "pal": "red"
    },
    {
     "n": "Modèle de soi fiable",
-    "s": "la métacognition reste limitée",
+    "s": "métacognition limitée",
     "pal": "red"
    },
    {
     "n": "Continuité",
-    "s": "pas d’état persistant entre les sessions",
+    "s": "pas d’état entre les sessions",
     "pal": "red"
    },
    {
-    "n": "Corps et enjeu",
-    "s": "pas d’homéostasie, rien à perdre",
+    "n": "Calcul vivant",
+    "s": "hybride, couplé, métabolique",
     "pal": "red"
    },
    {
@@ -166,7 +339,7 @@ export const SPECS = [
     "pal": "dark"
    }
   ],
-  "x0": 120
+  "x0": 280
  },
  {
   "key": "test",
@@ -189,17 +362,17 @@ export const SPECS = [
    },
    {
     "n": "Auto-déclaration",
-    "s": "« je suis conscient »",
+    "s": "« j’ai mal »",
     "pal": "red"
    },
    {
     "n": "Non fiable",
-    "s": "elle reflète les données et les consignes",
+    "s": "reflète données et consignes",
     "pal": "red"
    },
    {
-    "n": "Tests de comportement",
-    "s": "peuvent être appris",
+    "n": "Autre forme de conscience ?",
+    "s": "on chercherait les marqueurs humains",
     "pal": "red"
    },
    {
@@ -208,12 +381,12 @@ export const SPECS = [
     "pal": "blue"
    }
   ],
-  "x0": 160
+  "x0": 320
  },
  {
   "key": "ethique",
   "title": "Agir sous incertitude",
-  "sub": "deux erreurs symétriques",
+  "sub": "le cas d’Anthropic, selon la vidéo",
   "kind": "pipeline",
   "per": 3,
   "bw": 2.3,
@@ -221,35 +394,35 @@ export const SPECS = [
   "y": 1.4,
   "stages": [
    {
-    "n": "Sur-attribution",
-    "s": "croire conscient ce qui ne l’est pas",
+    "n": "Août 2025",
+    "s": "Claude peut mettre fin à une conversation abusive",
+    "pal": "blue"
+   },
+   {
+    "n": "Règle d’usage",
+    "s": "interdire l’acharnement cruel, selon la vidéo",
+    "pal": "blue"
+   },
+   {
+    "n": "Constitution (janvier 2026)",
+    "s": "statut moral « profondément incertain »",
+    "pal": "blue"
+   },
+   {
+    "n": "Camps",
+    "s": "applaudissements d’un côté, critiques de l’autre"
+   },
+   {
+    "n": "Risque",
+    "s": "abandonner son jugement face à la machine",
     "pal": "red"
    },
    {
-    "n": "Sous-attribution",
-    "s": "ignorer une souffrance possible",
-    "pal": "red"
-   },
-   {
-    "n": "Conséquences",
-    "s": "manipulation, ou négligence morale"
-   },
-   {
-    "n": "Prudence",
-    "s": "indicateurs, transparence, recherche",
-    "pal": "blue"
-   },
-   {
-    "n": "Conception",
-    "s": "éviter de simuler la détresse sans raison",
-    "pal": "blue"
-   },
-   {
-    "n": "Débat public",
-    "s": "informé, non tranché",
-    "pal": "blue"
+    "n": "Position",
+    "s": "précaution sans trancher",
+    "pal": "dark"
    }
   ],
-  "x0": 200
+  "x0": 360
  }
 ];

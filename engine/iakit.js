@@ -186,6 +186,8 @@ const CURVES = {
     ['30 % du travail automatisable', 'red', x => 1 / (0.7 + 0.3 / x)], ['60 %', 'dark', x => 1 / (0.4 + 0.6 / x)], ['90 %', 'blue', x => 1 / (0.1 + 0.9 / x)]] },
   qualitebits: { x: [2, 8], y: [0, 1.05], xl: 'bits par poids (après quantification)', yl: 'perte de qualité (relative, illustratif)', ser: [
     ['petit modèle (≈ 8 Md)', 'red', x => 1 / (1 + Math.exp((x - 3.3) * 2.3))], ['grand modèle (≈ 70 Md)', 'blue', x => 1 / (1 + Math.exp((x - 2.7) * 2.3))]] },
+  bisection: { x: [0, 10], y: [0, 1000], xl: 'nombre de tests (exemple illustratif)', yl: 'causes possibles restantes', ser: [
+    ['méthode de la moitié', 'blue', x => 1000 / Math.pow(2, x)], ['un suspect à la fois', 'red', x => Math.max(0, 1000 - 100 * x)]] },
   passk: { x: [1, 16], y: [0, 1.05], xl: 'nombre d’essais k', yl: 'taux de réussite (pass@k)', ser: [
     ['p = 0,15 par essai', 'blue', x => 1 - Math.pow(0.85, x)], ['p = 0,05 par essai', 'dark', x => 1 - Math.pow(0.95, x)], ['p = 0,4 par essai', 'red', x => 1 - Math.pow(0.6, x)]] },
 };
