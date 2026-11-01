@@ -1,6 +1,6 @@
 # Atlas de l’IA
 
-Un manuel interactif en 3D pour comprendre en détail comment fonctionne une IA : 37 chapitres et 232 pages, en français. Chaque page a une figure animée que l’on peut tourner et décomposer, et la plupart ont un exercice.
+Un manuel interactif en 3D pour comprendre en détail comment fonctionne une IA : 59 chapitres et 364 pages, en français. Chaque page a une figure animée que l’on peut tourner et décomposer, et la plupart ont un exercice.
 
 | N° | Chapitre | Contenu |
 |---|---|---|
@@ -41,6 +41,28 @@ Un manuel interactif en 3D pour comprendre en détail comment fonctionne une IA 
 | 35 | Demande, élasticité et emploi | si l’IA baisse le coût d’une tâche, que devient la demande ? |
 | 36 | L’atrophie des compétences | quand l’IA fait à notre place, que reste-t-il ? |
 | 37 | Le fossé de l’ingénieur logiciel | ce que l’IA banalise et ce qui reste rare |
+| 38 | Simulateur de LLM local | un modèle en 3D : requête, inférence, mémoire, débit |
+| 39 | Une machine peut-elle être consciente ? | intelligence, conscience, sentience : ce que disent les théories |
+| 40 | L’apprentissage automatique classique | régression, arbres, forêts, boosting, SVM |
+| 41 | Les données | collecte, nettoyage, annotation, licences, versions, synthétiques |
+| 42 | Les familles de modèles de langage | BERT, GPT, T5, LLaMA |
+| 43 | Compresser un modèle | quantification, élagage, distillation, IA embarquée |
+| 44 | MLOps et LLMOps | livrer, surveiller, faire évoluer |
+| 45 | Robustesse et attaques adverses | exemples adverses, empoisonnement, injection |
+| 46 | IA et santé | imagerie, molécules, validation clinique, régulation |
+| 47 | L’IA pour la science | simulateurs, météo, mathématiques, modèles spécialisés |
+| 48 | Industries créatives | texte, image, son, vidéo, jeu, publicité |
+| 49 | IA et éducation | tuteurs, évaluation, triche, littératie |
+| 50 | Finance et assurance | scoring, fraude, trading, conformité |
+| 51 | Industrie et jumeaux numériques | maintenance, qualité, cobots, simulation |
+| 52 | Secteur public et gouvernance algorithmique | administration, justice, transparence |
+| 53 | IA et cybersécurité | défense, attaque, deepfakes |
+| 54 | Économie de l’IA | coûts, marchés, concentration, productivité |
+| 55 | Géopolitique, puces et ressources | semi-conducteurs, contrôle des exportations, énergie, souveraineté |
+| 56 | Futurs proches et questions ouvertes | agents, incarnation, murs, inconnues |
+| 57 | Ce que contient un fichier de modèle | poids, quantification, et pourquoi tout internet n’y est pas |
+| 58 | Pourquoi personne ne sait ce qui se passe dans un modèle | tout est visible, presque rien n’est compris |
+| 59 | Annexes | glossaire, chronologie, jeux de données, acteurs, parcours de lecture, ressources |
 
 Le moteur de rendu (three.js, pages qui se tournent, figures décomposables) vient d’[Atlas of Physics](https://github.com/nathanliow/atlas-of-physics) de Nathan Liow, sous licence MIT, conservée dans `LICENSE`. Les figures de l’atlas de l’IA sont construites par `engine/iakit.js` à partir de petits dictionnaires de données.
 
@@ -65,3 +87,9 @@ Pour les chapitres 20 à 24 :
 Pour les chapitres 25 à 34 : le plan s’inspire de deux propositions de sommaire pour un « atlas de l’IA » ([Z.ai](https://chat.z.ai/s/100ba5d1-1f55-46b1-aaa1-3dd0dbeaa04d), [DeepSeek](https://chat.deepseek.com/share/lgqrx1if2wb04ctkhi)). Seuls les thèmes ont été repris ; les chiffres et textes réglementaires non vérifiables ont été écartés, et les contenus sont rédigés à neuf à partir de faits établis (Dartmouth 1956, AlexNet 2012, transformeur 2017, lois d’échelle de Kaplan 2020 et Chinchilla 2022, double descente de Belkin 2019, règlement (UE) 2024/1689, norme C2PA, etc.). Pour le droit, le calendrier et les textes sont à vérifier à la source : ces pages ne constituent pas un avis juridique.
 
 Pour les chapitres 35 à 37 (travail et compétences) : cadre économique classique (élasticité-prix, paradoxe de Jevons de 1865, analyse du travail par tâches), et études citées avec leurs limites : [Brynjolfsson, Li et Raymond sur le support client (NBER, 2023)](https://www.nber.org/papers/w31161), [METR sur les développeurs expérimentés (2025)](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/), [Bastani et collègues, « Generative AI without guardrails can harm learning » (2025)](https://www.pnas.org/doi/10.1073/pnas.2422633122), [Lee et collègues, Microsoft et Carnegie Mellon, sur la pensée critique (CHI 2025)](https://www.microsoft.com/en-us/research/publication/the-impact-of-generative-ai-on-critical-thinking-self-reported-reductions-in-cognitive-effort-and-confidence-effects-from-a-survey-of-knowledge-workers/), [Brynjolfsson, Chandar et Chen, « Canaries in the Coal Mine » (2025)](https://digitaleconomy.stanford.edu/publications/canaries-in-the-coal-mine/). Les liens sont donnés de mémoire : à vérifier à la source. Les pages sont des analyses, pas des prédictions.
+
+Pour les chapitres 38 à 59 :
+- Le **simulateur de LLM local** (chapitre 38) est un modèle simple de type « roofline » : débit de génération ≈ bande passante × efficacité ÷ octets lus par jeton, préremplissage limité par le calcul, cache KV = 2 × couches × têtes KV × dimension × bits. Les fiches matérielles sont des valeurs arrondies de documents publics : les résultats sont des ordres de grandeur (± 30 %).
+- Le plan des chapitres 40 à 56 et des annexes complète celui d'une proposition de sommaire en 50 chapitres fournie par l'utilisateur ; les contenus sont rédigés à neuf et prudents.
+- Le chapitre 39 (conscience) est inspiré du thème de la vidéo « Voici ce qui manque à l'IA pour être consciente » (chaîne Vision IA), dont le contenu n'a pas pu être consulté depuis le serveur (YouTube a refusé l'accès automatisé) ; il s'appuie sur la littérature : [Butlin, Long et collègues, « Consciousness in Artificial Intelligence: Insights from the Science of Consciousness » (arXiv 2308.08708)](https://arxiv.org/abs/2308.08708), [Techno-Science, « L'IA consciente : le point de vue d'un philosophe »](https://www.techno-science.net/actualite/ia-consciente-point-vue-philosophe-N28024.html), [Next, « Le CNRS se demande ce qu'est la conscience et si l'IA peut y accéder »](https://next.ink/brief-article/le-cnrs-se-demande-ce-quest-la-conscience-et-si-lia-peut-y-acceder/).
+- Études citées sans lien vérifié (à retrouver par titre) : Allen-Zhu et Li sur la capacité en bits par paramètre (2024), Delétang et collègues « Language Modeling Is Compression » (2023), Turpin et collègues sur la fidélité des chaînes de pensée (2023), Power et collègues sur le grokking (2022), Lightman et collègues « Let's Verify Step by Step » (2023), Shumailov et collègues sur l'effondrement de modèle (2024), Grinsztajn et collègues sur les données tabulaires (2022), METR (2025). Les dates, chiffres et noms sont donnés de mémoire et à vérifier à la source.

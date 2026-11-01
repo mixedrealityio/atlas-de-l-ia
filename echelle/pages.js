@@ -146,6 +146,27 @@ export const PAGES = [
   "look": {},
   "scene": "murs",
   "fig": ""
+ },
+ {
+  "kicker": "29.7",
+  "title": "Grokking, échelle inversée, vérification",
+  "sub": "surprises et méthodes",
+  "body": "\n    <p class=\"lede\">L’échelle n’explique pas tout : des comportements surprenants et des méthodes de raisonnement la complètent.</p><ul class=\"rules\"><li><b>Grokking</b> : un petit modèle généralise brusquement bien après avoir longtemps mémorisé.</li><li><b>Échelle inversée</b> : sur certaines tâches, le modèle empire en grossissant.</li><li><b>Récompense de processus</b> : noter chaque étape.</li><li><b>Recherche arborescente</b> : explorer plusieurs raisonnements.</li></ul><p>Le fil commun : mieux vaut un bon <b>vérificateur</b> qu’un générateur isolé.</p>",
+  "cam": {
+   "target": [
+    240,
+    1.8,
+    0
+   ],
+   "az": 8,
+   "el": 7,
+   "dist": 26,
+   "auto": true
+  },
+  "lit": "grokking",
+  "look": {},
+  "scene": "grokking",
+  "fig": ""
  }
 ];
 export const PLATES = {
@@ -154,5 +175,6 @@ export const PLATES = {
   emergence: { text: "Certaines capacités semblent apparaître brusquement à partir d’une certaine taille. Selon une analyse critique (2023), l’aspect de saut vient en partie de la mesure : une métrique tout-ou-rien (réponse exacte) donne un saut, une métrique continue donne une progression régulière. Courbes illustratives.", facts: () => [["thèse « émergence »", "sauts à certaines tailles"], ["thèse « mirage »", "effet de la métrique"], ["consensus", "débat ouvert"]] },
   cot: { text: "En demandant au modèle d’écrire son raisonnement avant de répondre, on améliore nettement ses réponses aux problèmes à plusieurs étapes : chaque jeton produit devient une étape de calcul supplémentaire. Le raisonnement écrit n’est pas toujours fidèle à ce qui se passe réellement dans le réseau.", facts: () => [["idée", "plus de jetons = plus de calcul"], ["variantes", "autocohérence : voter sur plusieurs chaînes"]] },
   testtime: { text: "Les modèles de raisonnement sont entraînés, par renforcement sur des problèmes vérifiables (chapitre 7), à produire de longues réflexions. Leur performance progresse avec le calcul dépensé à répondre : c’est un second axe d’échelle, en plus de l’entraînement. Courbes illustratives.", facts: () => [["axe 1", "calcul d’entraînement"], ["axe 2", "calcul à l’inférence"], ["coût", "plus de jetons, plus lent, plus cher"]] },
-  murs: { text: "Quatre obstacles pèsent sur la poursuite de l’échelle : le stock de textes de qualité (que l’on complète par des données synthétiques), l’énergie, le coût, et le fait que certaines limites (faits, physique, fiabilité) ne s’effacent pas seulement avec plus de calcul.", facts: () => [["données synthétiques", "produites par d’autres modèles"], ["autres leviers", "algorithmes, inférence, outils"]] }
+  murs: { text: "Quatre obstacles pèsent sur la poursuite de l’échelle : le stock de textes de qualité (que l’on complète par des données synthétiques), l’énergie, le coût, et le fait que certaines limites (faits, physique, fiabilité) ne s’effacent pas seulement avec plus de calcul.", facts: () => [["données synthétiques", "produites par d’autres modèles"], ["autres leviers", "algorithmes, inférence, outils"]] },
+  grokking: { text: "Le grokking (Power et collègues, 2022) décrit une généralisation qui apparaît soudain après un long surapprentissage. L’échelle inversée (McKenzie et collègues, 2023) recense des tâches où les grands modèles font moins bien. Côté raisonnement : des modèles de récompense de processus (Lightman et collègues, 2023) notent chaque étape, la recherche arborescente explore plusieurs pistes, l’autocohérence vote.", facts: () => [["grokking", "2022"], ["PRM", "récompense par étape"], ["recherche", "arbre de pensées"]] }
 };

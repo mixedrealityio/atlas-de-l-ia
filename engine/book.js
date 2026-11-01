@@ -184,6 +184,7 @@ export function startBook(chapter) {
   });
   $('gl').addEventListener('pointerleave', () => { pointer = null; anchor = null; hovered = null; relight(); $('gl').classList.remove('pointing'); });
   addEventListener('keydown', e => {
+    if (e.target.closest?.('input, select, textarea')) return;
     if (e.key === 'Escape') select(null);
     if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); goto(Math.round(scrollY / pageH) + 1); }
     if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goto(Math.round(scrollY / pageH) - 1); }

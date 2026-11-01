@@ -55,12 +55,12 @@
   <header><b>Atlas de l’IA</b><span><a class="gh" href="../">← l’atlas</a></span></header>
   <section class="hero">
     <h1>Comment fonctionne une IA.</h1>
-    <p>37 chapitres, 232 pages : des modèles de langage aux robots, de la fabrication à l’inférence</p>
+    <p>59 chapitres, 364 pages : des modèles de langage aux robots, de la fabrication à l’inférence</p>
   </section>
   <h2 class="section">Les fondations</h2>
   <section class="shelf">
     <a class="card" href="histoire/">
-      <div class="no"><span>N° 25</span><span>6 pages</span></div>
+      <div class="no"><span>N° 25</span><span>9 pages</span></div>
       <h2>Soixante-dix ans d’IA</h2><i>précurseurs, hivers, renaissance, ère du langage</i>
       <span class="cnt">Pourquoi l’IA avance par vagues</span>
       <img src="img/histoire.jpg" alt="Une frise chronologique de l’intelligence artificielle avec deux hivers">
@@ -72,10 +72,28 @@
       <img src="img/generaliser.jpg" alt="Des courbes d’erreur selon la complexité d’un modèle">
     </a>
     <a class="card" href="architectures/">
-      <div class="no"><span>N° 27</span><span>7 pages</span></div>
+      <div class="no"><span>N° 27</span><span>8 pages</span></div>
       <h2>Au-delà du transformeur</h2><i>réseaux récurrents, experts, modèles à état, graphes</i>
       <span class="cnt">Les autres manières de traiter des séquences et des relations</span>
       <img src="img/architectures.jpg" alt="Un réseau récurrent déroulé dans le temps et un routeur d’experts">
+    </a>
+    <a class="card" href="mlclassique/">
+      <div class="no"><span>N° 40</span><span>5 pages</span></div>
+      <h2>L’apprentissage automatique classique</h2><i>régression, arbres, forêts, boosting, SVM</i>
+      <span class="cnt">Ce qui règne encore sur les tableaux de données</span>
+      <img src="img/mlclassique.jpg" alt="L’apprentissage automatique classique">
+    </a>
+    <a class="card" href="donnees/">
+      <div class="no"><span>N° 41</span><span>5 pages</span></div>
+      <h2>Les données</h2><i>collecte, nettoyage, annotation, licences, versions, synthétiques</i>
+      <span class="cnt">Le plus grand levier de qualité d’un système d’IA</span>
+      <img src="img/donnees.jpg" alt="Les données">
+    </a>
+    <a class="card" href="familles/">
+      <div class="no"><span>N° 42</span><span>5 pages</span></div>
+      <h2>Les familles de modèles de langage</h2><i>BERT, GPT, T5, LLaMA</i>
+      <span class="cnt">Encodeur, décodeur ou les deux</span>
+      <img src="img/familles.jpg" alt="Les familles de modèles de langage">
     </a>
   </section>
   <h2 class="section">Les modèles de langage</h2>
@@ -125,6 +143,12 @@
       <span class="cnt">Comment un modèle apprend de ses propres essais</span>
       <img src="img/rl.jpg" alt="Un agent qui explore une grille pour atteindre un but">
     </a>
+    <a class="card" href="fichier/">
+      <div class="no"><span>N° 57</span><span>8 pages</span></div>
+      <h2>Ce que contient un fichier de modèle</h2><i>poids, quantification, et pourquoi tout internet n’y est pas</i>
+      <span class="cnt">Comment des téraoctets de texte deviennent quelques gigaoctets de nombres</span>
+      <img src="img/fichier.jpg" alt="Un fichier de modèle fait de tenseurs de nombres">
+    </a>
   </section>
   <h2 class="section">Génération, échelle et raisonnement</h2>
   <section class="shelf">
@@ -135,7 +159,7 @@
       <img src="img/generer.jpg" alt="Un autoencodeur et un duel entre générateur et discriminateur">
     </a>
     <a class="card" href="echelle/">
-      <div class="no"><span>N° 29</span><span>7 pages</span></div>
+      <div class="no"><span>N° 29</span><span>8 pages</span></div>
       <h2>Échelle, émergence et raisonnement</h2><i>lois d’échelle, chaîne de pensée, calcul à l’inférence</i>
       <span class="cnt">Pourquoi plus gros donne mieux, et ce qui vient ensuite</span>
       <img src="img/echelle.jpg" alt="Une courbe de perte qui baisse avec le calcul">
@@ -227,11 +251,23 @@
       <span class="cnt">Faire tourner un modèle ouvert chez soi</span>
       <img src="img/egpu.jpg" alt="Un ordinateur portable relié à un GPU externe">
     </a>
+    <a class="card" href="simulateur/">
+      <div class="no"><span>N° 38</span><span>10 pages</span></div>
+      <h2>Simulateur de LLM local</h2><i>un modèle en 3D : requête, inférence, mémoire, débit</i>
+      <span class="cnt">Réglez le modèle, la quantification, le contexte et le matériel, et voyez le débit</span>
+      <img src="img/simulateur.jpg" alt="Un grand modèle en 3D avec son cache KV, sa mémoire et son débit">
+    </a>
+    <a class="card" href="compression/">
+      <div class="no"><span>N° 43</span><span>5 pages</span></div>
+      <h2>Compresser un modèle</h2><i>quantification, élagage, distillation, IA embarquée</i>
+      <span class="cnt">Faire tenir un grand modèle dans un petit appareil</span>
+      <img src="img/compression.jpg" alt="Compresser un modèle">
+    </a>
   </section>
   <h2 class="section">Mettre en production</h2>
   <section class="shelf">
     <a class="card" href="rag/">
-      <div class="no"><span>N° 20</span><span>8 pages</span></div>
+      <div class="no"><span>N° 20</span><span>9 pages</span></div>
       <h2>Le RAG, du prototype à la production</h2><i>recherche, boucles, wiki, voix</i>
       <span class="cnt">Ce qui fait qu’un RAG fonctionne vraiment</span>
       <img src="img/rag.jpg" alt="Un système de recherche qui lit des documents puis répond avec ses sources">
@@ -247,6 +283,18 @@
       <h2>Jailbreaks et défenses</h2><i>pourquoi un modèle se laisse détourner, comment s’en protéger</i>
       <span class="cnt">Défense en profondeur avec des garde-fous open source</span>
       <img src="img/securite.jpg" alt="Plusieurs couches de protection autour d’un modèle">
+    </a>
+    <a class="card" href="mlops/">
+      <div class="no"><span>N° 44</span><span>5 pages</span></div>
+      <h2>MLOps et LLMOps</h2><i>livrer, surveiller, faire évoluer</i>
+      <span class="cnt">Faire vivre un modèle en production</span>
+      <img src="img/mlops.jpg" alt="MLOps et LLMOps">
+    </a>
+    <a class="card" href="adversaire/">
+      <div class="no"><span>N° 45</span><span>5 pages</span></div>
+      <h2>Robustesse et attaques adverses</h2><i>exemples adverses, empoisonnement, injection</i>
+      <span class="cnt">Ce qui peut faire dérailler un modèle</span>
+      <img src="img/adversaire.jpg" alt="Robustesse et attaques adverses">
     </a>
   </section>
   <h2 class="section">Comprendre, évaluer, encadrer</h2>
@@ -281,6 +329,63 @@
       <span class="cnt">Les grandes questions sur l’avenir de l’IA</span>
       <img src="img/surete.jpg" alt="Une flèche d’alignement entre objectif voulu et objectif obtenu">
     </a>
+    <a class="card" href="boitenoire/">
+      <div class="no"><span>N° 58</span><span>8 pages</span></div>
+      <h2>Pourquoi personne ne sait ce qui se passe dans un modèle</h2><i>tout est visible, presque rien n’est compris</i>
+      <span class="cnt">La différence entre voir les calculs et comprendre pourquoi</span>
+      <img src="img/boitenoire.jpg" alt="Un réseau dont on voit tous les nombres sans comprendre leur rôle">
+    </a>
+  </section>
+  <h2 class="section">L’IA dans les secteurs</h2>
+  <section class="shelf">
+    <a class="card" href="sante/">
+      <div class="no"><span>N° 46</span><span>5 pages</span></div>
+      <h2>IA et santé</h2><i>imagerie, molécules, validation clinique, régulation</i>
+      <span class="cnt">Un secteur où l’erreur coûte cher</span>
+      <img src="img/sante.jpg" alt="IA et santé">
+    </a>
+    <a class="card" href="science/">
+      <div class="no"><span>N° 47</span><span>5 pages</span></div>
+      <h2>L’IA pour la science</h2><i>simulateurs, météo, mathématiques, modèles spécialisés</i>
+      <span class="cnt">De la prédiction à la découverte</span>
+      <img src="img/science.jpg" alt="L’IA pour la science">
+    </a>
+    <a class="card" href="creatif/">
+      <div class="no"><span>N° 48</span><span>4 pages</span></div>
+      <h2>Industries créatives</h2><i>texte, image, son, vidéo, jeu, publicité</i>
+      <span class="cnt">Nouveaux outils, nouveaux conflits</span>
+      <img src="img/creatif.jpg" alt="Industries créatives">
+    </a>
+    <a class="card" href="education/">
+      <div class="no"><span>N° 49</span><span>4 pages</span></div>
+      <h2>IA et éducation</h2><i>tuteurs, évaluation, triche, littératie</i>
+      <span class="cnt">Apprendre avec, sans, ou malgré l’IA</span>
+      <img src="img/education.jpg" alt="IA et éducation">
+    </a>
+    <a class="card" href="finance/">
+      <div class="no"><span>N° 50</span><span>4 pages</span></div>
+      <h2>Finance et assurance</h2><i>scoring, fraude, trading, conformité</i>
+      <span class="cnt">Des décisions chiffrées, très encadrées</span>
+      <img src="img/finance.jpg" alt="Finance et assurance">
+    </a>
+    <a class="card" href="industrie/">
+      <div class="no"><span>N° 51</span><span>4 pages</span></div>
+      <h2>Industrie et jumeaux numériques</h2><i>maintenance, qualité, cobots, simulation</i>
+      <span class="cnt">L’IA dans l’usine</span>
+      <img src="img/industrie.jpg" alt="Industrie et jumeaux numériques">
+    </a>
+    <a class="card" href="public/">
+      <div class="no"><span>N° 52</span><span>4 pages</span></div>
+      <h2>Secteur public et gouvernance algorithmique</h2><i>administration, justice, transparence</i>
+      <span class="cnt">Quand l’État utilise des algorithmes</span>
+      <img src="img/public.jpg" alt="Secteur public et gouvernance algorithmique">
+    </a>
+    <a class="card" href="cyber/">
+      <div class="no"><span>N° 53</span><span>4 pages</span></div>
+      <h2>IA et cybersécurité</h2><i>défense, attaque, deepfakes</i>
+      <span class="cnt">Une course entre deux camps</span>
+      <img src="img/cyber.jpg" alt="IA et cybersécurité">
+    </a>
   </section>
   <h2 class="section">L’IA et le travail</h2>
   <section class="shelf">
@@ -297,10 +402,22 @@
       <img src="img/atrophie.jpg" alt="Une courbe de performance qui monte pendant que la compétence propre baisse">
     </a>
     <a class="card" href="fosse/">
-      <div class="no"><span>N° 37</span><span>7 pages</span></div>
+      <div class="no"><span>N° 37</span><span>11 pages</span></div>
       <h2>Le fossé de l’ingénieur logiciel</h2><i>ce que l’IA banalise et ce qui reste rare</i>
       <span class="cnt">Où se déplace la valeur quand écrire du code devient bon marché</span>
       <img src="img/fosse.jpg" alt="Une chaîne de valeur de l’intention à l’exploitation">
+    </a>
+    <a class="card" href="economie/">
+      <div class="no"><span>N° 54</span><span>5 pages</span></div>
+      <h2>Économie de l’IA</h2><i>coûts, marchés, concentration, productivité</i>
+      <span class="cnt">Qui paie, qui gagne</span>
+      <img src="img/economie.jpg" alt="Économie de l’IA">
+    </a>
+    <a class="card" href="geopolitique/">
+      <div class="no"><span>N° 55</span><span>5 pages</span></div>
+      <h2>Géopolitique, puces et ressources</h2><i>semi-conducteurs, contrôle des exportations, énergie, souveraineté</i>
+      <span class="cnt">La carte du calcul</span>
+      <img src="img/geopolitique.jpg" alt="Géopolitique, puces et ressources">
     </a>
   </section>
   <h2 class="section">Aller plus loin</h2>
@@ -316,6 +433,24 @@
       <h2>Les limites de l’IA et l’IA hybride</h2><i>monde physique, calcul, cellules vivantes, robots quadrupèdes</i>
       <span class="cnt">Ce que les modèles ne savent pas faire, et d’autres voies</span>
       <img src="img/limites.jpg" alt="Un réseau de cellules vivantes sur des électrodes et un robot quadrupède">
+    </a>
+    <a class="card" href="conscience/">
+      <div class="no"><span>N° 39</span><span>7 pages</span></div>
+      <h2>Une machine peut-elle être consciente ?</h2><i>intelligence, conscience, sentience : ce que disent les théories</i>
+      <span class="cnt">Ce qui manquerait à l’IA, selon les théories de la conscience</span>
+      <img src="img/conscience.jpg" alt="Un espace de travail global où des modules en compétition diffusent une information">
+    </a>
+    <a class="card" href="futurs/">
+      <div class="no"><span>N° 56</span><span>5 pages</span></div>
+      <h2>Futurs proches et questions ouvertes</h2><i>agents, incarnation, murs, inconnues</i>
+      <span class="cnt">Ce qui peut arriver, ce qu’on ne sait pas</span>
+      <img src="img/futurs.jpg" alt="Futurs proches et questions ouvertes">
+    </a>
+    <a class="card" href="annexes/">
+      <div class="no"><span>N° 59</span><span>10 pages</span></div>
+      <h2>Annexes</h2><i>glossaire, chronologie, jeux de données, acteurs, parcours de lecture, ressources</i>
+      <span class="cnt">Pour s’orienter et aller plus loin</span>
+      <img src="img/annexes.jpg" alt="Une frise chronologique et un glossaire">
     </a>
   </section>
 </body>

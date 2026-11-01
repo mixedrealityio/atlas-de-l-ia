@@ -2,6 +2,7 @@
 // Toutes les scènes sont posées dans le plan x-y, face à la caméra ; le temps t (secondes) les anime en boucle.
 import * as THREE from 'three';
 import { part, box, cyl, lines, shadeMat, V } from './parts.js';
+import { llmsim } from './llmsim.js';
 import { sizedBox, setBox, ball, rod, rodTo, liveCurve, board2d, plotTube, fr } from './kit.js';
 
 const LEVELS = ['paper', 'blue', 'red'];
@@ -179,6 +180,12 @@ const CURVES = {
     ['inélastique : ε = 0,5', 'dark', x => 0.5 * x], ['unitaire : ε = 1', 'blue', x => x], ['élastique : ε = 2', 'red', x => 2 * x]] },
   atrophie: { x: [0, 10], y: [0, 1.05], xl: 'mois d’usage (exemple illustratif)', yl: 'niveau (relatif)', ser: [
     ['performance avec l’IA', 'blue', x => 0.45 + 0.5 * (1 - Math.exp(-0.5 * x))], ['sans l’IA : usage passif', 'red', x => 0.2 + 0.4 * Math.exp(-0.3 * x)], ['sans l’IA : usage actif', 'dark', x => 0.6 + 0.2 * (1 - Math.exp(-0.25 * x))]] },
+  emploi: { x: [1, 5], y: [0, 2.6], xl: 'multiplicateur de productivité du développement', yl: 'emploi de développeurs (relatif)', ser: [
+    ['demande peu élastique : ε = 0,5', 'red', x => Math.pow(x, -0.5)], ['ε = 1 : emploi stable', 'dark', x => 1], ['demande élastique : ε = 1,25', 'blue', x => Math.pow(x, 0.25)]] },
+  amdahl: { x: [1, 10], y: [0, 10], xl: 'accélération de la partie automatisable', yl: 'accélération du travail complet', ser: [
+    ['30 % du travail automatisable', 'red', x => 1 / (0.7 + 0.3 / x)], ['60 %', 'dark', x => 1 / (0.4 + 0.6 / x)], ['90 %', 'blue', x => 1 / (0.1 + 0.9 / x)]] },
+  qualitebits: { x: [2, 8], y: [0, 1.05], xl: 'bits par poids (après quantification)', yl: 'perte de qualité (relative, illustratif)', ser: [
+    ['petit modèle (≈ 8 Md)', 'red', x => 1 / (1 + Math.exp((x - 3.3) * 2.3))], ['grand modèle (≈ 70 Md)', 'blue', x => 1 / (1 + Math.exp((x - 2.7) * 2.3))]] },
   passk: { x: [1, 16], y: [0, 1.05], xl: 'nombre d’essais k', yl: 'taux de réussite (pass@k)', ser: [
     ['p = 0,15 par essai', 'blue', x => 1 - Math.pow(0.85, x)], ['p = 0,05 par essai', 'dark', x => 1 - Math.pow(0.95, x)], ['p = 0,4 par essai', 'red', x => 1 - Math.pow(0.6, x)]] },
 };
@@ -450,4 +457,4 @@ function timeline({ g, S, x0, label, ext }) {
     info: () => `${Math.round(yc)}\n${idx >= 0 ? S.events[idx].y + ' : ' + S.events[idx].n : ''}` };
 }
 
-const KINDS = { timeline, mea, quad, net, fmaps, tensor, landscape, cloud, logbars, chip, cluster, tokens, scatter, attn, pipeline, cycle, bars, curve, mem, conv, patches, detect, grid, arm, kv };
+const KINDS = { llmsim, timeline, mea, quad, net, fmaps, tensor, landscape, cloud, logbars, chip, cluster, tokens, scatter, attn, pipeline, cycle, bars, curve, mem, conv, patches, detect, grid, arm, kv };

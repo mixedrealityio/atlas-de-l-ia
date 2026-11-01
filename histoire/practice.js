@@ -37,5 +37,31 @@ export const PRACTICE = {
    "answer": 2,
    "why": "<p>« Attention is all you need », 2017.</p>"
   }
+ ],
+ "6": [
+  {
+   "q": "Que montre l’histoire du Turc mécanique ?",
+   "choices": [
+    "une apparente machine intelligente pouvait cacher un humain",
+    "une vraie IA aux échecs en 1770",
+    "un ordinateur quantique",
+    "un réseau de neurones"
+   ],
+   "answer": 0,
+   "why": "<p>C’était un canular : un joueur caché pilotait l’automate.</p>"
+  }
+ ],
+ "7": [
+  {
+   "q": "Quelle faiblesse principale des systèmes experts ?",
+   "choices": [
+    "fragilité hors des cas prévus et coût de maintenance",
+    "trop rapides",
+    "trop petits",
+    "sans règles"
+   ],
+   "answer": 0,
+   "why": "<p>Les règles ne couvrent jamais tout.</p>"
+  }
  ]
 };

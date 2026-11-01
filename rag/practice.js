@@ -50,5 +50,18 @@ export const PRACTICE = {
    "answer": 1,
    "why": "<p>Un passage interdit ne doit jamais atteindre le contexte du modèle.</p>"
   }
+ ],
+ "8": [
+  {
+   "q": "À quoi sert la recherche hybride ?",
+   "choices": [
+    "combiner mots-clés et vecteurs",
+    "supprimer les documents",
+    "quantifier",
+    "générer des images"
+   ],
+   "answer": 0,
+   "why": "<p>Chaque méthode retrouve ce que l’autre rate.</p>"
+  }
  ]
 };

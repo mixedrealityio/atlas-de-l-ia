@@ -221,5 +221,132 @@ export const SPECS = [
    }
   ],
   "x0": 160
+ },
+ {
+  "key": "automates",
+  "title": "Des mythes aux automates",
+  "sub": "le rêve de la vie artificielle",
+  "kind": "pipeline",
+  "per": 3,
+  "bw": 2.3,
+  "gap": 0.8,
+  "y": 1.4,
+  "stages": [
+   {
+    "n": "Mythes",
+    "s": "Talos, golem"
+   },
+   {
+    "n": "Automates antiques",
+    "s": "Héron d’Alexandrie",
+    "pal": "blue"
+   },
+   {
+    "n": "Automates de cour",
+    "s": "Vaucanson, 1739",
+    "pal": "blue"
+   },
+   {
+    "n": "Le Turc mécanique",
+    "s": "1770, un joueur caché",
+    "pal": "red"
+   },
+   {
+    "n": "Fiction",
+    "s": "Frankenstein 1818, R.U.R. 1920",
+    "pal": "blue"
+   },
+   {
+    "n": "Calcul",
+    "s": "Babbage, Turing",
+    "pal": "red"
+   }
+  ],
+  "x0": 200
+ },
+ {
+  "key": "symbolique",
+  "title": "L’ère symbolique",
+  "sub": "des règles écrites à la main",
+  "kind": "pipeline",
+  "per": 3,
+  "bw": 2.3,
+  "gap": 0.8,
+  "y": 1.4,
+  "stages": [
+   {
+    "n": "Logic Theorist",
+    "s": "1956 : démontre des théorèmes",
+    "pal": "blue"
+   },
+   {
+    "n": "Résolveur général",
+    "s": "1957 : planifier par buts",
+    "pal": "blue"
+   },
+   {
+    "n": "Prolog",
+    "s": "1972 : programmer en logique"
+   },
+   {
+    "n": "Systèmes experts",
+    "s": "MYCIN, XCON",
+    "pal": "red"
+   },
+   {
+    "n": "Cyc",
+    "s": "1984 : encoder le bon sens",
+    "pal": "red"
+   },
+   {
+    "n": "Limite",
+    "s": "fragile, coûteux à maintenir",
+    "pal": "red"
+   }
+  ],
+  "x0": 240
+ },
+ {
+  "key": "carburant",
+  "title": "Données et calcul : le carburant",
+  "sub": "l’infrastructure qui change l’échelle",
+  "kind": "pipeline",
+  "per": 3,
+  "bw": 2.3,
+  "gap": 0.8,
+  "y": 1.4,
+  "stages": [
+   {
+    "n": "Loi de Moore",
+    "s": "1965 : transistors doublés",
+    "pal": "blue"
+   },
+   {
+    "n": "Grappes de serveurs",
+    "s": "MapReduce 2004, Hadoop, Spark",
+    "pal": "blue"
+   },
+   {
+    "n": "Cloud",
+    "s": "calcul à la demande",
+    "pal": "blue"
+   },
+   {
+    "n": "GPU",
+    "s": "calcul parallèle",
+    "pal": "red"
+   },
+   {
+    "n": "TPU",
+    "s": "puce dédiée de Google, 2016",
+    "pal": "red"
+   },
+   {
+    "n": "Loi de Huang",
+    "s": "affirmation de NVIDIA : progrès des GPU plus rapide",
+    "pal": "dark"
+   }
+  ],
+  "x0": 280
  }
 ];

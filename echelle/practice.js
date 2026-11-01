@@ -37,5 +37,18 @@ export const PRACTICE = {
    "answer": 0,
    "why": "<p>Chaque jeton produit est une étape de calcul supplémentaire.</p>"
   }
+ ],
+ "7": [
+  {
+   "q": "Que signifie « échelle inversée » ?",
+   "choices": [
+    "des tâches où un modèle plus grand est moins bon",
+    "un modèle à l’envers",
+    "un GPU lent",
+    "un vocabulaire réduit"
+   ],
+   "answer": 0,
+   "why": "<p>Certaines tâches se dégradent quand le modèle grossit.</p>"
+  }
  ]
 };

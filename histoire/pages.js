@@ -125,6 +125,69 @@ export const PAGES = [
   "look": {},
   "scene": "frise",
   "fig": ""
+ },
+ {
+  "kicker": "25.6",
+  "title": "Avant l’informatique",
+  "sub": "mythes et automates",
+  "body": "\n    <p class=\"lede\">Le rêve d’êtres artificiels est très ancien : Talos le géant de bronze, le golem, les automates des horlogers.</p><ul class=\"rules\"><li><b>Vaucanson</b> (1739) : un canard mécanique qui semble digérer.</li><li><b>Le Turc mécanique</b> (1770) : prétendu automate joueur d’échecs, en réalité manœuvré par un joueur caché.</li><li><b>Fiction</b> : <i>Frankenstein</i> (1818) ; <i>R.U.R.</i> (1920) invente le mot « robot ».</li></ul><p>Ces récits annoncent déjà les débats actuels : imitation ou compréhension ? Qui est responsable d’une créature artificielle ?</p>",
+  "cam": {
+   "target": [
+    200,
+    1.8,
+    0
+   ],
+   "az": 8,
+   "el": 7,
+   "dist": 26,
+   "auto": true
+  },
+  "lit": "automates",
+  "look": {},
+  "scene": "automates",
+  "fig": ""
+ },
+ {
+  "kicker": "25.7",
+  "title": "L’ère symbolique",
+  "sub": "la connaissance par règles",
+  "body": "\n    <p class=\"lede\">De 1956 aux années 1980, l’IA dominante écrit des <b>règles</b> et du raisonnement logique.</p><ul class=\"rules\"><li><b>Démonstration automatique</b> : Logic Theorist (1956).</li><li><b>Systèmes experts</b> : MYCIN (diagnostic), XCON (configuration chez DEC).</li><li><b>Cyc</b> (1984) : encoder à la main le sens commun.</li></ul><p>Forces : lisibilité, explications. Faiblesses : <b>fragilité</b> hors des cas prévus et coût de maintenance. Elles ont mené au second hiver (page 25.2), mais le symbolique revient en complément (chapitre 24).</p>",
+  "cam": {
+   "target": [
+    240,
+    1.8,
+    0
+   ],
+   "az": 8,
+   "el": 7,
+   "dist": 26,
+   "auto": true
+  },
+  "lit": "symbolique",
+  "look": {},
+  "scene": "symbolique",
+  "fig": ""
+ },
+ {
+  "kicker": "25.8",
+  "title": "Données et calcul",
+  "sub": "le carburant et le moteur",
+  "body": "\n    <p class=\"lede\">Sans infrastructure, pas de deep learning à grande échelle.</p><ul class=\"rules\"><li><b>Traitement distribué</b> : MapReduce (2004), Hadoop, Spark.</li><li><b>Cloud</b> : le calcul loué à la demande.</li><li><b>Accélérateurs</b> : GPU puis TPU (2016) ; chapitres 17 à 19.</li></ul><p>La « loi de Moore » décrit une tendance observée, pas une loi physique, et ses gains ralentissent ; l’IA progresse aussi par le parallélisme et les algorithmes.</p>",
+  "cam": {
+   "target": [
+    280,
+    1.8,
+    0
+   ],
+   "az": 8,
+   "el": 7,
+   "dist": 26,
+   "auto": true
+  },
+  "lit": "carburant",
+  "look": {},
+  "scene": "carburant",
+  "fig": ""
  }
 ];
 export const PLATES = {
@@ -132,5 +195,8 @@ export const PLATES = {
   precurseurs: { text: "Avant les ordinateurs, la logique avait formalisé le raisonnement ; Turing a défini ce qu’une machine peut calculer ; McCulloch et Pitts ont proposé un modèle mathématique de neurone ; Rosenblatt en a fait une machine qui apprend.", facts: () => [["1936", "machine universelle de Turing"], ["1943", "premier neurone formel"], ["1958", "perceptron"]] },
   hivers: { text: "Chaque hiver suit le même schéma : des promesses disproportionnées, des résultats en deçà, une coupe des financements, puis des années où des chercheurs persévèrent jusqu’à une idée ou une ressource nouvelle (réseaux multicouches, données, GPU).", facts: () => [["1er hiver", "limites du perceptron, rapport Lighthill"], ["2e hiver", "systèmes experts coûteux et fragiles"]] },
   renaissance: { text: "En 2012, AlexNet a gagné le concours ImageNet avec une avance nette sur les méthodes classiques. Elle réunissait de grandes quantités d’images étiquetées, le calcul parallèle de deux GPU et des algorithmes de réseaux profonds éprouvés. Tout le domaine a basculé.", facts: () => [["ImageNet", "≈ 1,2 million d’images d’entraînement"], ["AlexNet", "2 GPU, ≈ 60 millions de paramètres"], ["effet", "le deep learning devient la norme"]] },
-  langage: { text: "Les réseaux récurrents ont mené au mécanisme d’attention, puis au transformeur (2017) qui supprime la récurrence. Le pré-entraînement sur d’immenses textes (2018), l’augmentation d’échelle (2020) et l’alignement par préférences ont donné les assistants de 2022.", facts: () => [["2017", "« Attention is all you need »"], ["2018", "BERT (encodeur), GPT (décodeur)"], ["2022", "assistants grand public"]] }
+  langage: { text: "Les réseaux récurrents ont mené au mécanisme d’attention, puis au transformeur (2017) qui supprime la récurrence. Le pré-entraînement sur d’immenses textes (2018), l’augmentation d’échelle (2020) et l’alignement par préférences ont donné les assistants de 2022.", facts: () => [["2017", "« Attention is all you need »"], ["2018", "BERT (encodeur), GPT (décodeur)"], ["2022", "assistants grand public"]] },
+  automates: { text: "Le désir de créer des êtres artificiels précède l’informatique : mythes (le géant de bronze Talos, le golem), automates mécaniques (canard de Vaucanson, 1739), faux automates comme le Turc joueur d’échecs (1770, un humain caché à l’intérieur), fiction (Frankenstein, 1818 ; la pièce R.U.R. de Čapek, 1920, qui donne le mot « robot »), puis la calculabilité.", facts: () => [["Vaucanson", "canard automate, 1739"], ["Turc mécanique", "canular, 1770"], ["mot « robot »", "Čapek, 1920"]] },
+  symbolique: { text: "L’IA symbolique (GOFAI) représente la connaissance par des règles et de la logique : démonstrateurs de théorèmes (Newell et Simon), langage Prolog, systèmes experts comme MYCIN (diagnostic d’infections bactériennes) ou XCON (configuration d’ordinateurs), projet Cyc d’encodage du sens commun. Elle brillait sur des domaines clos, mais restait fragile hors des cas prévus.", facts: () => [["MYCIN", "années 1970, diagnostic"], ["Cyc", "1984, bon sens encodé"], ["défaut", "goulot d’acquisition des connaissances"]] },
+  carburant: { text: "Trois infrastructures ont rendu l’échelle possible : le traitement distribué de données (MapReduce, Hadoop, Spark), le cloud, et les accélérateurs (GPU, TPU). La « loi de Moore » (1965) décrit le doublement du nombre de transistors ; la « loi de Huang » est une affirmation du dirigeant de NVIDIA selon laquelle les performances des GPU progressent plus vite, à prendre comme un argument commercial.", facts: () => [["MapReduce", "Google, 2004"], ["TPU", "2016"], ["« loi de Huang »", "affirmation commerciale"]] }
 };

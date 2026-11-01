@@ -146,6 +146,27 @@ export const PAGES = [
   "look": {},
   "scene": "gnn",
   "fig": ""
+ },
+ {
+  "kicker": "27.7",
+  "title": "RWKV, RetNet, réseaux liquides",
+  "sub": "d’autres pistes",
+  "body": "\n    <p class=\"lede\">Les alternatives au transformeur ont un point commun : un <b>état de taille fixe</b> et un coût proportionnel à la longueur.</p><ul class=\"rules\"><li><b>RWKV</b> (2023) : un RNN que l’on entraîne en parallèle comme un transformeur.</li><li><b>RetNet</b> (2023) : parallèle à l’entraînement, récurrent à l’inférence.</li><li><b>xLSTM</b> (2024) : un LSTM remis au goût du jour.</li><li><b>Réseaux liquides</b> : neurones à équations différentielles.</li></ul><p>Statut : prometteuses, peu déployées.</p>",
+  "cam": {
+   "target": [
+    240,
+    1.8,
+    0
+   ],
+   "az": 8,
+   "el": 7,
+   "dist": 26,
+   "auto": true
+  },
+  "lit": "alt",
+  "look": {},
+  "scene": "alt",
+  "fig": ""
  }
 ];
 export const PLATES = {
@@ -154,5 +175,6 @@ export const PLATES = {
   cout: { text: "L’attention compare chaque jeton à tous les autres : son coût croît comme le carré de la longueur. Les modèles récurrents ou à état ont un coût proportionnel à la longueur, mais retiennent moins bien. Tout l’enjeu est d’obtenir la qualité de l’attention au coût du linéaire.", facts: () => [["attention", "coût ∝ n²"], ["modèle à état", "coût ∝ n"], ["astuce", "FlashAttention : même calcul, moins de mémoire"]] },
   moe: { text: "Dans un mélange d’experts, le MLP d’un bloc est remplacé par plusieurs experts et un routeur. Chaque jeton n’en traverse que deux ou quelques-uns : le modèle a beaucoup de paramètres au total mais peu d’actifs par jeton, donc un coût de calcul réduit.", facts: () => [["exemple", "Mixtral 8×7B : ≈ 47 Md au total, ≈ 13 Md actifs"], ["coût", "toute la mémoire reste nécessaire"]] },
   ssm: { text: "Les modèles à espace d’état (comme Mamba, 2023) gardent un état de taille fixe mis à jour de façon sélective selon l’entrée, avec un coût linéaire en longueur et un calcul parallélisable à l’entraînement. Des modèles hybrides les mélangent avec des couches d’attention.", facts: () => [["avantage", "contextes très longs, peu de mémoire"], ["limite", "rappel exact moins fiable"]] },
-  gnn: { text: "Un réseau de graphes traite des données faites de nœuds et de liens (molécules, réseaux sociaux, routes). À chaque tour, chaque nœud reçoit des messages de ses voisins, les agrège et met à jour son état.", facts: () => [["usages", "molécules, routes, recommandations"], ["principe", "passage de messages"]] }
+  gnn: { text: "Un réseau de graphes traite des données faites de nœuds et de liens (molécules, réseaux sociaux, routes). À chaque tour, chaque nœud reçoit des messages de ses voisins, les agrège et met à jour son état.", facts: () => [["usages", "molécules, routes, recommandations"], ["principe", "passage de messages"]] },
+  alt: { text: "Plusieurs familles cherchent la qualité du transformeur avec un coût linéaire : RWKV (un RNN que l’on entraîne en parallèle, 2023), RetNet (rétention récurrente), xLSTM (2024), et des réseaux « liquides » dont les neurones suivent une équation différentielle (MIT, puis la société Liquid AI). Aucune n’a encore détrôné le transformeur.", facts: () => [["but", "contexte long à faible coût"], ["statut", "recherche et déploiements ciblés"]] }
 };

@@ -172,6 +172,64 @@ export const SPECS = [
   "x0": 120
  },
  {
+  "key": "emploi",
+  "title": "Emploi et élasticité",
+  "sub": "un modèle volontairement simple",
+  "kind": "curve",
+  "fn": "emploi",
+  "x0": 160
+ },
+ {
+  "key": "amdahl",
+  "title": "La loi d’Amdahl du développement",
+  "sub": "seule une partie du travail accélère",
+  "kind": "curve",
+  "fn": "amdahl",
+  "x0": 200
+ },
+ {
+  "key": "confond",
+  "title": "Pourquoi les chiffres actuels sont ambigus",
+  "sub": "plusieurs causes en même temps",
+  "kind": "pipeline",
+  "per": 3,
+  "bw": 2.3,
+  "gap": 0.8,
+  "y": 1.4,
+  "stages": [
+   {
+    "n": "Fin de l’argent bon marché",
+    "s": "hausse des taux, 2022–2024",
+    "pal": "red"
+   },
+   {
+    "n": "Sur-embauche post-2020",
+    "s": "correction",
+    "pal": "red"
+   },
+   {
+    "n": "Réorientation des budgets",
+    "s": "vers l’IA elle-même",
+    "pal": "blue"
+   },
+   {
+    "n": "Effet réel de l’IA",
+    "s": "tâches automatisées",
+    "pal": "blue"
+   },
+   {
+    "n": "Cycle du secteur",
+    "s": "se répète"
+   },
+   {
+    "n": "Conclusion",
+    "s": "difficile d’isoler l’IA",
+    "pal": "red"
+   }
+  ],
+  "x0": 240
+ },
+ {
   "key": "fossesdurables",
   "title": "Des fossés durables",
   "sub": "ce qui protège un ingénieur",
@@ -212,6 +270,6 @@ export const SPECS = [
     "pal": "red"
    }
   ],
-  "x0": 160
+  "x0": 280
  }
 ];

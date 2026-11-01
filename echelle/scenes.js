@@ -127,5 +127,47 @@ export const SPECS = [
    }
   ],
   "x0": 200
+ },
+ {
+  "key": "grokking",
+  "title": "Grokking, échelle inversée, recherche",
+  "sub": "des surprises et des méthodes",
+  "kind": "pipeline",
+  "per": 3,
+  "bw": 2.3,
+  "gap": 0.8,
+  "y": 1.4,
+  "stages": [
+   {
+    "n": "Grokking",
+    "s": "généralisation soudaine après un long surapprentissage",
+    "pal": "red"
+   },
+   {
+    "n": "Échelle inversée",
+    "s": "plus gros peut être moins bon",
+    "pal": "red"
+   },
+   {
+    "n": "Modèle de récompense de processus",
+    "s": "noter chaque étape",
+    "pal": "blue"
+   },
+   {
+    "n": "Recherche arborescente",
+    "s": "explorer plusieurs raisonnements",
+    "pal": "blue"
+   },
+   {
+    "n": "Autocohérence",
+    "s": "voter sur plusieurs chaînes",
+    "pal": "blue"
+   },
+   {
+    "n": "Idée",
+    "s": "vérifier plus que générer"
+   }
+  ],
+  "x0": 240
  }
 ];

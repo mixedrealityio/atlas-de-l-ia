@@ -331,5 +331,47 @@ export const SPECS = [
    }
   ],
   "x0": 240
+ },
+ {
+  "key": "ragplus",
+  "title": "RAG avancé et mémoire",
+  "sub": "retrouver mieux, se souvenir",
+  "kind": "pipeline",
+  "per": 3,
+  "bw": 2.3,
+  "gap": 0.8,
+  "y": 1.4,
+  "stages": [
+   {
+    "n": "Recherche hybride",
+    "s": "mots-clés BM25 + vecteurs",
+    "pal": "blue"
+   },
+   {
+    "n": "Reclassement",
+    "s": "un modèle réordonne",
+    "pal": "blue"
+   },
+   {
+    "n": "HyDE",
+    "s": "chercher avec un document imaginé",
+    "pal": "blue"
+   },
+   {
+    "n": "GraphRAG",
+    "s": "graphe d’entités et résumés",
+    "pal": "red"
+   },
+   {
+    "n": "Contexte très long",
+    "s": "1 M de jetons, coûteux"
+   },
+   {
+    "n": "Mémoire d’agent",
+    "s": "épisodique, sémantique, procédurale",
+    "pal": "red"
+   }
+  ],
+  "x0": 280
  }
 ];

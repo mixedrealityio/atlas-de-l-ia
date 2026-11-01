@@ -25,6 +25,32 @@ export const PRACTICE = {
    "why": "<p>Le volume augmente ; l’attention humaine reste limitée.</p>"
   }
  ],
+ "6": [
+  {
+   "q": "Si ε = 0,5 et que la productivité est multipliée par 4, que prédit le modèle simple pour l’emploi ?",
+   "choices": [
+    "il baisse de moitié (4^(−0,5) = 0,5)",
+    "il double",
+    "il ne change pas",
+    "il est multiplié par 4"
+   ],
+   "answer": 0,
+   "why": "<p>Emploi ∝ m^(ε−1) = 4^(−0,5) = 0,5 : la demande ne suit pas assez la baisse de prix. Hypothèses fortes, à lire avec la page.</p>"
+  }
+ ],
+ "7": [
+  {
+   "q": "Pourquoi la loi d’Amdahl limite-t-elle le gain global ?",
+   "choices": [
+    "la part du travail non accélérée reste inchangée",
+    "l’IA est trop lente",
+    "les ingénieurs refusent l’outil",
+    "le code est trop court"
+   ],
+   "answer": 0,
+   "why": "<p>Avec 60 % de travail automatisable, le gain maximal est 1/(1−0,6) = 2,5.</p>"
+  }
+ ],
  "5": [
   {
    "q": "Qu’est-ce qui constitue un fossé durable pour un ingénieur ?",

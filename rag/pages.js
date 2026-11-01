@@ -167,6 +167,27 @@ export const PAGES = [
   "look": {},
   "scene": "prod",
   "fig": ""
+ },
+ {
+  "kicker": "20.8",
+  "title": "RAG avancé et mémoire",
+  "sub": "HyDE, GraphRAG, contexte long",
+  "body": "\n    <p class=\"lede\">Un RAG de base échoue quand la question est vague, globale, ou répartie sur plusieurs documents.</p><ul class=\"rules\"><li><b>Hybride + reclassement</b> : mots-clés et vecteurs, puis réordonner.</li><li><b>HyDE</b> : générer une réponse hypothétique et chercher avec elle.</li><li><b>GraphRAG</b> : un graphe d’entités et des résumés pour les questions de synthèse.</li><li><b>Contexte très long</b> : tout mettre dans le prompt est simple mais coûteux et parfois moins précis que de bien retrouver.</li><li><b>Mémoire d’agent</b> : épisodique (ce qui s’est passé), sémantique (faits), procédurale (savoir-faire).</li></ul>",
+  "cam": {
+   "target": [
+    280,
+    1.8,
+    0
+   ],
+   "az": 8,
+   "el": 7,
+   "dist": 26,
+   "auto": true
+  },
+  "lit": "ragplus",
+  "look": {},
+  "scene": "ragplus",
+  "fig": ""
  }
 ];
 export const PLATES = {
@@ -176,5 +197,6 @@ export const PLATES = {
   agentique: { text: "Un RAG « agentique » ne cherche pas une seule fois. Il décompose la question, cherche, lit, juge si les passages suffisent, et reformule ou cherche ailleurs sinon. Chaque tour coûte du temps et des jetons, d’où un nombre de tours borné.", facts: () => [["bornes", "tours, jetons, durée"], ["gain", "questions à plusieurs étapes"], ["risque", "boucler sans nouvelle information"]] },
   wiki: { text: "Variante décrite début 2026 : au lieu de retrouver des passages bruts à chaque question, un LLM écrit et tient à jour un wiki de pages liées entre elles (un index, des résumés, des renvois). La connaissance est compilée une fois, lisible par un humain, versionnable. Convient aux petits corpus.", facts: () => [["avantage", "lisible, sans base vectorielle"], ["limite", "petits corpus, coût d’écriture"], ["risque", "une erreur écrite est relue partout"]] },
   voix: { text: "Une conversation vocale naturelle demande de répondre en moins d’une seconde environ. Le budget se partage entre détection de fin de parole, reconnaissance, recherche, premier jeton du LLM et premier son. La recherche, qui dépasse facilement le budget, doit se faire en parallèle ou en cache.", facts: () => [["budget cible", "≈ 800 ms jusqu’au premier son"], ["mesure", "médiane et percentile 95"], ["interruption", "barge-in : couper la voix si on parle"]] },
-  prod: { text: "Un RAG de démonstration réussit sur dix questions. En production, il faut mesurer en continu (jeu de questions de référence), respecter les droits d’accès, garder l’index à jour, observer les échecs, maîtriser les coûts, et traiter les documents comme non fiables.", facts: () => [["jeu de référence", "questions + passages attendus"], ["droits", "filtrer à la recherche, pas après"], ["dérive", "silencieuse : à surveiller"]] }
+  prod: { text: "Un RAG de démonstration réussit sur dix questions. En production, il faut mesurer en continu (jeu de questions de référence), respecter les droits d’accès, garder l’index à jour, observer les échecs, maîtriser les coûts, et traiter les documents comme non fiables.", facts: () => [["jeu de référence", "questions + passages attendus"], ["droits", "filtrer à la recherche, pas après"], ["dérive", "silencieuse : à surveiller"]] },
+  ragplus: { text: "Au-delà du RAG de base : la recherche hybride combine mots-clés et vecteurs, un reclassement réordonne les résultats, HyDE cherche avec un document hypothétique généré, GraphRAG (Microsoft, 2024) construit un graphe d’entités et des résumés par communautés pour les questions globales. Les contextes très longs ne remplacent pas toujours le RAG (coût, précision), et la mémoire d’un agent se divise en épisodique, sémantique et procédurale.", facts: () => [["HyDE", "Gao et collègues, 2022"], ["GraphRAG", "Microsoft, 2024"], ["mémoire d’agent", "MemGPT, 2023"]] }
 };

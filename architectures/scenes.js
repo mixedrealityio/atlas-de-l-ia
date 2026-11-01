@@ -175,5 +175,48 @@ export const SPECS = [
    }
   ],
   "x0": 200
+ },
+ {
+  "key": "alt",
+  "title": "Autres architectures émergentes",
+  "sub": "RWKV, RetNet, xLSTM, réseaux liquides",
+  "kind": "pipeline",
+  "per": 3,
+  "bw": 2.3,
+  "gap": 0.8,
+  "y": 1.4,
+  "stages": [
+   {
+    "n": "RWKV",
+    "s": "RNN entraînable comme un transformeur, 2023",
+    "pal": "blue"
+   },
+   {
+    "n": "RetNet",
+    "s": "« rétention » récurrente, 2023",
+    "pal": "blue"
+   },
+   {
+    "n": "xLSTM",
+    "s": "LSTM modernisé, 2024",
+    "pal": "blue"
+   },
+   {
+    "n": "Réseaux liquides",
+    "s": "neurones à équation différentielle",
+    "pal": "red"
+   },
+   {
+    "n": "But commun",
+    "s": "coût linéaire, mémoire constante",
+    "pal": "red"
+   },
+   {
+    "n": "Statut",
+    "s": "prometteur, peu déployé",
+    "pal": "dark"
+   }
+  ],
+  "x0": 240
  }
 ];
