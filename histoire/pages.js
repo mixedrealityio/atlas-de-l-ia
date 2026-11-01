@@ -188,6 +188,48 @@ export const PAGES = [
   "look": {},
   "scene": "carburant",
   "fig": ""
+ },
+ {
+  "kicker": "25.9",
+  "title": "Les pionniers",
+  "sub": "des visages derrière les dates",
+  "body": "<ul class=\"rules\"><li><b>Alan Turing</b> (1912-1954) : la machine universelle, puis le jeu de l’imitation (1950).</li><li><b>John McCarthy</b> : le mot « intelligence artificielle » (1956), le langage LISP.</li><li><b>Allen Newell et Herbert Simon</b> : le Logic Theorist et le General Problem Solver ; Simon reçoit aussi le Nobel d’économie (1978).</li><li><b>Frank Rosenblatt</b> : le perceptron (1958), ancêtre des réseaux de neurones.</li></ul>",
+  "cam": {
+   "target": [
+    320,
+    1.8,
+    0
+   ],
+   "az": 8,
+   "el": 7,
+   "dist": 26,
+   "auto": true
+  },
+  "lit": "pionniers",
+  "look": {},
+  "scene": "pionniers",
+  "fig": ""
+ },
+ {
+  "kicker": "25.10",
+  "title": "Les pionniers (suite)",
+  "sub": "de Minsky aux prix Nobel",
+  "body": "<ul class=\"rules\"><li><b>Marvin Minsky</b> : le laboratoire d’IA du MIT et « La société de l’esprit » (1986).</li><li><b>Hinton, LeCun, Bengio</b> : prix Turing 2018 ; Hinton reçoit le Nobel de physique 2024 avec John Hopfield.</li><li><b>Karen Spärck Jones</b> : la pondération TF-IDF (1972), base de la recherche documentaire.</li><li><b>Fei-Fei Li</b> : ImageNet (2009), qui a rendu possible la renaissance de 2012.</li></ul><p>L’histoire retient surtout des hommes ; bien des pionnières ont posé des briques essentielles.</p>",
+  "cam": {
+   "target": [
+    320,
+    1.8,
+    0
+   ],
+   "az": 8,
+   "el": 7,
+   "dist": 26,
+   "auto": true
+  },
+  "lit": "pionniers",
+  "look": {},
+  "scene": "pionniers",
+  "fig": ""
  }
 ];
 export const PLATES = {
@@ -198,5 +240,6 @@ export const PLATES = {
   langage: { text: "Les réseaux récurrents ont mené au mécanisme d’attention, puis au transformeur (2017) qui supprime la récurrence. Le pré-entraînement sur d’immenses textes (2018), l’augmentation d’échelle (2020) et l’alignement par préférences ont donné les assistants de 2022.", facts: () => [["2017", "« Attention is all you need »"], ["2018", "BERT (encodeur), GPT (décodeur)"], ["2022", "assistants grand public"]] },
   automates: { text: "Le désir de créer des êtres artificiels précède l’informatique : mythes (le géant de bronze Talos, le golem), automates mécaniques (canard de Vaucanson, 1739), faux automates comme le Turc joueur d’échecs (1770, un humain caché à l’intérieur), fiction (Frankenstein, 1818 ; la pièce R.U.R. de Čapek, 1920, qui donne le mot « robot »), puis la calculabilité.", facts: () => [["Vaucanson", "canard automate, 1739"], ["Turc mécanique", "canular, 1770"], ["mot « robot »", "Čapek, 1920"]] },
   symbolique: { text: "L’IA symbolique (GOFAI) représente la connaissance par des règles et de la logique : démonstrateurs de théorèmes (Newell et Simon), langage Prolog, systèmes experts comme MYCIN (diagnostic d’infections bactériennes) ou XCON (configuration d’ordinateurs), projet Cyc d’encodage du sens commun. Elle brillait sur des domaines clos, mais restait fragile hors des cas prévus.", facts: () => [["MYCIN", "années 1970, diagnostic"], ["Cyc", "1984, bon sens encodé"], ["défaut", "goulot d’acquisition des connaissances"]] },
-  carburant: { text: "Trois infrastructures ont rendu l’échelle possible : le traitement distribué de données (MapReduce, Hadoop, Spark), le cloud, et les accélérateurs (GPU, TPU). La « loi de Moore » (1965) décrit le doublement du nombre de transistors ; la « loi de Huang » est une affirmation du dirigeant de NVIDIA selon laquelle les performances des GPU progressent plus vite, à prendre comme un argument commercial.", facts: () => [["MapReduce", "Google, 2004"], ["TPU", "2016"], ["« loi de Huang »", "affirmation commerciale"]] }
+  carburant: { text: "Trois infrastructures ont rendu l’échelle possible : le traitement distribué de données (MapReduce, Hadoop, Spark), le cloud, et les accélérateurs (GPU, TPU). La « loi de Moore » (1965) décrit le doublement du nombre de transistors ; la « loi de Huang » est une affirmation du dirigeant de NVIDIA selon laquelle les performances des GPU progressent plus vite, à prendre comme un argument commercial.", facts: () => [["MapReduce", "Google, 2004"], ["TPU", "2016"], ["« loi de Huang »", "affirmation commerciale"]] },
+  pionniers: { text: "Alan Turing propose en 1950 le jeu de l’imitation. John McCarthy organise l’atelier de Dartmouth (1956) et invente le langage LISP. Allen Newell et Herbert Simon écrivent le Logic Theorist, qui démontre des théorèmes. Frank Rosenblatt construit le perceptron, premier réseau qui apprend. Marvin Minsky, cofondateur du laboratoire d’IA du MIT, défend une vision de l’esprit comme société d’agents simples. Geoffrey Hinton, Yann LeCun et Yoshua Bengio reçoivent le prix Turing 2018 pour l’apprentissage profond.", facts: () => [["1956", "Dartmouth : McCarthy, Minsky, Shannon, Rochester"], ["2018", "prix Turing de l’apprentissage profond"]] }
 };

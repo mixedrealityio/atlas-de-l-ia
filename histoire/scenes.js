@@ -348,5 +348,47 @@ export const SPECS = [
    }
   ],
   "x0": 280
+ },
+ {
+  "key": "pionniers",
+  "title": "Les pionniers",
+  "sub": "quelques noms qui reviennent",
+  "kind": "pipeline",
+  "per": 3,
+  "bw": 2.3,
+  "gap": 0.8,
+  "y": 1.4,
+  "stages": [
+   {
+    "n": "Alan Turing",
+    "s": "1950 : « les machines peuvent-elles penser ? »",
+    "pal": "blue"
+   },
+   {
+    "n": "John McCarthy",
+    "s": "1956 : le mot « intelligence artificielle »",
+    "pal": "blue"
+   },
+   {
+    "n": "Newell et Simon",
+    "s": "Logic Theorist, résolveur général",
+    "pal": "blue"
+   },
+   {
+    "n": "Frank Rosenblatt",
+    "s": "le perceptron, 1958",
+    "pal": "red"
+   },
+   {
+    "n": "Marvin Minsky",
+    "s": "MIT, « La société de l’esprit »"
+   },
+   {
+    "n": "Hinton, LeCun, Bengio",
+    "s": "prix Turing 2018",
+    "pal": "red"
+   }
+  ],
+  "x0": 320
  }
 ];

@@ -63,5 +63,18 @@ export const PRACTICE = {
    "answer": 0,
    "why": "<p>Les règles ne couvrent jamais tout.</p>"
   }
+ ],
+ "9": [
+  {
+   "q": "Qui a proposé en 1950 le « jeu de l’imitation » ?",
+   "choices": [
+    "Alan Turing",
+    "John McCarthy",
+    "Marvin Minsky",
+    "Frank Rosenblatt"
+   ],
+   "answer": 0,
+   "why": "<p>Turing, dans « Computing Machinery and Intelligence ».</p>"
+  }
  ]
 };

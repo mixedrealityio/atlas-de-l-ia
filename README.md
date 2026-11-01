@@ -1,6 +1,6 @@
 # Atlas de l’IA
 
-Un manuel interactif en 3D pour comprendre en détail comment fonctionne une IA : 60 chapitres et 380 pages, en français. Chaque page a une figure animée que l’on peut tourner et décomposer, et la plupart ont un exercice.
+Un manuel interactif en 3D pour comprendre en détail comment fonctionne une IA : 76 chapitres et 456 pages, en français. Chaque page a une figure animée que l’on peut tourner et décomposer, et la plupart ont un exercice.
 
 | N° | Chapitre | Contenu |
 |---|---|---|
@@ -63,7 +63,23 @@ Un manuel interactif en 3D pour comprendre en détail comment fonctionne une IA 
 | 57 | Ce que contient un fichier de modèle | poids, quantification, et pourquoi tout internet n’y est pas |
 | 58 | Pourquoi personne ne sait ce qui se passe dans un modèle | tout est visible, presque rien n’est compris |
 | 59 | L’intelligence mécanique | comprendre comment les choses fonctionnent, et ce que l’IA en fait |
-| 60 | Annexes | glossaire, chronologie, jeux de données, acteurs, parcours de lecture, ressources |
+| 60 | Qu’est-ce que l’IA ? | définitions, familles et carte de l’atlas |
+| 61 | Les outils du praticien | frameworks, bibliothèques et moteurs de service |
+| 62 | IA et calcul quantique | mythe ou réalité ? |
+| 63 | Transports et mobilité | véhicules autonomes, logistique, villes |
+| 64 | Agriculture et alimentation | précision, élevage, prévisions |
+| 65 | Climat et environnement | prévoir, réduire, mesurer son empreinte |
+| 66 | Vie privée et surveillance | données, profilage, reconnaissance faciale |
+| 67 | Armes autonomes et IA militaire | décider de tirer sans humain ? |
+| 68 | Éthique de l’IA | principes, dilemmes et passage à l’acte |
+| 69 | Démocratie et droits humains | information, décisions publiques, libertés |
+| 70 | Les voix critiques | chercheuses, mouvements et alternatives |
+| 71 | Transhumanisme et post-humanité | augmenter l’humain, fusionner avec la machine ? |
+| 72 | L’IA au service du bien commun | réussites, conditions et utopies |
+| 73 | L’IA, le cosmos et le Grand Filtre | où sont les autres civilisations ? |
+| 74 | IA, religions et spiritualité | âme, création et quête de sens |
+| 75 | Conclusion : l’IA, miroir de l’humanité | synthèse et suite du voyage |
+| 76 | Annexes | glossaire, chronologie, jeux de données, acteurs, parcours de lecture, ressources |
 
 Le moteur de rendu (three.js, pages qui se tournent, figures décomposables) vient d’[Atlas of Physics](https://github.com/nathanliow/atlas-of-physics) de Nathan Liow, sous licence MIT, conservée dans `LICENSE`. Les figures de l’atlas de l’IA sont construites par `engine/iakit.js` à partir de petits dictionnaires de données.
 
