@@ -275,5 +275,91 @@ export const SPECS = [
    }
   ],
   "x0": 240
+ },
+ {
+  "key": "inversion",
+  "title": "La malédiction de l’inversion",
+  "sub": "A → B appris, B → A pas forcément",
+  "kind": "pipeline",
+  "per": 3,
+  "bw": 2.3,
+  "gap": 0.8,
+  "y": 1.4,
+  "stages": [
+   {
+    "n": "Appris",
+    "s": "« la mère de Tom Cruise est Mary Lee Pfeiffer »",
+    "pal": "blue"
+   },
+   {
+    "n": "Question directe",
+    "s": "qui est la mère de Tom Cruise ?",
+    "pal": "blue"
+   },
+   {
+    "n": "Réponse",
+    "s": "Mary Lee Pfeiffer : souvent juste",
+    "pal": "blue"
+   },
+   {
+    "n": "Question inverse",
+    "s": "qui est le fils de Mary Lee Pfeiffer ?",
+    "pal": "red"
+   },
+   {
+    "n": "Réponse",
+    "s": "« je ne sais pas » : souvent",
+    "pal": "red"
+   },
+   {
+    "n": "Explication",
+    "s": "savoir rangé dans un sens",
+    "pal": "red"
+   }
+  ],
+  "x0": 280
+ },
+ {
+  "key": "artefact",
+  "title": "Un artefact à évaluer",
+  "sub": "ce qu’on en déduit",
+  "kind": "pipeline",
+  "per": 3,
+  "bw": 2.3,
+  "gap": 0.8,
+  "y": 1.4,
+  "stages": [
+   {
+    "n": "Constat",
+    "s": "on ne lit pas son savoir",
+    "pal": "red"
+   },
+   {
+    "n": "Conséquence",
+    "s": "on ne déduit pas ses capacités",
+    "pal": "red"
+   },
+   {
+    "n": "Méthode",
+    "s": "mesurer de l’extérieur",
+    "pal": "blue"
+   },
+   {
+    "n": "Tests variés",
+    "s": "reformuler, inverser, combiner",
+    "pal": "blue"
+   },
+   {
+    "n": "Tests adverses",
+    "s": "red teaming",
+    "pal": "blue"
+   },
+   {
+    "n": "En continu",
+    "s": "chaque version, chaque usage",
+    "pal": "blue"
+   }
+  ],
+  "x0": 320
  }
 ];

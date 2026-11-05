@@ -167,6 +167,48 @@ export const PAGES = [
   "look": {},
   "scene": "enjeux",
   "fig": ""
+ },
+ {
+  "kicker": "58.8",
+  "title": "Une base de connaissances étrange",
+  "sub": "la malédiction de l’inversion",
+  "body": "\n    <p class=\"lede\">Un modèle se comporte un peu comme une <b>base de connaissances</b> : il sait que la mère de Tom Cruise s’appelle Mary Lee Pfeiffer. Mais demandez-lui qui est le fils de Mary Lee Pfeiffer : il répond souvent qu’il ne sait pas.</p><ul class=\"rules\"><li><b>Le constat</b> (Berglund et collègues, 2023) : appris sous la forme « A est B », un fait n’est pas automatiquement disponible sous la forme « B est A ».</li><li><b>Les chiffres</b> : sur des célébrités, GPT-4 retrouvait le parent dans ≈ 79 % des cas, l’enfant à partir du parent dans ≈ 33 %.</li><li><b>La cause probable</b> : la prédiction du mot suivant range le savoir <b>dans le sens où il a été lu</b> ; les célébrités sont citées avec leur mère, rarement l’inverse.</li><li><b>Pas une base de données</b> : les faits sont répartis dans les poids (en bonne partie les couches MLP), sans index ni table qu’on pourrait interroger dans les deux sens.</li></ul><p>Le même modèle inverse sans peine si les deux noms sont <b>dans le contexte</b> : c’est le rappel mémorisé qui est à sens unique, pas le raisonnement. Parades : reformuler les données d’entraînement dans les deux sens, ou fournir le fait par une recherche (chapitre 20).</p>",
+  "cam": {
+   "target": [
+    280,
+    1.8,
+    0
+   ],
+   "az": 8,
+   "el": 7,
+   "dist": 26,
+   "auto": true
+  },
+  "lit": "inversion",
+  "look": {},
+  "scene": "inversion",
+  "fig": ""
+ },
+ {
+  "kicker": "58.9",
+  "title": "Des artefacts à évaluer",
+  "sub": "mesurer faute de comprendre",
+  "body": "\n    <p class=\"lede\">Bilan : des milliards de paramètres répartis dans le réseau, une méthode connue pour les ajuster afin de mieux prédire, mais pas d’explication de la façon dont ils collaborent.</p><ul class=\"rules\"><li>On sait <b>mesurer</b> que l’entraînement marche (la perte baisse, les scores montent), pas <b>pourquoi</b>.</li><li>Le savoir est <b>étrange et imparfait</b> : présent dans un sens, absent dans l’autre, sensible à la formulation.</li><li>Il faut donc traiter un modèle comme un <b>artefact en grande partie inscrutable</b> et développer des <b>évaluations à la hauteur</b> : reformuler, inverser, combiner, attaquer, et recommencer à chaque version (chapitre 31).</li></ul>",
+  "cam": {
+   "target": [
+    320,
+    1.8,
+    0
+   ],
+   "az": 8,
+   "el": 7,
+   "dist": 26,
+   "auto": true
+  },
+  "lit": "artefact",
+  "look": {},
+  "scene": "artefact",
+  "fig": ""
  }
 ];
 export const PLATES = {
@@ -176,5 +218,7 @@ export const PLATES = {
   fidele: { text: "Demander au modèle de s’expliquer donne un texte plausible, pas forcément la vraie cause. Des études (Turpin et collègues, 2023 ; travaux plus récents sur les modèles de raisonnement) montrent que la chaîne de pensée écrite peut omettre le facteur réel qui a influencé la réponse.", facts: () => [["explication", "plausible ≠ fidèle"], ["usage", "indice, pas preuve"]] },
   compris: { text: "Des progrès réels existent : circuits comme les têtes d’induction, mécanismes appris de petits modèles (addition modulaire), extraction de millions de caractéristiques lisibles par des autoencodeurs parcimonieux, et traces de calculs internes dans des modèles de langage (par exemple une planification de la rime avant d’écrire le vers, rapportée en 2025). Ces résultats restent partiels et portent sur des cas choisis.", facts: () => [["acquis", "circuits, caractéristiques, traces"], ["limite", "cas choisis, couverture partielle"]] },
   analogie: { text: "Trois analogies : le cerveau (on observe les neurones sans en déduire la pensée), la machine à vapeur (construite et utilisée avant que la thermodynamique l’explique), la météo (équations connues, comportement complexe). Point commun : une technologie qui fonctionne avant d’être comprise. Différence : on peut tout mesurer dans un modèle, ce qui rend la science possible.", facts: () => [["leçon", "ingénierie d’abord, science ensuite"], ["avantage", "tout est mesurable"]] },
-  enjeux: { text: "Ne pas comprendre limite ce qu’on peut garantir : absence de comportement caché, justification d’une décision, correction ciblée d’un défaut. On compense par des tests, du red teaming, de la surveillance en production, des garde-fous externes, et par la recherche en interprétabilité.", facts: () => [["limite", "pas de garantie formelle"], ["compensation", "tester, surveiller, contenir"]] }
+  enjeux: { text: "Ne pas comprendre limite ce qu’on peut garantir : absence de comportement caché, justification d’une décision, correction ciblée d’un défaut. On compense par des tests, du red teaming, de la surveillance en production, des garde-fous externes, et par la recherche en interprétabilité.", facts: () => [["limite", "pas de garantie formelle"], ["compensation", "tester, surveiller, contenir"]] },
+  inversion: { text: "Un modèle qui a lu « A est le parent de B » répond bien à la question dans ce sens, mais échoue souvent dans l’autre. L’étude de Berglund et collègues (2023) l’a montré sur des faits inventés et sur des célébrités : GPT-4 trouvait la mère d’une célébrité dans environ 79 % des cas, mais l’enfant à partir de la mère dans environ 33 %. Le savoir appris par prédiction du mot suivant est rangé dans le sens où il a été lu.", facts: () => [["sens lu", "réponse fiable"], ["sens inverse", "souvent échoué"]] },
+  artefact: { text: "Puisqu’on ne peut pas lire le savoir d’un modèle dans ses poids, on le traite comme un artefact en grande partie inscrutable et on mesure son comportement de l’extérieur : questions reformulées, inversées ou combinées, tests adverses, évaluations répétées à chaque version et sur ses propres tâches.", facts: () => [["posture", "artefact, pas programme"], ["outil", "évaluations sophistiquées"]] }
 };

@@ -37,5 +37,18 @@ export const PRACTICE = {
    "answer": 0,
    "why": "<p>Elle peut omettre la vraie cause.</p>"
   }
+ ],
+ "8": [
+  {
+   "q": "Un modèle sait que la mère de Tom Cruise est Mary Lee Pfeiffer, mais ne sait pas qui est son fils. Pourquoi ?",
+   "choices": [
+    "le savoir appris est rangé dans le sens où il a été lu",
+    "le modèle ment volontairement",
+    "la question est interdite",
+    "il manque des paramètres"
+   ],
+   "answer": 0,
+   "why": "<p>C’est la malédiction de l’inversion : « A est B » n’entraîne pas « B est A ».</p>"
+  }
  ]
 };
