@@ -40,9 +40,9 @@ export const PRACTICE = {
  ],
  "8": [
   {
-   "q": "Un modèle sait que la mère de Tom Cruise est Mary Lee Pfeiffer, mais ne sait pas qui est son fils. Pourquoi ?",
+   "q": "Il connaît la mère de Tom Cruise, pas le fils de celle-ci. Pourquoi ?",
    "choices": [
-    "le savoir appris est rangé dans le sens où il a été lu",
+    "son savoir est rangé dans le sens lu",
     "le modèle ment volontairement",
     "la question est interdite",
     "il manque des paramètres"

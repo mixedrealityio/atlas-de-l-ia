@@ -67,7 +67,7 @@ export const PAGES = [
   "kicker": "79.3",
   "title": "Le modèle rêve des documents",
   "sub": "ce que fait un modèle de base",
-  "body": "\n    <p class=\"lede\">Un modèle de base, avant affinage, ne répond pas aux questions : il <b>continue des documents</b>.</p><ul class=\"rules\"><li>Lancé seul, il « rêve » des pages web : du code, une fiche produit, un article d’encyclopédie.</li><li>La <b>forme</b> est juste ; certains <b>détails</b> (un numéro ISBN, un prix) sont fabriqués parce qu’ils ont la bonne allure.</li><li>On ne sait pas d’avance ce qui vient de la mémoire et ce qui est inventé : c’est l’<b>hallucination</b> (chapitre 31).</li></ul>",
+  "body": "\n    <p class=\"lede\">Un modèle de base ne répond pas : il <b>continue des documents</b>.</p><ul class=\"rules\"><li>Lancé seul, il « rêve » des pages web : du code, une fiche produit, un article d’encyclopédie.</li><li>La <b>forme</b> est juste ; certains <b>détails</b> (un numéro ISBN, un prix) sont fabriqués parce qu’ils ont la bonne allure.</li><li>Mémoire ou invention ? On ne le sait pas d’avance : c’est l’<b>hallucination</b> (chapitre 31).</li></ul>",
   "cam": {
    "target": [
     80,
@@ -109,7 +109,7 @@ export const PAGES = [
   "kicker": "79.5",
   "title": "Du document à l’assistant",
   "sub": "pré-entraînement, affinage, comparaisons",
-  "body": "<ul class=\"rules\"><li><b>Pré-entraînement</b> : beaucoup de texte, de qualité moyenne ; une fois par an environ, très cher. Il apporte le <b>savoir</b>.</li><li><b>Affinage</b> : environ <b>100 000 conversations</b> écrites par des annotateurs qui suivent des consignes détaillées. Il apporte la <b>forme</b> d’un assistant (chapitre 6).</li><li><b>Comparaisons</b> : il est plus facile de juger deux réponses que d’en écrire une ; ces choix servent à un renforcement (RLHF, chapitre 7).</li><li><b>En boucle</b> : on repère les mauvaises réponses en usage, on les fait réécrire, on réaffine.</li></ul><p>Les annotateurs sont de plus en plus aidés par des modèles : l’étiquetage devient une <b>collaboration</b> humain-machine.</p>",
+  "body": "<ul class=\"rules\"><li><b>Pré-entraînement</b> : beaucoup de texte, de qualité moyenne ; une fois par an environ, très cher. Il apporte le <b>savoir</b>.</li><li><b>Affinage</b> : environ <b>100 000 conversations</b> écrites par des annotateurs qui suivent des consignes détaillées. Il apporte la <b>forme</b> d’un assistant (chapitre 6).</li><li><b>Comparaisons</b> : il est plus facile de juger deux réponses que d’en écrire une ; ces choix servent à un renforcement (RLHF, chapitre 7).</li><li><b>En boucle</b> : repérer les mauvaises réponses, les réécrire, réaffiner.</li></ul><p>Les annotateurs sont de plus en plus aidés par des modèles.</p>",
   "cam": {
    "target": [
     120,
@@ -235,7 +235,7 @@ export const PAGES = [
   "kicker": "79.11",
   "title": "Le LLM, noyau d’un système d’exploitation",
   "sub": "l’analogie centrale",
-  "body": "\n    <p class=\"lede\">Karpathy propose de voir le modèle non comme un chatbot, mais comme le <b>noyau d’un nouveau système d’exploitation</b>.</p><ul class=\"rules\"><li><b>Mémoire vive</b> : la fenêtre de contexte, limitée et précieuse (chapitre 3).</li><li><b>Disque</b> : fichiers et recherche documentaire.</li><li><b>Périphériques</b> : navigateur, calculatrice, Python, images, voix.</li><li><b>Écosystème</b> : des systèmes fermés, et un monde ouvert, comme Windows et macOS face à Linux.</li></ul><p>Cette image annonce les <b>harnais</b> et les <b>agents</b> : un modèle qui orchestre des outils et une mémoire (chapitres 9 et 10).</p>",
+  "body": "\n    <p class=\"lede\">Pour Karpathy, le modèle est le <b>noyau d’un nouveau système d’exploitation</b>.</p><ul class=\"rules\"><li><b>Mémoire vive</b> : la fenêtre de contexte, limitée et précieuse (chapitre 3).</li><li><b>Disque</b> : fichiers, recherche.</li><li><b>Périphériques</b> : navigateur, Python, images, voix (chapitres 9 et 10).</li><li><b>Écosystème</b> : fermé et ouvert, comme macOS et Linux.</li></ul>",
   "cam": {
    "target": [
     280,
