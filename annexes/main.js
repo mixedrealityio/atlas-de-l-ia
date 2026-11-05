@@ -5,7 +5,7 @@ import { SPECS } from './scenes.js';
 
 let W;
 startBook({
-  no: 76, PAGES, PLATES, clock0: 0, lookKeys: [],
+  no: 77, PAGES, PLATES, clock0: 0, lookKeys: [],
   buildWorld(E) {
     W = buildScenes(E, SPECS);
     for (const p of PAGES) if (p.cam.auto) Object.assign(p.cam, W.frame(p.scene));

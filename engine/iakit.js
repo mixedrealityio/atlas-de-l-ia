@@ -3,6 +3,7 @@
 import * as THREE from 'three';
 import { part, box, cyl, lines, shadeMat, V } from './parts.js';
 import { llmsim } from './llmsim.js';
+import { qwen, qwenquant, qwenmac } from './qwen3d.js';
 import { sizedBox, setBox, ball, rod, rodTo, liveCurve, board2d, plotTube, fr } from './kit.js';
 
 const LEVELS = ['paper', 'blue', 'red'];
@@ -459,4 +460,4 @@ function timeline({ g, S, x0, label, ext }) {
     info: () => `${Math.round(yc)}\n${idx >= 0 ? S.events[idx].y + ' : ' + S.events[idx].n : ''}` };
 }
 
-const KINDS = { llmsim, timeline, mea, quad, net, fmaps, tensor, landscape, cloud, logbars, chip, cluster, tokens, scatter, attn, pipeline, cycle, bars, curve, mem, conv, patches, detect, grid, arm, kv };
+const KINDS = { llmsim, qwen, qwenquant, qwenmac, timeline, mea, quad, net, fmaps, tensor, landscape, cloud, logbars, chip, cluster, tokens, scatter, attn, pipeline, cycle, bars, curve, mem, conv, patches, detect, grid, arm, kv };
