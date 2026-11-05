@@ -187,3 +187,118 @@ export function qwenmac({ g, S, x0, label: label0, ext }) {
     info: () => st.txt,
   };
 }
+
+// ------------------------------------------------------------------ Qwen 3.6 35B-A3B : 40 couches, chacune avec 256 experts dont 8 travaillent par token
+export function qwenmoe({ g, S, x0, label: label0, ext }) {
+  const label = slim(label0);
+  ext.w = 24; ext.h = 10.4; ext.cy = 4.7; ext.cx = -1.8;
+  const NM = 40, y0 = 0.5, st = 0.2, sh = 0.14, top = y0 + NM * st, xt = x0 - 3.0, att = i => i % 4 === 3;
+  const xr = x0 - 12.4, REQ = ['Que', ' fait', ' la', ' photo', 'synthèse', ' ?'];
+  const req = REQ.map((w, i) => { const m = keep(sizedBox(g, { pal: 'base', tone: 'hi', name: `Requête : « ${w.trim()} »` }), 'base'); const yy = y0 + 4.2 - i * 0.62;
+    setBox(m, xr - 0.75, xr + 0.75, yy, yy + 0.44, -0.2, 0.2); label('t2', w.replace(/ /g, '␣'), () => V(xr, yy + 0.22, 0.3)); return m; });
+  label('t1', 'requête', () => V(xr, y0 + 5.1, 0));
+  const xe = x0 - 9.6, emb = keep(sizedBox(g, { pal: 'blue', tone: 'hi', name: 'Embeddings (8 bits) : ~250 000 tokens' }), 'blue');
+  setBox(emb, xe - 0.5, xe + 0.5, y0, y0 + 4.6, -0.8, 0.8); label('t1', 'embeddings', () => V(xe, y0 + 5.0, 0));
+  const L = [];
+  for (let i = 0; i < NM; i++) {
+    const a = y0 + i * st, b = a + sh, n = i + 1, A = att(i), parts = [];
+    const mx = keep(sizedBox(g, { pal: 'paper', tone: 'hi', name: A ? `Couche ${n} · attention complète (4 bits)` : `Couche ${n} · Gated DeltaNet (4 bits)` }), 'paper');
+    setBox(mx, A ? xt - 2.9 : xt - 2.4, xt - 1.0, a, b, A ? -0.7 : -0.4, A ? 0.7 : 0.4); parts.push(mx);
+    if (!A) { const c = keep(sizedBox(g, { pal: 'red', tone: 'hi', name: `Couche ${n} · convolution et état du GDN (16 bits)` }), 'red'); setBox(c, xt - 2.6, xt - 2.4, a, b, -0.4, 0.4); parts.push(c); }
+    const r = keep(sizedBox(g, { pal: 'red', tone: 'hi', name: `Couche ${n} · routeur (16 bits) : choisit 8 experts sur 256` }), 'red'); setBox(r, xt - 0.92, xt - 0.72, a, b, -0.5, 0.5); parts.push(r);
+    const sx = keep(sizedBox(g, { pal: 'blue', tone: 'hi', name: `Couche ${n} · expert partagé (8 bits) : travaille pour chaque token` }), 'blue'); setBox(sx, xt - 0.64, xt - 0.3, a, b, -0.5, 0.5); parts.push(sx);
+    const ex = keep(sizedBox(g, { pal: 'paper', tone: 'hi', name: `Couche ${n} · 256 experts (4 bits), dont 8 utilisés par token` }), 'paper'); setBox(ex, xt - 0.22, xt + 1.9, a, b, -0.9, 0.9); parts.push(ex);
+    L.push({ a, b, parts });
+  }
+  label('t1', '40 couches', () => V(xt - 0.5, top + 0.45, 0));
+  label('t2', 'mélange', () => V(xt - 1.9, y0 - 0.35, 0)); label('t2', 'routeur · partagé · experts', () => V(xt + 0.6, y0 - 0.35, 0));
+  label('mark', 'attention ×10 : les blocs larges', () => V(xt - 5.4, y0 + 38 * st, 0)); label('mark', 'GDN ×30 : les autres', () => V(xt - 5.4, y0 + 35 * st, 0));
+  // la grille des 256 experts de la couche en cours
+  const gx = x0 + 3.6, gy = y0 + 0.6, c = 0.34, cells = [];
+  for (let i = 0; i < 256; i++) { const m = keep(sizedBox(g, { pal: 'paper', tone: 'hi', name: `Expert n° ${i + 1} (4 bits)` }), 'paper'); const r = Math.floor(i / 16), k = i % 16;
+    setBox(m, gx + k * c, gx + k * c + c - 0.06, gy + (15 - r) * c, gy + (15 - r) * c + c - 0.06, -0.12, 0.12); cells.push(m); }
+  const shared = keep(sizedBox(g, { pal: 'blue', tone: 'hi', name: 'Expert partagé (8 bits)' }), 'blue'); setBox(shared, gx, gx + 16 * c - 0.06, gy - 0.75, gy - 0.3, -0.2, 0.2);
+  label('t1', '256 experts de la couche', () => V(gx + 8 * c, gy + 16 * c + 0.4, 0)); label('t2', 'expert partagé · toujours actif', () => V(gx + 8 * c, gy - 1.05, 0));
+  label('mark', '', () => V(gx + 8 * c, gy + 16 * c + 0.9, 0), () => info.layer);
+  const link = rod(g, { r: 0.018, pal: 'dark', name: 'La couche en cours' });
+  const xh = x0 + 0.9, head = keep(sizedBox(g, { pal: 'blue', tone: 'hi', name: 'Tête de sortie (8 bits)' }), 'blue'); setBox(head, xh - 0.4, xh + 0.4, top - 3.0, top, -0.7, 0.7);
+  const mtp = keep(sizedBox(g, { pal: 'red', tone: 'hi', name: 'Tête MTP (16 bits) : devine les mots suivants' }), 'red'); setBox(mtp, xh - 0.4, xh + 0.4, y0 + 0.2, y0 + 1.8, -0.6, 0.6);
+  label('t1', 'tête de sortie', () => V(xh, top + 0.4, 0)); label('t1', 'MTP', () => V(xh, y0 + 2.2, 0));
+  legend(g, label, x0 - 12.6, top + 1.0);
+  const cur = ball(g, 'ink', 'Le token en cours de calcul', 0.17);
+  const info = { layer: '', phase: '' }, PER = 11, pick = (l, cyc) => { const s = new Set(); let j = 0; while (s.size < 8) s.add(Math.floor(rnd(l * 97 + cyc * 13 + j++ * 7.3) * 256)); return s; };
+  return {
+    update: t => {
+      const cy = Math.floor(t / PER), u = t % PER;
+      for (const o of L) for (const m of o.parts) setPal(m, m.userData.home0);
+      [emb, head, mtp, shared].forEach(m => setPal(m, m.userData.home0)); req.forEach((m, i) => setPal(m, u < 1.5 && Math.floor(u / 0.25) === i ? 'dark' : 'base'));
+      let p, on = new Set(), k = -1;
+      if (u < 1.5) { p = lerpV(V(xr + 0.8, y0 + 2.4, 0.9), V(xe, y0 + 2.4, 1.0), u / 1.5); info.phase = 'tokenisation, embeddings'; }
+      else if (u < 2.0) { p = lerpV(V(xe, y0 + 2.4, 1.0), V(xt - 3.2, y0, 1.0), (u - 1.5) / 0.5); info.phase = 'vers les 40 couches'; }
+      else if (u < 9.0) { k = Math.min(NM - 1, Math.floor((u - 2.0) / 7.0 * NM)); p = V(xt - 3.2, y0 + k * st + sh / 2, 1.0); on = pick(k, cy);
+        for (const m of L[k].parts) setPal(m, 'ink'); setPal(shared, 'dark'); info.phase = `couche ${k + 1}/40 · 8 experts sur 256`; }
+      else { p = lerpV(V(xt - 3.2, top, 1.0), V(xh, top - 1.0, 1.0), (u - 9.0) / 0.8); setPal(head, 'dark'); if (u > 10) setPal(mtp, 'dark'); info.phase = u > 10 ? 'tête MTP' : 'tête de sortie'; }
+      cur.position.copy(p);
+      cells.forEach((m, i) => setPal(m, on.has(i) ? 'ink' : 'paper'));
+      info.layer = k >= 0 ? `couche ${k + 1} : experts ${[...on].sort((a, b) => a - b).map(x => x + 1).join(', ')}` : '';
+      if (k >= 0) rodTo(link, V(xt + 1.95, L[k].a + sh / 2, 0), V(gx - 0.1, gy + 8 * c, 0)); else link.visible = false;
+    },
+    info: () => info.phase,
+  };
+}
+
+// ------------------------------------------------------------------ barres de comparaison génériques : S.bars = [{ n, v, pal, s }], S.max
+export function qbars({ g, S, x0, label: label0, ext }) {
+  const label = slim(label0), B = S.bars, n = B.length, sp = S.sp || 2.6, H = S.h || 5.5, y0 = 0.6, mx = S.max || Math.max(...B.map(b => b.v));
+  ext.w = n * sp + 2; ext.h = H + 3; ext.cy = y0 + H / 2 + 0.3; ext.cx = (n - 1) * sp / 2;
+  const ms = B.map(b => keep(sizedBox(g, { pal: b.pal || 'paper', tone: 'hi', name: `${b.n} : ${b.s}` }), b.pal || 'paper'));
+  B.forEach((b, i) => { const x = x0 + i * sp; label('t1', b.s, () => V(x, y0 + H * b.v / mx * st.gr + 0.35, 0)); label('t2', b.n, () => V(x, y0 - 0.35, 0)); if (b.k) label('mark', b.k, () => V(x, y0 - 0.8, 0)); });
+  if (S.cap) label('t1', S.cap, () => V(x0 + (n - 1) * sp / 2, y0 + H + 1.2, 0));
+  const st = { gr: 0 };
+  return {
+    update: t => { st.gr = Math.min(1, 0.15 + t / 2); ms.forEach((m, i) => { const x = x0 + i * sp; setBox(m, x - 0.6, x + 0.6, y0, y0 + Math.max(0.03, H * B[i].v / mx * st.gr), -0.6, 0.6); }); },
+    info: () => '',
+  };
+}
+
+// ------------------------------------------------------------------ poids ouverts : ce que chaque méthode change dans le modèle
+// blanc = poids gelés (inchangés) · rouge = poids modifiés · bleu = poids ajoutés · gris = retirés
+export function openw({ g, S, x0, label: label0, ext }) {
+  const label = slim(label0), M = S.mode, NS = 16, y0 = 0.5, st = 0.34, sh = 0.26, top = y0 + NS * st;
+  ext.w = 16.5; ext.h = 8.6; ext.cy = 3.6; ext.cx = -0.2;
+  const parts = [], add = (pal, name, x1, x2, a, b, z = 0.5) => { const m = keep(sizedBox(g, { pal, tone: 'hi', name }), pal); setBox(m, x1, x2, a, b, -z, z); parts.push(m); return m; };
+  const mod = M === 'full' || M === 'cpt' || M === 'pref';
+  const emb = add(mod || M === 'vocab' ? 'red' : 'paper', M === 'vocab' ? 'Embeddings : nouvelles lignes pour les tokens ajoutés' : 'Embeddings', x0 - 4.6, x0 - 3.7, y0, y0 + 3.6, 0.8);
+  if (M === 'vocab') add('blue', 'Lignes ajoutées pour les nouveaux tokens', x0 - 4.6, x0 - 3.7, y0 + 3.7, y0 + 4.4, 0.8);
+  if (M === 'vision') { add('blue', 'Encodeur d’images (ajouté ou repris d’un autre modèle)', x0 - 7.6, x0 - 6.2, y0 + 0.4, y0 + 3.2, 0.8); add('blue', 'Projecteur : traduit l’image en vecteurs que le modèle comprend', x0 - 5.9, x0 - 5.0, y0 + 1.2, y0 + 2.4, 0.5);
+    label('t1', 'image', () => V(x0 - 6.9, y0 + 3.6, 0)); }
+  for (let i = 0; i < NS; i++) {
+    const a = y0 + i * st, b = a + sh, n = `couches ${4 * i + 1} à ${4 * i + 4}`;
+    const pruned = M === 'prune' && (i === 9 || i === 11 || i === 12);
+    let pMix = mod ? 'red' : 'paper', pMlp = mod ? 'red' : 'paper';
+    if (M === 'merge') { pMix = pMlp = 'red'; }
+    if (M === 'edit' && (i === 6 || i === 7)) pMlp = 'red';
+    if (M === 'steer' || M === 'abl') { pMix = 'paper'; pMlp = M === 'abl' ? 'red' : 'paper'; }
+    if (M === 'freeze' && i >= 12) { pMix = pMlp = 'red'; }
+    if (pruned) { pMix = pMlp = 'dark'; }
+    add(pMix, `Mélange, ${n}${pruned ? ' (retiré)' : ''}`, x0 - 2.8, x0 - 1.0, a, b, 0.45);
+    add(pMlp, `MLP, ${n}${pruned ? ' (retiré)' : ''}`, x0 - 0.9, x0 + 1.9, a, b, 0.55);
+    if (M === 'lora' || M === 'qlora') { add('blue', `Adaptateur LoRA, ${n} : deux petites matrices ajoutées`, x0 - 1.15, x0 - 0.95, a, b, 0.75); add('blue', `Adaptateur LoRA du MLP, ${n}`, x0 + 1.95, x0 + 2.15, a, b, 0.75); }
+    if (M === 'steer' && i === 8) add('blue', 'Vecteur de pilotage ajouté au flux à cette profondeur (aucun poids modifié)', x0 - 3.3, x0 - 2.95, a, b, 0.3);
+  }
+  const head = add(mod || M === 'head' ? 'red' : 'paper', M === 'head' ? 'Nouvelle tête : classe, note ou vecteur au lieu du token suivant' : 'Tête de sortie', x0 + 2.7, x0 + 3.6, top - 3.6, top, 0.8);
+  if (M === 'head') add('blue', 'Tête ajoutée (classifieur, modèle de récompense…)', x0 + 2.7, x0 + 3.6, top + 0.1, top + 0.8, 0.8);
+  if (M === 'distill') { add('dark', 'Le maître : un modèle plus grand dont on imite les probabilités', x0 + 5.2, x0 + 7.0, y0, y0 + 5.2, 0.9); label('t1', 'maître', () => V(x0 + 6.1, y0 + 5.6, 0)); label('t2', 'probabilités imitées', () => V(x0 + 4.4, top - 1.6, 0)); }
+  if (M === 'merge') { add('paper', 'Modèle A (affiné pour une tâche)', x0 + 5.0, x0 + 5.8, y0, y0 + 3.0, 0.5); add('paper', 'Modèle B (affiné pour une autre)', x0 + 6.1, x0 + 6.9, y0, y0 + 3.0, 0.5);
+    label('t2', 'A + B → moyenne des poids', () => V(x0 + 5.95, y0 + 3.4, 0)); }
+  if (M === 'qlora') label('mark', 'base gelée en 4 bits', () => V(x0 - 0.4, y0 - 0.8, 0));
+  if (S.cap) label('t1', S.cap, () => V(x0 + 0.3, top + 1.0, 0));
+  label('t2', 'mélange', () => V(x0 - 1.9, y0 - 0.35, 0)); label('t2', 'MLP', () => V(x0 + 0.5, y0 - 0.35, 0));
+  [['paper', 'gelé'], ['red', 'modifié'], ['blue', 'ajouté'], ['dark', 'retiré / externe']].forEach(([p, t], i) => {
+    const m = sizedBox(g, { pal: p, tone: 'hi', name: `Légende : ${t}` }); setBox(m, x0 - 7.2, x0 - 6.8, top - 0.2 - i * 0.5, top + 0.1 - i * 0.5, -0.15, 0.15);
+    label('lgl' + (p === 'red' ? ' red' : p === 'blue' ? ' blue' : ''), t, () => V(x0 - 6.6, top - 0.05 - i * 0.5, 0)); });
+  return {
+    update: () => {},
+    info: () => S.info || '',
+  };
+}

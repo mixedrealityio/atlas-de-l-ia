@@ -1,8 +1,8 @@
-// Chapitre 76 : Atlas 3D de Qwen 3.8 27B (généré par build.py)
+// Chapitre 76 : Qwen 3.8 27B (généré par build.py)
 export const PAGES = [
  {
   "kicker": "Chapitre 76 · un modèle réel",
-  "title": "Atlas 3D de Qwen 3.8 27B",
+  "title": "Qwen 3.8 27B",
   "sub": "le modèle qui tourne sur mon MacBook",
   "body": "\n    <p class=\"lede\">Un modèle de 27 milliards de poids, compressé à ~20 Go, qui répond en local sur un MacBook. Ce chapitre l’ouvre pièce par pièce.</p>\n    <p>Une requête suit toujours le même chemin : <b>tokenisation</b> → <b>embeddings</b> → <b>64 couches</b> → <b>tête de sortie</b> → <b>échantillonnage</b>. Un token sort, il est ajouté au texte, et tout recommence pour le suivant. À côté, une <b>tête MTP</b> devine 3 mots d’avance pour aller plus vite.</p>\n    <p><b>Code couleur de la figure</b> : blanc = <b>4 bits</b>, bleu = <b>8 bits</b>, rouge = <b>16 bits</b> ; gris = ce qui n’est pas un poids (texte, calcul).</p>\n    <p>La version installée s’appelle <i>Qwen3.8-27B-MTPLX-Optimized-Speed</i> : ses parties n’ont pas toutes le même nombre de bits. C’est la <b>quantification dynamique</b> (pages 76.6 à 76.8).</p>",
   "cam": {
